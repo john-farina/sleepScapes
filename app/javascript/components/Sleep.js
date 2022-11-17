@@ -8,7 +8,7 @@ export default function Sleep(users, signedIn) {
       {allUsers.current.map((item, iteration) => {
         return (
           <h2 key={iteration}>
-            {item.email} - {item.name}
+            USER: {item.email} - {item.name}
           </h2>
         );
       })}
