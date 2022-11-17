@@ -16,7 +16,9 @@ export default function SignedOutHeader() {
       </div>
 
       <div className="optionColumn">
-        <p>Sign Up</p>
+        <a href="/sign_in">
+          <p>Sign Up</p>
+        </a>
       </div>
     </header>
   );

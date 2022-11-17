@@ -1,8 +1,8 @@
 <div class="webContainer">
     <% if signed_in? %>
-        <%= react_component("Header", signedIn: true, currentUser: current_user) %>
+        <%= react_component("Header", {signedIn: true, currentUser: current_user}) %>
     <% else %>
-        <%= react_component("Header", signedIn: false) %>
+        <%= react_component("Header", {signedIn: false}) %>
     <% end %>
 
     <%= react_component("Sleep", {users: @users, currentUser: signed_in?}) %>
