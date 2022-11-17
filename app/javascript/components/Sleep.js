@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 
-export default function Sleep() {
+export default function Sleep(users, signedIn) {
+  const allUsers = useRef(users.users);
+  console.log(signedIn);
   return (
     <div className="sleepContainer">
-      <h1>hello</h1>
+      {allUsers.current.map((item, iteration) => {
+        return (
+          <h2 key={iteration}>
+            {item.email} - {item.name}
+          </h2>
+        );
+      })}
     </div>
   );
 }

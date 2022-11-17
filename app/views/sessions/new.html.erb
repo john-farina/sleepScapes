@@ -5,5 +5,11 @@
         <%= react_component("Header", signedIn: false) %>
     <% end %>
 
-    <%= react_component("Sleep", {users: @users, currentUser: signed_in?}) %>
+    <div id="clearance" class="sign-in">
+      <h2><%= t(".title") %></h2>
+
+      <%= render partial: '/sessions/form' %>
+    </div>
+
 </div>
+
