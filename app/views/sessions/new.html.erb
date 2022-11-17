@@ -1,15 +1,7 @@
-<div class="webContainer">
-    <% if signed_in? %>
-        <%= react_component("Header", signedIn: true, currentUser: current_user) %>
-    <% else %>
-        <%= react_component("Header", signedIn: false) %>
-    <% end %>
+
 
     <div id="clearance" class="sign-in">
       <h2><%= t(".title") %></h2>
 
       <%= render partial: '/sessions/form' %>
     </div>
-
-</div>
-
