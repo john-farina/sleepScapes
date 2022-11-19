@@ -1,0 +1,23 @@
+<header id="pageHeader">
+  <div class="accountContainer">
+    <div class="accountPicture"></div>
+    <p>
+      welcome <%= current_user.email %>
+    </p>
+  </div>
+  <a href="/home">
+    <div class="headerBtn">
+      <p>Home</p>
+    </div>
+  </a>
+  <a href="">
+    <div class="headerBtn">
+      <p>Account</p>
+    </div>
+  </a>
+  <a  href=<%= sign_out_url %>>
+    <div class="headerBtn">
+      <p>Sign Out</p>
+    </div>
+  </a>
+</header>

@@ -10,6 +10,19 @@
     <%= javascript_pack_tag 'application' %>
   </head>
   <body>
-    <%= yield %>
+    <% if signed_in? %>
+      <%= render 'layouts/signed_in_header' %>
+    <% else %>
+      <%= render 'layouts/signed_out_header' %>
+    <% end %>
+    <main id="mainPage">
+      <div id="menuButton" class="menuButton">
+        <%= image_tag("menu.svg", class: "menuIcon") %>
+        <%= image_tag("arrow.svg", class: "arrowIcon", id: "arrowIcon") %>
+      </div>
+      <div class="sleepContainer">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
