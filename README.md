@@ -7,5 +7,9 @@
 #### -COMMENT MODELS
 #### -LIKES MODELS
 
+## RELATIONS TO MODELS
 
+#### *USER* - has_many *LIKES*
+####        - has_many *FOLLOWERS & FOLLOWING*
+####        - has_many *SLEEPSCAPES*
 
