@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   get "/home" => "sleep#home", as: "home"
   root "sleep#index"
+  get '/user/:id', to: 'sleep#show', as: 'user_page'
 end

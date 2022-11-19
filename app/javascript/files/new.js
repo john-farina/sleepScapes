@@ -6,6 +6,7 @@ let menuOpen = true;
 let animationGoing = false;
 
 menuBtn.addEventListener("click", () => {
+  ///CLOSE
   if (menuOpen && !animationGoing) {
     animationGoing = true;
 
@@ -15,7 +16,11 @@ menuBtn.addEventListener("click", () => {
 
     main.classList.add("wideMain");
 
+    menuBtn.classList.remove("moveBtnStats");
+    menuBtn.classList.add("moveBtnLeft");
+
     arrowIcon.classList.add("rightAnimation");
+
     setTimeout(() => {
       arrowIcon.classList.remove("left");
       arrowIcon.classList.add("right");
@@ -30,12 +35,16 @@ menuBtn.addEventListener("click", () => {
       main.classList.remove("wideMain");
       main.classList.add("wideMainStats");
 
+      menuBtn.classList.add("moveBtnZero");
+      menuBtn.classList.remove("moveBtnLeft");
+
       menuOpen = false;
 
       animationGoing = false;
     }, 580);
   } else if (!menuOpen && !animationGoing) {
     animationGoing = true;
+    menuBtn.classList.remove("moveBtnZero");
 
     header.style.display = "flex";
 
@@ -44,6 +53,8 @@ menuBtn.addEventListener("click", () => {
     header.classList.add("openHeader");
 
     main.classList.add("smallMain");
+
+    menuBtn.classList.add("moveBtnRight");
 
     arrowIcon.classList.add("leftAnimation");
     setTimeout(() => {
@@ -58,6 +69,10 @@ menuBtn.addEventListener("click", () => {
       main.classList.remove("smallMain");
 
       main.classList.add("smallMainStats");
+
+      menuBtn.classList.remove("moveBtnRight");
+      menuBtn.classList.remove("moveBtnZero");
+      menuBtn.classList.add("moveBtnStats");
 
       menuOpen = true;
 
