@@ -2,7 +2,7 @@
 
 # MODELS (basic idea brainstorm)
 
-## USER
+## USER (ontop of clearance)
 - [x] name:string
 - [ ] bio:string
 - [x] admin:boolean *(def => false)*
@@ -18,7 +18,7 @@
 - [ ] description:string
 - [ ] audio:audio? (will loop the audio minimum 1 min long)
 - [ ] short_video:video? (video will be muted and loop over audio)
-- [ ]
+
 
 
 ## HOW I THINK I WILL SCTRUCTURE THIS
