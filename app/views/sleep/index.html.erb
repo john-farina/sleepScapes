@@ -3,4 +3,9 @@
 loop: :loop, muted: true) %>
 <div class="titleContainer">
   <h1 class="pageTitle">sleepScapes.</h1>
+  <% if signed_in? %>
+    <p class="subTitle">welcome back.</p>
+  <% else %>
+    <p class="subTitle">welcome sleeper.</p>
+  <% end %>
 </div>
