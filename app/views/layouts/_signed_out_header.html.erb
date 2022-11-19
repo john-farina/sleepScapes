@@ -11,14 +11,34 @@
       <p>Home</p>
     </div>
   </a>
-  <a href=<%= sign_in_url %>>
+  <a id="signInButton" >
     <div class="headerBtn">
       <p>Sign in</p>
     </div>
   </a>
-  <a href=<%= sign_up_url %>>
+  <a id="signUpButton" href=<%= sign_up_url %>>
     <div class="headerBtn">
       <p>Sign Up</p>
     </div>
   </a>
+
+  <div id="signInHeader" class="sign-in headerForms">
+  <h2>Sign In</h2>
+        <%= form_for :session, url: session_path do |form| %>
+          <div class="text-field">
+        <%= form.label :email %>
+        <%= form.email_field :email, value: " ", placeholder: "***@gmail.com" %>
+      </div>
+      <div class="password-field">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+      <div class="submit-field">
+        <%= form.submit class: "submitBtn" %>
+      </div>
+      <div class="other-links">
+        <%= link_to t(".forgot_password"), new_password_path %>
+      </div>
+    <% end %>
+  </div>
 </header>

@@ -1,2 +1,32 @@
-<%= @user.email %>
-<%= @user.id %>
+<div class="usersPage">
+  <div class="userHeader">
+    <div class="left"></div>
+    <div class="middle">
+      <div class="userPicture"></div>
+      <div class="userName"><%= @user.name %></div>
+    </div>
+    <div class="right">
+      <div class="followersBox">
+        <p class="followCount">2</p>
+        <p class="followTitle">Following</p>
+      </div>
+      <%#  %>
+      <div class="followersBox">
+        <p class="followCount">12</p>
+        <p class="followTitle">Followers</p>
+      </div>
+    </div>
+  </div>
+</div>
+<%#  %>
+<%# @user.email %>
+<%# @user.id %>
+<%# if signed_in? %>
+<%# if current_user.id === @user.id %>
+<%# <h1>this is ur page</h1> %>
+<%# else %>
+<%# <h1>this is not ur page</h1> %>
+<%# end %>
+<%# else %>
+<%# <h1>Sign in to follow</h1> %>
+<%# end %>
