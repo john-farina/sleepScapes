@@ -1,6 +1,8 @@
 <header id="pageHeader">
   <div class="accountContainer">
-    <div class="accountPicture"></div>
+    <div class="accountPicture">
+      <%= image_tag("defaultUser", class: "headerPic") %>
+    </div>
     <p>
       <a href=<%= sign_up_url %>>Sign Up</a>/<a href=<%= sign_in_url %>>Sign In</a>  <br>
       to view your account

@@ -1,22 +1,33 @@
-<div id="clearance" class="sign-up">
-  <%= form_for @user do |form| %>
-    <div class="text-field">
-      <%= form.label :email %>
-      <%= form.email_field :email %>
-    </div>
-    <div class="text-field">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-    <div class="password-field">
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
+<div class="signUpPage">
+  <div id="clearance" class="sign-up headerForms">
+    <h2>Sign Up</h2>
+    <%= form_for @user do |form| %>
+      <div class="field">
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+      </div>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+      <div class="field">
+        <%= form.label :profile_picture %>
+        <%= form.file_field :profile_picture, accept: 'image/png, image/gif, image/jpeg' %>
+      </div>
+      <div class="field">
+        <%= form.label :profile_banner %>
+        <%= form.file_field :profile_banner, accept: 'image/png, image/jpeg' %>
+      </div>
+      <div class="field">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+      <div class="field">
+        <%= form.submit class: "submitBtn" %>
+      </div>
+      <div class="other-links">
+        <%= link_to t(".sign_in"), sign_in_path %>
+      </div>
+    <% end %>
+  </div>
 </div>

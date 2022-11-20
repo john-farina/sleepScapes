@@ -1,8 +1,27 @@
 <div class="usersPage">
   <div class="userHeader">
+    <% if @user.profile_banner.attached? %>
+      <style>
+        .userHeader {
+             background-image: url(<%= url_for(@user.profile_banner)  %>);
+        }
+      </style>
+    <% else %>
+      <style>
+        .userHeader {
+             background-image: url(<%= image_url("defaultUserBanner") %>);
+        }
+      </style>
+    <% end %>
     <div class="left"></div>
     <div class="middle">
-      <div class="userPicture"></div>
+      <div class="userPicture">
+        <% if @user.profile_picture.attached? %>
+          <%= image_tag(url_for(@user.profile_picture), class: "userPic") %>
+        <% else %>
+          <%= image_tag("defaultUser",class: "userPic")%>
+        <%end %>
+      </div>
       <div class="userName"><%= @user.name %></div>
     </div>
     <div class="right">

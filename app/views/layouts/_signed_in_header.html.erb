@@ -1,8 +1,14 @@
 <header id="pageHeader">
   <div class="accountContainer">
-    <div class="accountPicture"></div>
+    <div class="accountPicture">
+      <% if current_user.profile_picture.attached? %>
+        <%= image_tag(current_user.profile_picture, class: "headerPic")%>
+      <% else %>
+        <%= image_tag("defaultUser", class: "headerPic")%>
+      <% end %>
+    </div>
     <p>
-      welcome <%= current_user.email %>
+      welcome, <%= current_user.name %>
     </p>
   </div>
   <a href="/home">
