@@ -15,6 +15,29 @@ class SleepController < ApplicationController
     @sleepscape = User.find(params[:user_id]).sleepscapes.find(params[:sleepscape_id])
   end
 
+  def like_sleepscape
+    @user = current_user
+    @sleepscape = Sleepscape.find(params[:sleepscape_id])
+
+    @like = @user.likes.new(params.permit(:user_id, :liked_id))
+
+    if @like.save
+      redirect_to sleepscape_page_url(sleepscape_id: @sleepscape.id, user_id: @sleepscape.user_id)
+    else
+    end
+  end
+
+  def remove_like_sleepscape
+    @user = User.find(params[:user_id])
+    @sleepscape = Sleepscape.find(params[:liked_id])
+    @like = @user.likes.find_by(liked_id: params[:liked_id]).destroy
+
+    if @like.destroy
+      redirect_to sleepscape_page_url(sleepscape_id: @sleepscape.id, user_id: @sleepscape.user_id)
+    else
+    end
+  end
+
   def create
     @user = User.find(params[:id])
     @sleepscape = @user.sleepscapes.new(get_params)

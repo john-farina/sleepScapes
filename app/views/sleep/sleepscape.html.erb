@@ -6,21 +6,42 @@ loop: :loop, muted: true) %>
 <% end %>
 <div class="sleepScapeContainer">
   <div class="bottomFooter">
-    <div class="pageInfo">
-      <h1 class="sleepscapeTitle">
-        <%= @sleepscape.title %> - <%= @sleepscape.recorded_at %>
-      </h1>
+    <div class="topBar">
+      <div class="pageInfo">
+        <h1 class="sleepscapeTitle">
+          <%= @sleepscape.title %> - <%= @sleepscape.recorded_at %>
+        </h1>
+      </div>
+      <div class="footerBtn">
+        info
+      </div>
+      <div class="footerBtn">
+        comments
+      </div>
+      <% if signed_in? %>
+        <% if current_user.likes.find_by(liked_id: @sleepscape.id) %>
+          <%# if user HAS liked this post already %>
+          <%= form_with url: remove_like_sleepscape_url(user_id: current_user.id) do |form|%>
+            <%= form.hidden_field :liked_id, value: @sleepscape.id %>
+            <%= form.submit :unlike, class: "footerBtn formBtn likedBtn", value: "Un-Like" %>
+            <%#  %>
+          <% end %>
+        <% else %>
+          <%# if user HASNT liked this post already %>
+          <%= form_with url: like_sleepscape_url(sleepscape_id: @sleepscape.id) do |form|%>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.hidden_field :liked_id, value: @sleepscape.id %>
+            <%= form.submit :like, class: "footerBtn formBtn", value: "Like" %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="footerBtn">
+          Sign In To Like
+        </div>
+      <% end %>
     </div>
-    <div class="footerBtn">
-      info
-    </div>
-    <div class="footerBtn">
-      comments
-    </div>
-    <div class="footerBtn">
-      like
+    <div class="bottomContainer">
     </div>
   </div>
-</div>
 </div>
 <%# old stuff hiding behind lol %>
