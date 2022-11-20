@@ -37,26 +37,37 @@
     </div>
   </div>
   <%# .              END OF HEADER             %>
-  <h3><%= @user.name %>'s [sleepScapes]</h3>
-  <% @sleepscapes.each do |sleep|%>
-    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+  <% if @sleepscapes.length < 1 %>
+  <% else %>
+    <h3 class="defaultUserHeader"><%= @user.name %>'s [sleepScapes]</h3>
+    <% @sleepscapes.each do |sleep|%>
+      <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+    <% customClass = "sleepscapeNum" + sleep.id.to_s %>
     <div class="sleepScapes">
-      <div class="background user2Post">
-        <style>
-          /* NEED TO ADD A CUSTOM CLASS TO EACH ONE */
-          .user2Post {
-            background-image: url(<%= image_url("desert.jpg") %>);
-            }
-        </style>
-    </div>
-    <%#%>
-    <div class="sleepScapeInfo">
-      <div class="scapeTitle">
-        <p><%= sleep.title%></p>
-        <p class="subText">Recorded At: <%= sleep.recorded_at %></p>
+        <div class="<%= "background " + customClass %>">
+          <% if sleep.sleepscape_still_picture.attached? %>
+            <style>
+              .<%= customClass %> {
+              background-image: url(<%= url_for(sleep.sleepscape_still_picture) %>);
+              }
+            </style>
+          <% else %>
+            <style>
+              .<%= customClass %> {
+              background-image: url(<%= image_url("lake.jpg") %>);
+              }
+            </style>
+          <% end %>
+        </div>
+        <%#%>
+        <div class="sleepScapeInfo">
+          <div class="scapeTitle">
+            <p><%= sleep.title%></p>
+            <p class="subText">Recorded At: <%= sleep.recorded_at %></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</a>
+    </a>
+  <% end %>
 <% end %>
 </div>

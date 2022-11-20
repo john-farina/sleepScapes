@@ -7,4 +7,5 @@ class Sleepscape < ApplicationRecord
 
   has_one_attached :sleepscape_video
   has_one_attached :sleepscape_audio
+  has_one_attached :sleepscape_still_picture
 end

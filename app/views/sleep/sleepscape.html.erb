@@ -5,14 +5,22 @@ loop: :loop, muted: true) %>
   <h5>i dont have a video</h5>
 <% end %>
 <div class="sleepScapeContainer">
-  <div class="info">
-    <h1 class="sleepscapeTitle"><%= @sleepscape.title %> </h1>
-    <p class="sleepscapeLocation"><%= @sleepscape.recorded_at %></p>
-    <p class="sleepscapeDescription" ><%= @sleepscape.description %></p>
-    <p>Posted By:
-      <a href=<%= user_page_url(id: @sleepscape.user_id) %>>
-        <%= User.find(@sleepscape.user_id).name %>
-      </a>
-      </p>
+  <div class="bottomFooter">
+    <div class="pageInfo">
+      <h1 class="sleepscapeTitle">
+        <%= @sleepscape.title %> - <%= @sleepscape.recorded_at %>
+      </h1>
+    </div>
+    <div class="footerBtn">
+      info
+    </div>
+    <div class="footerBtn">
+      comments
+    </div>
+    <div class="footerBtn">
+      like
     </div>
   </div>
+</div>
+</div>
+<%# old stuff hiding behind lol %>
