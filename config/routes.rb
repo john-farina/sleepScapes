@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get "/home" => "sleep#home", as: "home"
   root "sleep#index"
   get '/user/:id', to: 'sleep#show', as: 'user_page'
+  get '/user/:user_id/sleepscape/:sleepscape_id', to: 'sleep#sleepscape', as: 'sleepscape_page'
+  get 'user/:id/create', to: 'sleep#create', as: 'create'
+  post 'user/:id/create', to: 'sleep#create', as: 'create_form'
 end

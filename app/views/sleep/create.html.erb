@@ -1,0 +1,31 @@
+<% if signed_in? %>
+  <% if @user.id === current_user.id %>
+    <h1>create</h1>
+    <%= form_with url: create_form_url(id: current_user.id) do |form|%>
+      <div class="">
+        <%= form.label :title %> <br>
+        <%= form.text_field :title %>
+      </div>
+      <div class="">
+        <%= form.label :recorded_at %> <br>
+        <%= form.text_field :recorded_at %>
+      </div>
+      <div class="">
+        <%= form.label :sleepscape_video %> <br>
+        <%= form.file_field :sleepscape_video %>
+      </div>
+      <div class="">
+        <%= form.label :sleepscape_audio %> <br>
+        <%= form.file_field :sleepscape_audio%>
+      </div>
+      <div class="">
+        <%= form.label :description %> <br>
+        <%= form.text_field :description %>
+      </div>
+      <%= form.submit %>
+    <% end %>
+  <% else %>
+    <h4>oops... wrong page</h4>
+    <a href=<%= create_url(id: current_user) %>>try this link instead</a>
+  <% end %>
+<% end %>

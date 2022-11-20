@@ -1,0 +1,18 @@
+<% if @sleepscape.sleepscape_video.attached? %>
+  <%= video_tag(url_for(@sleepscape.sleepscape_video), class: "backgroundImage sleepscapeBackground",autoplay: :autoplay,
+loop: :loop, muted: true) %>
+<% else %>
+  <h5>i dont have a video</h5>
+<% end %>
+<div class="sleepScapeContainer">
+  <div class="info">
+    <h1 class="sleepscapeTitle"><%= @sleepscape.title %> </h1>
+    <p class="sleepscapeLocation"><%= @sleepscape.recorded_at %></p>
+    <p class="sleepscapeDescription" ><%= @sleepscape.description %></p>
+    <p>Posted By:
+      <a href=<%= user_page_url(id: @sleepscape.user_id) %>>
+        <%= User.find(@sleepscape.user_id).name %>
+      </a>
+      </p>
+    </div>
+  </div>
