@@ -13,6 +13,11 @@ class SleepController < ApplicationController
 
   def sleepscape
     @sleepscape = User.find(params[:user_id]).sleepscapes.find(params[:sleepscape_id])
+    @comments = @sleepscape.comments.order(created_at: :desc).all
+  end
+
+  def create_comment
+
   end
 
   def like_sleepscape

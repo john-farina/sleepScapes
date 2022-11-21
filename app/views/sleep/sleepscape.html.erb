@@ -5,17 +5,17 @@ loop: :loop, muted: true) %>
   <h5>i dont have a video</h5>
 <% end %>
 <div class="sleepScapeContainer">
-  <div class="bottomFooter">
+  <div id="sleepscapeMenu" class="bottomFooter">
     <div class="topBar">
       <div class="pageInfo">
         <h1 class="sleepscapeTitle">
           <%= @sleepscape.title %> - <%= @sleepscape.recorded_at %>
         </h1>
       </div>
-      <div class="footerBtn">
+      <div id="infoBtn" class="footerBtn">
         info
       </div>
-      <div class="footerBtn">
+      <div id="commentsBtn" class="footerBtn">
         comments
       </div>
       <% if signed_in? %>
@@ -40,7 +40,39 @@ loop: :loop, muted: true) %>
         </div>
       <% end %>
     </div>
-    <div class="bottomContainer">
+    <div id="bottomMenu" class="bottomContainer">
+      <div id="infoContainer">
+        <h3 class="infoTitle"><%= @sleepscape.title %></h3>
+        <h3 class="infoLocation"><%= @sleepscape.recorded_at %></h3>
+        <div class="line"></div>
+        <p class="infoDescription"><%= @sleepscape.description %></p>
+      </div>
+      <div id="commentsContainer">
+        <div class="commentsBox">
+          <% @comments.each do |comment| %>
+            <% commentUser = User.find(comment.user_id) %>
+            <div class="comment">
+              <p class="timeAgoText"><%= time_ago_in_words(comment.created_at) %> ago</p>
+              <div class="left">
+                <div class="userPicture">
+                  <% if commentUser.profile_picture.attached? %>
+                    <%= image_tag(commentUser.profile_picture, class: "commentPic")%>
+                  <% else %>
+                    <%= image_tag("defaultUser", class: "commentPic")%>
+                  <% end %>
+                </div>
+                <div class="userName"><%= commentUser.name %></div>
+              </div>
+              <div class="right">
+                <div class="bubble">
+                  <p class="commentText"><%= comment.content %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="createCommentBox"></div>
+      </div>
     </div>
   </div>
 </div>
