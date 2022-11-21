@@ -13,7 +13,23 @@
         }
       </style>
     <% end %>
-    <div class="left"></div>
+    <div class="left">
+      <% if current_user.id === @user.id %>
+        <%# WHERE THE EDIT BUTTON WILL BE %>
+      <% else %>
+        <% if current_user.followings.find_by(following_id: @user.id) %>
+          <%= form_with url: remove_following_url(user_id: current_user.id) do |form| %>
+            <%= form.hidden_field :follow_id, value: @user.id %>
+            <%= form.submit :remove_follow %>
+          <% end %>
+        <% else %>
+          <%= form_with url: add_following_url(user_id: current_user.id) do |form| %>
+            <%= form.hidden_field :follow_id, value: @user.id %>
+            <%= form.submit :follow %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="middle">
       <div class="userPicture">
         <% if @user.profile_picture.attached? %>
@@ -25,50 +41,54 @@
       <div class="userName"><%= @user.name %></div>
     </div>
     <div class="right">
-      <div class="followersBox">
-        <p class="followCount">2</p>
+      <a href=<%= user_following_url(id: @user.id) %>>
+        <div class="followersBox">
+          <p class="followCount"><%= @user.followings.length %></p>
         <p class="followTitle">Following</p>
       </div>
-      <%#  %>
+    </a>
+    <%#  %>
+    <a href=<%= user_followers_url(id: @user.id) %>>
       <div class="followersBox">
-        <p class="followCount">12</p>
-        <p class="followTitle">Followers</p>
-      </div>
+        <p class="followCount"><%= @followers.length %> </p>
+      <p class="followTitle">Followers</p>
     </div>
-  </div>
-  <%# .              END OF HEADER             %>
-  <% if @sleepscapes.length < 1 %>
-  <% else %>
-    <h3 class="defaultUserHeader"><%= @user.name %>'s [sleepScapes]</h3>
-    <% @sleepscapes.each do |sleep|%>
-      <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+  </a>
+</div>
+</div>
+<%# .              END OF HEADER             %>
+<% if @sleepscapes.length < 1 %>
+<% else %>
+  <h3 class="defaultUserHeader"><%= @user.name %>'s [sleepScapes]</h3>
+  <% @sleepscapes.each do |sleep|%>
+    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
     <% customClass = "sleepscapeNum" + sleep.id.to_s %>
     <div class="sleepScapes">
-        <div class="<%= "background " + customClass %>">
-          <% if sleep.sleepscape_still_picture.attached? %>
-            <style>
-              .<%= customClass %> {
-              background-image: url(<%= url_for(sleep.sleepscape_still_picture) %>);
-              }
-            </style>
-          <% else %>
-            <style>
-              .<%= customClass %> {
-              background-image: url(<%= image_url("lake.jpg") %>);
-              }
-            </style>
-          <% end %>
-        </div>
-        <%#%>
-        <div class="sleepScapeInfo">
-          <div class="scapeTitle">
-            <p><%= sleep.title%></p>
-            <p class="subText">Recorded At: <%= sleep.recorded_at %></p>
-          </div>
+      <div class="<%= "background " + customClass %>">
+        <% if sleep.sleepscape_still_picture.attached? %>
+          <style>
+            .<%= customClass %> {
+            background-image: url(<%= url_for(sleep.sleepscape_still_picture) %>);
+            }
+          </style>
+        <% else %>
+          <style>
+            .<%= customClass %> {
+            background-image: url(<%= image_url("lake.jpg") %>);
+            }
+          </style>
+        <% end %>
+      </div>
+      <%#%>
+      <div class="sleepScapeInfo">
+        <div class="scapeTitle">
+          <p><%= sleep.title%></p>
+          <p class="subText">Recorded At: <%= sleep.recorded_at %></p>
         </div>
       </div>
-    </a>
-  <% end %>
+    </div>
+  </a>
+<% end %>
 <% end %>
 <br>
 <br>

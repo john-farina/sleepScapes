@@ -1,0 +1,5 @@
+  
+<p>Following:</p>
+<% @followings.each do |following |%>
+  <%= User.find(following.following_id).name %>
+<% end %>

@@ -8,7 +8,37 @@ class SleepController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @followers = Following.where(:following_id => @user.id)
     @sleepscapes = @user.sleepscapes.all
+  end
+
+  def following
+    @followings = User.find(params[:id]).followings.all
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @followers = Following.where(:following_id => @user.id)
+  end
+
+  def add_following
+    @user = User.find(params[:user_id])
+    @following = @user.followings.new(following_id: params[:follow_id] )
+
+    if @following.save
+      redirect_to  user_page_url(id: params[:follow_id])
+    else
+    end
+  end
+
+  def remove_following
+    @user = User.find(params[:user_id])
+    @following = Following.find_by(following_id: params[:follow_id])
+
+    if @following.destroy
+      redirect_to user_page_url(id: params[:follow_id])
+    else
+    end
   end
 
   def sleepscape

@@ -551,6 +551,12 @@ main {
           // background-color: rgba(0, 0, 0, 0.349);
         }
 
+        .left {
+          display: flex;
+          align-items: end;
+          justify-content: center;
+        }
+
         .middle {
           position: relative;
           width: 60%;
@@ -590,25 +596,36 @@ main {
           align-items: center;
           justify-content: center;
           gap: 20px;
-          .followersBox {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+          a {
             width: 80%;
             height: 30%;
-            background-color: rgb(28, 28, 28);
-            border: solid 1px white;
-            border-radius: 6px;
-            padding: 2px;
-            .followCount {
-              margin-top: -5px;
-              font-size: 1.8rem;
-            }
-            .followTitle {
-              margin-top: -5px;
-              font-size: 0.6rem;
-              opacity: 80%;
+
+            .followersBox {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              background-color: rgba(28, 28, 28, 0.8%);
+              backdrop-filter: blur(4px);
+              border: solid 1px rgb(37, 37, 37);
+              border-radius: 6px;
+              padding: 2px;
+              .followCount {
+                margin-top: -5px;
+                font-size: 1.8rem;
+              }
+              .followTitle {
+                margin-top: -5px;
+                font-size: 0.6rem;
+                opacity: 80%;
+              }
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.8%);
+                color: black;
+              }
             }
           }
         }
