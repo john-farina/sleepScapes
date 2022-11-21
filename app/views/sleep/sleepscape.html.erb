@@ -7,23 +7,22 @@ loop: :loop, muted: true) %>
 <div class="sleepScapeContainer">
   <div id="sleepscapeMenu" class="bottomFooter">
     <div class="topBar">
-      <div class="pageInfo">
-        <h1 class="sleepscapeTitle">
-          <%= @sleepscape.title %> - <%= @sleepscape.recorded_at %>
-        </h1>
-      </div>
       <div id="infoBtn" class="footerBtn">
-        info
+        <%= image_tag("info", class: "menuSvg infoIcon") %>
       </div>
       <div id="commentsBtn" class="footerBtn">
-        comments
+        <p class="centerNum commentsNum"><%= @sleepscape.comments.length %></p>
+        <%= image_tag("comments", class: "menuSvg infoIcon") %>
       </div>
       <% if signed_in? %>
         <% if current_user.likes.find_by(liked_id: @sleepscape.id) %>
           <%# if user HAS liked this post already %>
           <%= form_with url: remove_like_sleepscape_url(user_id: current_user.id) do |form|%>
             <%= form.hidden_field :liked_id, value: @sleepscape.id %>
-            <%= form.submit :unlike, class: "footerBtn formBtn likedBtn", value: "Un-Like" %>
+            <div class="imageCont">
+              <%= image_submit_tag("heart",  class: "footerBtn formBtn likedBtn") %>
+              <p class="centerNum likesNum"><%= @all_likes.length %></p>
+            </div>
             <%#  %>
           <% end %>
         <% else %>
@@ -31,7 +30,10 @@ loop: :loop, muted: true) %>
           <%= form_with url: like_sleepscape_url(sleepscape_id: @sleepscape.id) do |form|%>
             <%= form.hidden_field :user_id, value: current_user.id %>
             <%= form.hidden_field :liked_id, value: @sleepscape.id %>
-            <%= form.submit :like, class: "footerBtn formBtn", value: "Like" %>
+            <div class="imageCont">
+              <%= image_submit_tag("heart",  class: "footerBtn formBtn ") %>
+              <p class="centerNum likesNum"><%= @all_likes.length %></p>
+            </div>
           <% end %>
         <% end %>
       <% else %>
@@ -71,7 +73,15 @@ loop: :loop, muted: true) %>
             </div>
           <% end %>
         </div>
-        <div class="createCommentBox"></div>
+        <div class="createCommentBox">
+          <% if signed_in? %>
+            <%= form_with url: create_comment_url(sleepscape_id: @sleepscape.id) do |form|%>
+              <%= form.hidden_field :user_id, value: current_user.id %>
+              <%= form.text_area :content, class: "commentTextInput", placeholder: "Type your comment here!" %>
+              <%= form.submit :submit, class: "commentSubmit" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

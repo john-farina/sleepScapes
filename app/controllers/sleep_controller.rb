@@ -14,10 +14,16 @@ class SleepController < ApplicationController
   def sleepscape
     @sleepscape = User.find(params[:user_id]).sleepscapes.find(params[:sleepscape_id])
     @comments = @sleepscape.comments.order(created_at: :desc).all
+    @all_likes = Like.where(:liked_id => @sleepscape.id)
   end
 
   def create_comment
-
+    @sleepscape = Sleepscape.find(params[:sleepscape_id])
+    @comment = @sleepscape.comments.new(params.permit(:content, :user_id))
+    if @comment.save
+      redirect_to sleepscape_page_url(sleepscape_id: @sleepscape.id, user_id: @sleepscape.user_id)
+    else
+    end
   end
 
   def like_sleepscape
