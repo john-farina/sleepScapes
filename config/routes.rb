@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   root "sleep#index"
 
   get '/user/:id', to: 'sleep#show', as: 'user_page'
+  get '/user/:id/edit', to: 'sleep#edit', as: 'edit_user'
+  post '/:id/edit', to: 'sleep#edit_user', as: 'edit_user_form'
   get '/user/:id/following', to: 'sleep#following', as: 'user_following'
   get '/user/:id/followers', to: 'sleep#followers', as: 'user_followers'
   post '/:user_id/follow', to: 'sleep#add_following', as: 'add_following'
