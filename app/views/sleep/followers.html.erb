@@ -1,4 +1,33 @@
-<p>Followers:</p>
-<% @followers.each do |follower| %>
-  <%= User.find(follower.user_id).name %> <br>
+<div class="followingFollowerPage">
+  <h1>Followers:</h1>
+  <% @followers.each do |follower| %>
+    <% followerUser = User.find(follower.user_id) %> <br>
+    <% if followerUser.profile_banner.attached? %>
+      <% banner_pic_url = url_for(followerUser.profile_banner) %>
+    <% else %>
+      <% banner_pic_url = image_url("defaultUserBanner") %>
+    <% end %>
+    <a href=<%= user_page_url(id: followerUser.id) %>>
+      <div class="<%= "userCard userCardNum" + followerUser.id.to_s %>">
+      <style>
+        .<%= "userCardNum" + followerUser.id.to_s %> {
+            background-image: url(<%= banner_pic_url %>);
+        }
+      </style>
+      <div class="top">
+        <% if followerUser.profile_picture.attached? %>
+          <% profile_pic_url = followerUser.profile_picture%>
+        <% else %>
+          <% profile_pic_url = "defaultUser"%>
+        <% end %>
+        <div class="profilePic">
+          <%= image_tag(profile_pic_url, class: "userPic") %>
+        </div>
+      </div>
+      <div class="bottom">
+        <p class="userName"><%= followerUser.name %></p>
+      </div>
+    </div>
+  </a>
 <% end %>
+</div>

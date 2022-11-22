@@ -14,20 +14,31 @@
       </style>
     <% end %>
     <div class="left">
-      <% if current_user.id === @user.id %>
-        <%# WHERE THE EDIT BUTTON WILL BE %>
-      <% else %>
-        <% if current_user.followings.find_by(following_id: @user.id) %>
-          <%= form_with url: remove_following_url(user_id: current_user.id) do |form| %>
-            <%= form.hidden_field :follow_id, value: @user.id %>
-            <%= form.submit :remove_follow %>
-          <% end %>
+      <% if signed_in? %>
+        <% if current_user.id === @user.id %>
+          <%# WHERE THE EDIT BUTTON WILL BE %>
+          <div class="userBtns editUserBtn" id="editUserBtn">
+            <%= image_tag("editIcon", class: "editIcon") %>
+            <p>EDIT</p>
+          </div>
         <% else %>
-          <%= form_with url: add_following_url(user_id: current_user.id) do |form| %>
-            <%= form.hidden_field :follow_id, value: @user.id %>
-            <%= form.submit :follow %>
+          <% if current_user.followings.find_by(following_id: @user.id) %>
+            <%= form_with url: remove_following_url(user_id: current_user.id) do |form| %>
+              <%= form.hidden_field :follow_id, value: @user.id %>
+              <%= form.submit :remove_follow , value: "UNFOLLOW", class: "userBtns followBtns followingBtn" %>
+            <% end %>
+          <% else %>
+            <%= form_with url: add_following_url(user_id: current_user.id) do |form| %>
+              <%= form.hidden_field :follow_id, value: @user.id %>
+              <%= form.submit :follow, value: "FOLLOW", class: "userBtns followBtns" %>
+            <% end %>
           <% end %>
         <% end %>
+      <% else %>
+        <div class="userBtns signInButton" id="editUserBtn">
+          <p>SIGN IN
+            TO FOLLOW</p>
+        </div>
       <% end %>
     </div>
     <div class="middle">

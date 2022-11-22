@@ -12,6 +12,11 @@ class SleepController < ApplicationController
     @sleepscapes = @user.sleepscapes.all
   end
 
+  def edit_user
+    @user = User.find(params[:id])
+
+  end
+
   def following
     @followings = User.find(params[:id]).followings.all
   end

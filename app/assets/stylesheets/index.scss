@@ -552,9 +552,76 @@ main {
         }
 
         .left {
+          position: relative;
           display: flex;
           align-items: end;
-          justify-content: center;
+          justify-content: end;
+
+          .userBtns {
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            margin-right: -20px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 200px;
+            height: 35px;
+            gap: 2px;
+            border-radius: 3px;
+            z-index: 8;
+          }
+
+          .editUserBtn {
+            background-color: rgba(53, 199, 53, 80%);
+            .editIcon {
+              filter: invert(100%);
+              width: 20px;
+              margin-bottom: 4px;
+            }
+
+            p {
+              font-size: 0.8rem;
+            }
+
+            &:hover {
+              filter: brightness(80%);
+            }
+          }
+
+          .followBtns {
+            font-family: "Alexandria", sans-serif;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: rgb(231, 231, 231);
+            border: none;
+            background-color: rgb(76, 112, 126);
+
+            &:hover {
+              filter: brightness(80%);
+            }
+          }
+
+          .followingBtn {
+            color: white;
+            background-color: $blueAccent;
+          }
+
+          .signInButton {
+            background-color: $blueAccent;
+            font-size: 0.5rem;
+            text-align: center;
+
+            &:hover {
+              filter: brightness(80%);
+            }
+          }
         }
 
         .middle {
@@ -600,6 +667,7 @@ main {
           a {
             width: 80%;
             height: 30%;
+            max-width: 90px;
 
             .followersBox {
               display: flex;
@@ -712,6 +780,86 @@ main {
         font-size: 1.3rem;
         margin-top: 10px;
         margin-bottom: 5px;
+      }
+    }
+
+    .followingFollowerPage {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: scroll;
+      gap: 8px;
+
+      a {
+        width: 60%;
+        height: 200px;
+        min-height: 200px;
+        color: white;
+        text-decoration: none;
+        .userCard {
+          cursor: pointer;
+          border-radius: 5px;
+          height: 200px;
+          min-height: 200px;
+          // background-color: red;
+          background-position: center;
+          background-size: cover;
+
+          .top {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // background-color: purple;
+
+            .profilePic {
+              width: 95px;
+              height: 95px;
+              border-radius: 12px;
+              transition: width 0.3s, height 0.3s, box-shadow 0.4s;
+              // background-color: rgb(60, 60, 60);
+
+              .userPic {
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+              }
+            }
+          }
+          .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 20%;
+            background-color: rgba(0, 0, 0, 0.6%);
+            backdrop-filter: blur(5px);
+
+            .userName {
+              text-align: center;
+              letter-spacing: 1px;
+              font-size: 1.2rem;
+            }
+          }
+
+          &:hover {
+            .top {
+              .profilePic {
+                width: 100px;
+                height: 100px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4%);
+              }
+            }
+
+            .bottom {
+              filter: invert(100%);
+            }
+          }
+        }
       }
     }
 
