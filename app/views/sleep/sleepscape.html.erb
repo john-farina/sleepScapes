@@ -4,15 +4,13 @@ loop: :loop, muted: true) %>
 <% else %>
   <h5>i dont have a video</h5>
 <% end %>
+<% if @sleepscape.sleepscape_audio.attached? %>
+  <%= audio_tag(url_for( @sleepscape.sleepscape_audio),id: "scapeAudio" ,controls: true,autoplay: :autoplay, class: "audioTag") %>
+  <input type="range" min="0" max="100" value="50" class="slider" id="sliderRange">
+<% else %>
+  <h1 class="audioTag">no audio</h1>
+<% end %>
 <div id="soundscapeParent" class="sleepScapeContainer">
-  <% if @sleepscape.sleepscape_audio.attached? %>
-    <%= audio_tag(url_for( @sleepscape.sleepscape_audio),id: "scapeAudio" ,controls: true,autoplay: :autoplay, class: "audioTag") %>
-    <div class="audioTag">
-      <input type="range" min="0" max="100" value="50" class="slider" id="sliderRange">
-    </div>
-  <% else %>
-    <h1 class="audioTag">no audio</h1>
-  <% end %>
   <div id="sleepscapeMenu" class="bottomFooter">
     <div class="topBar">
       <div id="infoBtn" class="footerBtn">
@@ -93,5 +91,6 @@ loop: :loop, muted: true) %>
       </div>
     </div>
   </div>
+  <div class="audioMenu"></div>
 </div>
 <%# old stuff hiding behind lol %>

@@ -36,7 +36,7 @@ header {
   flex-direction: column;
   top: 0;
   left: 0;
-  background-color: rgb(34, 34, 34);
+  background-color: rgb(32, 32, 32);
   width: 30%;
   height: 100%;
   overflow-x: scroll;
@@ -887,10 +887,17 @@ main {
       justify-content: center;
       z-index: 4;
 
+      .audioMenu {
+        position: absolute;
+        height: 200px;
+
+        height: 200px;
+        background-color: purple;
+      }
+
       .audioTag {
         margin-left: 0%;
         margin-right: 10%;
-
         position: absolute;
         z-index: 5;
       }
@@ -1188,6 +1195,7 @@ main {
           animation: slowlyf;
         }
       }
+
       @keyframes slowlyFadeOut {
         0% {
           opacity: 100%;
