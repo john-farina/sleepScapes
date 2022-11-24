@@ -5,6 +5,10 @@ loop: :loop, muted: true) %>
   <h5>i dont have a video</h5>
 <% end %>
 <div class="sleepScapeContainer">
+  <% if @sleepscape.sleepscape_audio.attached? %>
+    <h1>AUDIO</h1>
+    <%= audio_tag(url_for(@sleepscape.sleepscape_audio), controls: true, id: "scapeAudio") %>
+  <% end %>
   <div id="sleepscapeMenu" class="bottomFooter">
     <div class="topBar">
       <div id="infoBtn" class="footerBtn">
