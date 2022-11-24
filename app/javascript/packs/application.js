@@ -1,3 +1,1 @@
-import "../files/new";
-import "../files/headerForms";
-import "../files/sleepscapeMenu";
+// empty for error msg
