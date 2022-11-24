@@ -12,9 +12,18 @@ class SleepController < ApplicationController
     @sleepscapes = @user.sleepscapes.all
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def edit_user
     @user = User.find(params[:id])
+    @user.name = params[:name]
 
+    if @user.save
+      redirect_to root_path
+    else
+    end
   end
 
   def following

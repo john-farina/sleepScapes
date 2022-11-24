@@ -36,7 +36,7 @@ header {
   flex-direction: column;
   top: 0;
   left: 0;
-  background-color: rgb(34, 34, 34);
+  background-color: rgb(32, 32, 32);
   width: 30%;
   height: 100%;
   overflow-x: scroll;
@@ -533,7 +533,9 @@ main {
       align-items: start;
       width: 100%;
       height: 100%;
+
       .userHeader {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -543,6 +545,18 @@ main {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+
+        .formContent {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 4;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8%);
+          position: absolute;
+        }
 
         .left,
         .right {
@@ -571,7 +585,7 @@ main {
             height: 35px;
             gap: 2px;
             border-radius: 3px;
-            z-index: 8;
+            z-index: 3;
           }
 
           .editUserBtn {
@@ -864,6 +878,7 @@ main {
     }
 
     .sleepScapeContainer {
+      position: relative;
       width: 100%;
       height: 100%;
       display: flex;
@@ -871,6 +886,21 @@ main {
       align-items: flex-end;
       justify-content: center;
       z-index: 4;
+
+      .audioMenu {
+        position: absolute;
+        height: 200px;
+
+        height: 200px;
+        background-color: purple;
+      }
+
+      .audioTag {
+        margin-left: 0%;
+        margin-right: 10%;
+        position: absolute;
+        z-index: 5;
+      }
 
       .bottomFooter {
         position: absolute;
@@ -1165,6 +1195,7 @@ main {
           animation: slowlyf;
         }
       }
+
       @keyframes slowlyFadeOut {
         0% {
           opacity: 100%;

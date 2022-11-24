@@ -13,6 +13,15 @@
         }
       </style>
     <% end %>
+    <div class="formContent">
+      <%= form_with url: edit_user_form_url(id: current_user.id) do |form| %>
+        <div>
+          <%= form.label :name %>
+          <%= form.text_field :name, value: @user.name  %>
+        </div>
+        <%= form.submit %>
+      <% end %>
+    </div>
     <div class="left">
       <% if signed_in? %>
         <% if current_user.id === @user.id %>
