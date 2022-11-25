@@ -415,12 +415,14 @@ main {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            // background-color: green;
-            animation: titleScroll 1.6s ease-in-out;
             .firstWord {
               // margin-bottom: 50px;
               margin: 0;
             }
+          }
+
+          .scrollAnimation {
+            animation: titleScroll 1.7s ease-in;
           }
 
           @keyframes titleScroll {
