@@ -427,14 +427,17 @@ main {
 
           @keyframes titleScroll {
             0% {
-              margin-top: 325px;
+              translate: 0px 0px;
+              // margin-top: 325px;
             }
             92% {
-              margin-top: -339px;
+              // margin-top: -339px;
+              translate: 0px -332px;
             }
 
             100% {
-              margin-top: -327px;
+              // margin-top: -327px;
+              translate: 0px -327px;
             }
           }
         }
