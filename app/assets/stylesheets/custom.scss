@@ -196,6 +196,7 @@ main {
     border-radius: 0px 7px 7px 0px;
     background-color: rgba(43, 43, 43, 0.71);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.356);
 
     .menuIcon {
@@ -369,11 +370,73 @@ main {
       justify-content: center;
       background-color: rgba(175, 199, 201, 0.415);
       backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       z-index: 2;
       height: 100%;
       // animation: titleBarGrow 0.5s ease-in-out;
       width: 100%;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4%);
+
+      .animatedTitleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: -50px;
+
+        .pageTitle {
+          text-align: center;
+          cursor: default;
+          font-size: 2.4rem;
+          margin-left: 2px;
+          font-weight: 500;
+          letter-spacing: 2px;
+          // text-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4%);
+          transition: font-weight 0.2s, filter 2s;
+          color: $blueAccent;
+        }
+
+        .firstWordContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          // background-color: red;
+          overflow-y: hidden;
+          min-height: 32px;
+          max-height: 32px;
+          margin-right: -2px;
+          margin-left: -2px;
+
+          .animationContainer {
+            margin-top: 325px;
+            display: flex;
+            gap: 0px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            // background-color: green;
+            animation: titleScroll 1.6s ease-in-out;
+            .firstWord {
+              // margin-bottom: 50px;
+              margin: 0;
+            }
+          }
+
+          @keyframes titleScroll {
+            0% {
+              margin-top: 325px;
+            }
+            92% {
+              margin-top: -339px;
+            }
+
+            100% {
+              margin-top: -327px;
+            }
+          }
+        }
+      }
 
       .subTitle {
         display: flex;
@@ -388,30 +451,6 @@ main {
         margin-left: 130px;
         filter: blur(0.2px);
         color: $lighterBlueAccent;
-      }
-
-      .pageTitle {
-        text-align: center;
-        position: absolute;
-        margin-top: -50px;
-        cursor: default;
-        font-size: 2.4rem;
-        margin-left: 2px;
-        font-weight: 500;
-        letter-spacing: 2px;
-        // text-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4%);
-        transition: font-weight 0.2s, filter 2s;
-        color: $blueAccent;
-
-        &:hover {
-          font-weight: 800;
-          opacity: 90%;
-          filter: blur(2px);
-
-          .subTitle {
-            filter: blur(2px);
-          }
-        }
       }
     }
 
@@ -433,6 +472,50 @@ main {
           margin-top: 30px;
           font-size: 1.6rem;
           font-weight: 500;
+        }
+      }
+
+      .adminsChoiceContainer {
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: start;
+        width: 100%;
+        height: 500px;
+        min-height: 300px;
+        background-color: rgb(79, 79, 79);
+        margin-top: 30px;
+
+        .imageContainer {
+          z-index: 1;
+          position: absolute;
+          // background-color: blue;
+          width: 100%;
+          height: 100%;
+          background-position: center;
+          background-size: cover;
+        }
+        .adminTitle {
+          position: absolute;
+          z-index: 2;
+          font-size: 1.4rem;
+          margin-left: 14px;
+          margin-top: 10px;
+        }
+        .recommendedInfo {
+          position: absolute;
+          bottom: 0;
+          z-index: 2;
+          margin-left: 10px;
+          margin-bottom: 5px;
+          .infoTitle {
+            font-weight: 600;
+            font-size: 1.5rem;
+          }
+          .infoPoster {
+            font-size: 1rem;
+          }
         }
       }
 
@@ -474,7 +557,7 @@ main {
               height: 100%;
               filter: blur(3px);
               z-index: 1;
-              background-attachment: fixed;
+              // background-attachment: fixed;
               background-position: right;
               background-size: cover;
             }
@@ -501,6 +584,7 @@ main {
                 min-width: 220px;
                 background-color: rgba(0, 0, 0, 0.3%);
                 backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
                 transition: width 0.6s;
 
                 p {
@@ -678,6 +762,7 @@ main {
               height: 100%;
               background-color: rgba(28, 28, 28, 0.8%);
               backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
               border: solid 1px rgb(37, 37, 37);
               border-radius: 6px;
               padding: 2px;
@@ -750,6 +835,7 @@ main {
               min-width: 220px;
               background-color: rgba(0, 0, 0, 0.3%);
               backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
               transition: width 0.6s;
 
               p {
@@ -839,6 +925,7 @@ main {
             height: 20%;
             background-color: rgba(0, 0, 0, 0.6%);
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
 
             .userName {
               text-align: center;
@@ -888,6 +975,7 @@ main {
         height: 170px;
         background-color: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         border-radius: 15px 0px 0px 15px;
         transition: opacity 0.2s;
         // background-color: green;
@@ -951,6 +1039,7 @@ main {
         // height: 160px;
         background-color: rgba(0, 0, 0, 0.5%);
         backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
         opacity: 10%;
         animation: slowlyFadeOut 5s;
         transition: opacity 0.7s;
@@ -1248,6 +1337,7 @@ main {
         opacity: 30%;
         background-color: rgba(0, 0, 0, 0.3%);
         backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
         margin-left: 6px;
         margin-bottom: 30px;
         padding: 6px;

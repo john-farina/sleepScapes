@@ -2,6 +2,23 @@
   <a href="/">
     <h1 class="homeTitle">[soundScapes]</h1>
   </a>
+  <div class="adminsChoiceContainer">
+    <%# WILL BE FOR EACH OF ADMINS.CHOICE %>
+    <% url = Sleepscape.fourth.sleepscape_still_picture %>
+    <% customClass = "adminChoiceImg" + Sleepscape.fourth.id.to_s %>
+    <div class="<%= "imageContainer " + customClass %>"></div>
+    <style>
+      .<%= customClass %> {
+         background-image: url(<%= url_for(Sleepscape.fourth.sleepscape_still_picture) %>);
+      }
+    </style>
+    <h1 class="adminTitle">Recommended Sound:</h1>
+    <div class="recommendedInfo">
+      <p class="infoTitle"><%= Sleepscape.fourth.title %></p>
+      <p class="infoPoster">Posted By: <%= User.find(Sleepscape.fourth.user_id).name    %></p>
+    </div>
+    <%# END %>
+  </div>
   <div class="adminSoundsBox">
     <h2 class="defaultHeader">Admin Curated Sounds:</h2>
     <div class="scapesHolder">

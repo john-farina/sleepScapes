@@ -2,7 +2,24 @@
 <%= video_tag("lake.mp4", class: "backgroundImage",autoplay: :autoplay,
 loop: :loop, muted: true) %>
 <div class="titleContainer">
-  <h1 class="pageTitle">[soundScapes]</h1>
+  <%# <h1 class="pageTitle">[soundScapes]</h1> %>
+  <div class="animatedTitleContainer">
+    <p class="pageTitle bracket">[</p>
+    <div class="firstWordContainer">
+      <div class="animationContainer">
+        <p class="pageTitle firstWord">sound</p>
+        <p class="pageTitle firstWord">sleep</p>
+        <p class="pageTitle firstWord">focus</p>
+        <p class="pageTitle firstWord">noise</p>
+        <p class="pageTitle firstWord">study</p>
+        <p class="pageTitle firstWord">game</p>
+        <p class="pageTitle firstWord">code</p>
+        <p class="pageTitle firstWord">sound</p>
+      </div>
+    </div>
+    <p class="pageTitle">Scapes</p>
+    <p class="pageTitle bracket">]</p>
+  </div>
   <% if signed_in? %>
     <p class="subTitle">"welcome back."</p>
   <% else %>
