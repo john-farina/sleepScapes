@@ -3,7 +3,7 @@
 set -o errexit
 
 bundle install
-npm install
+yarn
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 bundle exec rake db:migrate
