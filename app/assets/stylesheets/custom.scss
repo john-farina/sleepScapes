@@ -1400,18 +1400,22 @@ main {
 
 @keyframes closeHeader {
   0% {
-    margin-left: 0%;
+    // margin-left: 0%;
+    translate: 0px 0%;
   }
   100% {
-    margin-left: -30%;
+    // margin-left: -30%;
+    translate: -100% 0px;
   }
 }
 @keyframes openHeader {
   0% {
-    margin-left: -30%;
+    // margin-left: -30%;
+    translate: -100% 0px;
   }
   100% {
-    margin-left: 0%;
+    // margin-left: 0%;
+    translate: 0% 0px;
   }
 }
 @keyframes wideMain {
@@ -1454,22 +1458,22 @@ main {
   @keyframes closeHeader {
     0% {
       // margin-left: 0%;
-      translate: 0px 0%;
+      translate: 0% 0px;
     }
     100% {
       // margin-left: -20%;
-      translate: 0px -20%;
+      translate: -100% 0px;
     }
   }
 
   @keyframes openHeader {
     0% {
       // margin-left: -20%;
-      translate: 0px -20%;
+      translate: -100% 0px;
     }
     100% {
       // margin-left: 0%;
-      translate: 0px 0%;
+      translate: 0% 0px;
     }
   }
   @keyframes wideMain {
@@ -1491,22 +1495,18 @@ main {
 
   @keyframes moveMenuBtnLeft {
     0% {
-      // margin-left: 20%;
-      translate: 0px 20%;
+      margin-left: 20%;
     }
     100% {
-      // margin-left: 0%;
-      translate: 0px 0%;
+      margin-left: 0%;
     }
   }
   @keyframes moveMenuBtnRight {
     0% {
-      // margin-left: 0%;
-      translate: 0px 0%;
+      margin-left: 0%;
     }
     100% {
-      // margin-left: 20%;
-      translate: 0px 20%;
+      margin-left: 20%;
     }
   }
 }
