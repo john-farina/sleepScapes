@@ -1453,19 +1453,23 @@ main {
 
   @keyframes closeHeader {
     0% {
-      margin-left: 0%;
+      // margin-left: 0%;
+      translate: 0px 0%;
     }
     100% {
-      margin-left: -20%;
+      // margin-left: -20%;
+      translate: 0px -20%;
     }
   }
 
   @keyframes openHeader {
     0% {
-      margin-left: -20%;
+      // margin-left: -20%;
+      translate: 0px -20%;
     }
     100% {
-      margin-left: 0%;
+      // margin-left: 0%;
+      translate: 0px 0%;
     }
   }
   @keyframes wideMain {
@@ -1487,18 +1491,22 @@ main {
 
   @keyframes moveMenuBtnLeft {
     0% {
-      margin-left: 20%;
+      // margin-left: 20%;
+      translate: 0px 20%;
     }
     100% {
-      margin-left: 0%;
+      // margin-left: 0%;
+      translate: 0px 0%;
     }
   }
   @keyframes moveMenuBtnRight {
     0% {
-      margin-left: 0%;
+      // margin-left: 0%;
+      translate: 0px 0%;
     }
     100% {
-      margin-left: 20%;
+      // margin-left: 20%;
+      translate: 0px 20%;
     }
   }
 }
