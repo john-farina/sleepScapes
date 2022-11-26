@@ -10,6 +10,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem "clearance"
 gem 'htmlbeautifier'
+gem 'aws-sdk-s3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
