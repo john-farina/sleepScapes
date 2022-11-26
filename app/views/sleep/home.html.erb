@@ -4,12 +4,12 @@
   </a>
   <div class="adminsChoiceContainer">
     <%# WILL BE FOR EACH OF ADMINS.CHOICE %>
-    <% url = Sleepscape.fourth.sleepscape_still_picture %>
+    <% url = Sleepscape.first.sleepscape_still_picture %>
     <% customClass = "adminChoiceImg" + Sleepscape.fourth.id.to_s %>
     <div class="<%= "imageContainer " + customClass %>"></div>
     <style>
       .<%= customClass %> {
-         background-image: url(<%= url_for(Sleepscape.fourth.sleepscape_still_picture) %>);
+         background-image: url(<%= url_for(url) %>);
       }
     </style>
     <h1 class="adminTitle">Recommended Sound:</h1>
