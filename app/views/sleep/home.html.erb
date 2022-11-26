@@ -5,7 +5,7 @@
   <div class="adminsChoiceContainer">
     <%# WILL BE FOR EACH OF ADMINS.CHOICE %>
     <% url = Sleepscape.first.sleepscape_still_picture %>
-    <% customClass = "adminChoiceImg" + Sleepscape.fourth.id.to_s %>
+    <% customClass = "adminChoiceImg" + Sleepscape.first.id.to_s %>
     <div class="<%= "imageContainer " + customClass %>"></div>
     <style>
       .<%= customClass %> {
@@ -14,8 +14,8 @@
     </style>
     <h1 class="adminTitle">Recommended Sound:</h1>
     <div class="recommendedInfo">
-      <p class="infoTitle"><%= Sleepscape.fourth.title %></p>
-      <p class="infoPoster">Posted By: <%= User.find(Sleepscape.fourth.user_id).name    %></p>
+      <p class="infoTitle"><%= Sleepscape.first.title %></p>
+      <p class="infoPoster">Posted By: <%= User.find(Sleepscape.first.user_id).name    %></p>
     </div>
     <%# END %>
   </div>

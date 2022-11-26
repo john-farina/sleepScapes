@@ -405,7 +405,11 @@ main {
           overflow-y: hidden;
           min-height: 32px;
           max-height: 32px;
+          // background-color: blue;
+          min-width: 130px;
+          max-width: 130px;
           margin-right: -2px;
+          margin-top: 1px;
           margin-left: -2px;
 
           .animationContainer {
