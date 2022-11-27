@@ -13,6 +13,9 @@ $blueAccent: #40aef2;
 $lighterBlueAccent: rgb(215, 240, 255);
 $blueAccentFILTER: invert(57%) sepia(66%) saturate(1074%) hue-rotate(175deg)
   brightness(88%) contrast(92%) opacity(80%);
+$sleepPurple: rgb(41, 14, 52);
+$studyGreen: rgb(52, 98, 51);
+$distractionRed: rgb(134, 61, 61);
 
 body {
   font-family: "Alexandria", sans-serif;
@@ -559,21 +562,21 @@ main {
         }
 
         .sleep {
-          background-color: rgb(41, 14, 52);
+          background-color: $sleepPurple;
           .mainText {
             color: rgb(181, 151, 181);
           }
         }
 
         .study {
-          background-color: rgb(52, 98, 51);
+          background-color: $studyGreen;
           .mainText {
             color: rgb(138, 183, 138);
           }
         }
 
         .distraction {
-          background-color: rgb(134, 61, 61);
+          background-color: $distractionRed;
           .mainText {
             color: rgb(206, 138, 138);
           }
@@ -715,6 +718,34 @@ main {
               }
             }
           }
+        }
+      }
+    }
+
+    .categoryContainer {
+      .sleepTitle {
+        color: $sleepPurple;
+        filter: brightness(200%);
+      }
+
+      .studyTitle {
+        color: $studyGreen;
+      }
+
+      .distractionTitle {
+        color: $distractionRed;
+      }
+
+      .categoryHeader {
+        .red {
+          color: $distractionRed;
+        }
+        .purple {
+          color: $sleepPurple;
+          filter: brightness(200%);
+        }
+        .green {
+          color: $studyGreen;
         }
       }
     }

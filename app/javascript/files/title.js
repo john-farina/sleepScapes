@@ -8,7 +8,7 @@ if (animationCont) {
       animationCont.classList.remove("scrollAnimation");
       animationGoing = false;
     }, 1700);
-  }, 300);
+  }, 400);
 
   animationCont.addEventListener("click", () => {
     if (!animationGoing) {

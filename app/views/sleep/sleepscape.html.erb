@@ -4,7 +4,7 @@ loop: :loop, muted: true) %>
 <% else %>
   <h5>i dont have a video</h5>
 <% end %>
-<div class="sleepScapeContainer">
+<div class="sleepScapeContainer" id="soundscapePage">
   <% if @sleepscape.sleepscape_audio.attached? %>
     <%= audio_tag(url_for(@sleepscape.sleepscape_audio), id: "soundscapeAudio") %>
   <% else %>
@@ -65,25 +65,24 @@ loop: :loop, muted: true) %>
         <div class="line"></div>
         <p class="infoDescription"><%= @sleepscape.description %></p>
         <% if signed_in? %>
-        <% if current_user.admin? %>
-        <br>
-          <h4>admin panel:</h4>
-          <% if AdminLike.find_by(liked_id: @sleepscape.id) %>
-            <%= form_with(url: admin_dislike_url) do |f| %>
-              <%= f.hidden_field :id, value: @sleepscape.id %>
-              <%= f.submit "remove like" %>
-            <% end %>
-          <% else %>
-            <%= form_with(url: admin_like_url) do |f| %>
-              <%= f.hidden_field :id, value: current_user.id %>
-              <%= f.hidden_field :liked_id, value: @sleepscape.id %>
-              <%= f.submit %>
+          <% if current_user.admin? %>
+            <br>
+            <h4>admin panel:</h4>
+            <% if AdminLike.find_by(liked_id: @sleepscape.id) %>
+              <%= form_with(url: admin_dislike_url) do |f| %>
+                <%= f.hidden_field :id, value: @sleepscape.id %>
+                <%= f.submit "remove like" %>
+              <% end %>
+            <% else %>
+              <%= form_with(url: admin_like_url) do |f| %>
+                <%= f.hidden_field :id, value: current_user.id %>
+                <%= f.hidden_field :liked_id, value: @sleepscape.id %>
+                <%= f.submit %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-        <% end %>
       </div>
-
       <div id="commentsContainer">
         <div class="commentsBox">
           <% @comments.each do |comment| %>

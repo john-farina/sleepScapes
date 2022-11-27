@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   get "/home" => "sleep#home", as: "home"
+  get "/sleepscapes" => "sleep#sleep_home", as: 'sleepscapes_home'
+  get "/studyscapes" => "sleep#study_home", as: 'studyscapes_home'
+  get "/distractionscapes" => "sleep#distraction_home", as: 'distractionscapes_home'
   root "sleep#index"
 
   get '/user/:id', to: 'sleep#show', as: 'user_page'
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   get '/user/:id/create', to: 'sleep#create', as: 'create'
   post '/user/:id/create', to: 'sleep#create', as: 'create_form'
 
-  get '/secret/very/very/secret', to: 'sleep#secret_admin'
+  # get '/secret/very/very/secret', to: 'sleep#secret_admin'
   post '/secret', to: 'sleep#create_secret_admin', as: 'secret_admin'
   post '/admin_like', to: 'sleep#admin_like', as: 'admin_like'
   post '/admin_dislike', to: 'sleep#admin_dislike', as: 'admin_dislike'

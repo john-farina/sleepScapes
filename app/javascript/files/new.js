@@ -2,81 +2,99 @@ const header = document.querySelector("#pageHeader");
 const main = document.querySelector("#mainPage");
 const menuBtn = document.querySelector("#menuButton");
 const arrowIcon = document.querySelector("#arrowIcon");
+const rootPage = document.querySelector("#rootPage");
+const homePage = document.querySelector("#homePage");
+const soundscapePage = document.querySelector("#soundscapePage");
 let menuOpen = true;
 let animationGoing = false;
 
-menuBtn.addEventListener("click", () => {
-  ///CLOSE
-  if (menuOpen && !animationGoing) {
-    animationGoing = true;
+function closeHeader() {
+  animationGoing = true;
 
-    main.classList.remove("smallMainStats");
+  main.classList.remove("smallMainStats");
+  main.classList.add("wideMain");
 
-    header.classList.add("closeHeader");
+  header.classList.add("closeHeader");
 
-    main.classList.add("wideMain");
+  menuBtn.classList.remove("moveBtnStats");
+  menuBtn.classList.add("moveBtnLeft");
 
-    menuBtn.classList.remove("moveBtnStats");
-    menuBtn.classList.add("moveBtnLeft");
+  arrowIcon.classList.add("rightAnimation");
 
-    arrowIcon.classList.add("rightAnimation");
+  setTimeout(() => {
+    arrowIcon.classList.remove("left");
+    arrowIcon.classList.add("right");
+    arrowIcon.classList.remove("rightAnimation");
+  }, 400);
 
-    setTimeout(() => {
-      arrowIcon.classList.remove("left");
-      arrowIcon.classList.add("right");
-      arrowIcon.classList.remove("rightAnimation");
-    }, 400);
+  setTimeout(() => {
+    header.style.display = "none";
+    header.classList.remove("closeHeader");
 
-    setTimeout(() => {
-      header.style.display = "none";
+    main.classList.remove("wideMain");
+    main.classList.add("wideMainStats");
 
-      header.classList.remove("closeHeader");
+    menuBtn.classList.add("moveBtnZero");
+    menuBtn.classList.remove("moveBtnLeft");
 
-      main.classList.remove("wideMain");
-      main.classList.add("wideMainStats");
+    menuOpen = false;
 
-      menuBtn.classList.add("moveBtnZero");
-      menuBtn.classList.remove("moveBtnLeft");
+    animationGoing = false;
+  }, 580);
+}
 
-      menuOpen = false;
+function openHeader() {
+  animationGoing = true;
 
-      animationGoing = false;
-    }, 580);
-  } else if (!menuOpen && !animationGoing) {
-    animationGoing = true;
+  menuBtn.classList.remove("moveBtnZero");
+  menuBtn.classList.add("moveBtnRight");
+
+  header.style.display = "flex";
+  header.classList.add("openHeader");
+
+  main.classList.remove("whiteMainStats");
+  main.classList.add("smallMain");
+
+  arrowIcon.classList.add("leftAnimation");
+
+  setTimeout(() => {
+    arrowIcon.classList.remove("right");
+    arrowIcon.classList.add("left");
+    arrowIcon.classList.remove("leftAnimation");
+  }, 400);
+
+  setTimeout(() => {
+    header.classList.remove("openHeader");
+
+    main.classList.remove("smallMain");
+    main.classList.add("smallMainStats");
+
+    menuBtn.classList.remove("moveBtnRight");
     menuBtn.classList.remove("moveBtnZero");
+    menuBtn.classList.add("moveBtnStats");
 
-    header.style.display = "flex";
+    menuOpen = true;
 
-    main.classList.remove("whiteMainStats");
+    animationGoing = false;
+  }, 580);
+}
 
-    header.classList.add("openHeader");
-
-    main.classList.add("smallMain");
-
-    menuBtn.classList.add("moveBtnRight");
-
-    arrowIcon.classList.add("leftAnimation");
-    setTimeout(() => {
-      arrowIcon.classList.remove("right");
-      arrowIcon.classList.add("left");
-      arrowIcon.classList.remove("leftAnimation");
-    }, 400);
-
-    setTimeout(() => {
-      header.classList.remove("openHeader");
-
-      main.classList.remove("smallMain");
-
-      main.classList.add("smallMainStats");
-
-      menuBtn.classList.remove("moveBtnRight");
-      menuBtn.classList.remove("moveBtnZero");
-      menuBtn.classList.add("moveBtnStats");
-
-      menuOpen = true;
-
-      animationGoing = false;
-    }, 580);
+menuBtn.addEventListener("click", () => {
+  if (menuOpen && !animationGoing) {
+    closeHeader();
+  } else if (!menuOpen && !animationGoing) {
+    openHeader();
   }
 });
+
+if (rootPage) {
+  closeHeader();
+}
+
+if (homePage) {
+  closeHeader();
+}
+
+if (soundscapePage) {
+  closeHeader();
+}

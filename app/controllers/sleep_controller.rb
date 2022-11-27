@@ -9,6 +9,15 @@ class SleepController < ApplicationController
     @admin_likes = AdminLike.all
   end
 
+  def sleep_home
+  end
+
+  def study_home
+  end
+
+  def distraction_home
+  end
+
   def show
     @user = User.find(params[:id])
     @followers = Following.where(:following_id => @user.id)
