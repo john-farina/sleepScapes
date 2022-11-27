@@ -75,7 +75,7 @@
 </div>
 
   <% @sleepscapes.each do |sleep|%>
-    <a href="">
+    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
       <div class="soundScapeContainer">
         <div class="loadingBackground">
         <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
@@ -122,7 +122,7 @@
 
 <% @user.likes.each do |likes|%>
   <% sleep = Sleepscape.find(likes.liked_id) %>
-    <a href="">
+    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
       <div class="soundScapeContainer">
         <div class="loadingBackground">
         <h1><span class="sleep">[sleepScape]</span> is loading...</h1>

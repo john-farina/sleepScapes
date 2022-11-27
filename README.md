@@ -1,23 +1,21 @@
 # sleepScapes *(sleep sounds)*
 
 # MODELS (basic idea brainstorm)
-
 ## USER (ontop of clearance)
 - [x] name:string
 - [ ] bio:string
 - [x] admin:boolean *(def => false)*
-- [ ] profile_picture:image
-- [ ] banner_picture:image
-- [ ] has_many *likes*
-- [ ] has_many *sleepscapes*
-- [ ] has_many *followers*
-- [ ] has_many *following*
+- [x] profile_picture:image
+- [x] banner_picture:image
+- [x] has_many *likes*
+- [x] has_many *sleepscapes*
+- [x] has_many *following*
 
 ## SLEEPSCAPE
-- [ ] title:string
-- [ ] description:string
-- [ ] audio:audio? (will loop the audio minimum 1 min long)
-- [ ] short_video:video? (video will be muted and loop over audio)
+- [x] title:string
+- [x] description:string
+- [x] audio:audio? (will loop the audio minimum 1 min long)
+- [x] short_video:video? (video will be muted and loop over audio)
 
 
 
