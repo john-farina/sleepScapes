@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :followers
   has_one_attached :profile_picture
   has_one_attached :profile_banner
+  has_many :admin_likes
 end

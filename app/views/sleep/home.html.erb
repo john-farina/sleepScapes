@@ -1,109 +1,124 @@
 <div class="homeContainer">
-  <a href="/">
+  <a class="pageATag" href="/">
     <h1 class="homeTitle">[soundScapes]</h1>
   </a>
-  <div class="adminsChoiceContainer">
-    <%# WILL BE FOR EACH OF ADMINS.CHOICE %>
-    <% url = Sleepscape.first.sleepscape_still_picture %>
-    <% customClass = "adminChoiceImg" + Sleepscape.first.id.to_s %>
-    <div class="<%= "imageContainer " + customClass %>"></div>
-    <style>
-      .<%= customClass %> {
-         background-image: url(<%= url_for(url) %>);
-      }
-    </style>
-    <h1 class="adminTitle">Recommended Sound:</h1>
-    <div class="recommendedInfo">
-      <p class="infoTitle"><%= Sleepscape.first.title %></p>
-      <p class="infoPoster">Posted By: <%= User.find(Sleepscape.first.user_id).name    %></p>
-    </div>
-    <%# END %>
+
+  <div class="headerContainer homeHeaderContainer">
+    <p class="defaultPageHeader homeHeader">curated <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
   </div>
-  <div class="adminSoundsBox">
-    <h2 class="defaultHeader">Admin Curated Sounds:</h2>
-    <div class="scapesHolder">
-      <div class="sleepScapes">
-        <div class="background user1Post">
-          <style>
-            /* NEED TO ADD A CUSTOM CLASS TO EACH ONE */
-            .user1Post {
-              background-image: url(<%= image_url("lake.jpg") %>);
-              }
-          </style>
-        </div>
-        <%#  %>
-        <div class="sleepScapeInfo">
-          <div class="scapeTitle">
-            <p>A Morning In The Woods</p>
-            <p class="subText">Recorded At: Upstate NY</p>
+
+  <div class="adminLikesContainer">
+  <% @admin_likes.each do |admin| %>
+  <% sleep = Sleepscape.find(admin.liked_id) %>
+
+      <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+        <div class="soundScapeContainer">
+          <div class="loadingBackground">
+          <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
+          </div>
+          <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
+          <div class="infoContainer">
+          <div class="top">
+            <div class="left">
+              <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
+            </div>
+            <div class="right">
+              <div class="comments">
+              <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+              <%= image_tag("comments", class: "soundscapeIcon comments") %>
+              </div>
+              <div class="likes">
+                <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+                <%= image_tag("heart", class: "soundscapeIcon heart") %>
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+          <div class="left">
+            <p class="soundScapeTitle"><%= sleep.title %></p>
+            <div class="locationContainer">
+              <%= image_tag("locationIcon", class: "locationIcon") %>
+              <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+            </div>
+          </div>
+          <div class="right"></div>
+          </div>
           </div>
         </div>
+      </a>
+  <% end %>
+  </div>
+
+    <div class="headerContainer homeHeaderContainer">
+    <p class="defaultPageHeader homeHeader">byCategory <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
+  </div>
+
+  <div class="categorysContainer">
+    <a href="">
+      <div class="categoryBox sleep">
+        <%= image_tag("sleepIcon", class: "categoryIcon sleep") %>
+        <p class="mainText">[sleepScapes]</p>
       </div>
-      <%#  %>
-      <div class="sleepScapes">
-        <div class="background user2Post">
-          <style>
-            /* NEED TO ADD A CUSTOM CLASS TO EACH ONE */
-            .user2Post {
-              background-image: url(<%= image_url("desert.jpg") %>);
-              }
-          </style>
-        </div>
-        <%#%>
-        <div class="sleepScapeInfo">
-          <div class="scapeTitle">
-            <p>A Day In The Desert</p>
-            <p class="subText">Recorded At: Sahara Desert, IDK</p>
+    </a>
+
+    <a href="">
+      <div class="categoryBox study">
+        <%= image_tag("studyIcon", class: "categoryIcon study") %>
+              <p class="mainText">[studyScapes]</p>
+      </div>
+    </a>
+
+    <a href="">
+      <div class="categoryBox distraction">
+        <%= image_tag("headphoneIcon", class: "categoryIcon headphones") %>
+        <p class="mainText">[distractionScapes]</p>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="headerContainer homeHeaderContainer">
+    <p class="defaultPageHeader homeHeader">recent <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
+  </div>
+
+  <div class="recentPostsContainer">
+    <% @recent_posts.each do |sleep| %>
+    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+        <div class="soundScapeContainer">
+          <div class="loadingBackground">
+          <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
+          </div>
+          <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
+          <div class="infoContainer">
+          <div class="top">
+            <div class="left">
+              <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
+            </div>
+            <div class="right">
+              <div class="comments">
+              <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+              <%= image_tag("comments", class: "soundscapeIcon comments") %>
+              </div>
+              <div class="likes">
+                <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+                <%= image_tag("heart", class: "soundscapeIcon heart") %>
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+          <div class="left">
+            <p class="soundScapeTitle"><%= sleep.title %></p>
+            <div class="locationContainer">
+              <%= image_tag("locationIcon", class: "locationIcon") %>
+              <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+            </div>
+          </div>
+          <div class="right"></div>
+          </div>
           </div>
         </div>
-      </div>
-      <%#  %>
-      <div class="sleepScapes">
-        <div class="background user3Post">
-          <style>
-            /* NEED TO ADD A CUSTOM CLASS TO EACH ONE */
-            .user3Post {
-              background-image: url(<%= image_url("lakeTwo.jpg") %>);
-              }
-          </style>
-        </div>
-        <%#  %>
-        <div class="sleepScapeInfo">
-          <div class="scapeTitle">
-            <p>Relaxing Day At Lake</p>
-            <p class="subText">Recorded At: Lake George, NY</p>
-          </div>
-        </div>
-      </div>
-      <%#  %>
-      <div class="sleepScapes">
-        <div class="background user4Post">
-          <style>
-            /* NEED TO ADD A CUSTOM CLASS TO EACH ONE */
-                       .user4Post{
-              background-image: url(<%= image_url("waterfall.jpg") %>);
-              }
-          </style>
-        </div>
-        <%#  %>
-        <div class="sleepScapeInfo">
-          <div class="scapeTitle">
-            <p>WaterFall</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      </a>
+    <% end %>
   </div>
-  <div class="adminSoundsBox">
-    <h2 class="defaultHeader">Top User Created Sounds:</h2>
-    <div class="scapesHolder">
-    </div>
-  </div>
-  <div class="adminSoundsBox">
-    <h2 class="defaultHeader">[soundScapes] by Genre:</h2>
-    <div class="scapesHolder">
-      <div class="sleepScapes">
-      </div>
-    </div>
-  </div>
+
 </div>

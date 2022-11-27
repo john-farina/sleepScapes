@@ -469,9 +469,11 @@ main {
       align-items: center;
       justify-content: start;
       width: 100%;
+      height: 100%;
       overflow-y: scroll;
+      overflow-x: hidden;
 
-      a {
+      .pageATag {
         text-decoration: none;
         color: $blueAccent;
         .homeTitle {
@@ -481,6 +483,100 @@ main {
           margin-top: 30px;
           font-size: 1.6rem;
           font-weight: 500;
+        }
+      }
+
+      .homeHeaderContainer {
+        margin-top: 40px;
+
+        .first {
+          margin-left: -5px;
+        }
+        .blue {
+          color: $blueAccent;
+        }
+
+        .homeHeader {
+          font-size: 1.2rem;
+          margin-bottom: 5px;
+        }
+      }
+
+      .adminLikesContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+      }
+
+      .recentPostsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+      }
+
+      .categorysContainer {
+        width: 100%;
+
+        .categoryBox {
+          overflow-x: hidden;
+          width: 95%;
+          max-width: 750px;
+          background-color: blue;
+          height: 80px;
+          min-height: 80px;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: scale 0.3s;
+          position: relative;
+          overflow-y: hidden;
+
+          .mainText {
+            z-index: 2;
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+          }
+
+          .categoryIcon {
+            opacity: 20%;
+            position: absolute;
+            width: 100px;
+          }
+          .sleep {
+            margin-bottom: -10px;
+          }
+          .headphones {
+            width: 90px;
+          }
+
+          &:hover {
+            scale: 105%;
+          }
+        }
+
+        .sleep {
+          background-color: rgb(41, 14, 52);
+          .mainText {
+            color: rgb(181, 151, 181);
+          }
+        }
+
+        .study {
+          background-color: rgb(52, 98, 51);
+          .mainText {
+            color: rgb(138, 183, 138);
+          }
+        }
+
+        .distraction {
+          background-color: rgb(134, 61, 61);
+          .mainText {
+            color: rgb(206, 138, 138);
+          }
         }
       }
 
@@ -629,6 +725,7 @@ main {
       height: 100%;
 
       .userHeader {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -744,11 +841,24 @@ main {
           }
 
           .userName {
-            font-size: 1.4rem;
-            font-weight: 900;
+            // background-color: red;
             position: absolute;
             bottom: 0;
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            .nameText {
+              font-size: 1.4rem;
+              font-weight: 900;
+            }
+
+            .verfiedIcon {
+              pointer-events: none;
+              width: 30px;
+              filter: $blueAccentFILTER brightness(130%);
+            }
           }
         }
 
@@ -803,217 +913,6 @@ main {
         gap: 10px;
         width: 100%;
         margin-top: 20px;
-      }
-
-      .headerContainer {
-        width: 100%;
-        height: 40px;
-        // background-color: red;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        max-width: 750px;
-        padding-left: 20px;
-
-        .defaultUserHeader {
-          font-size: 1.2rem;
-          font-weight: 600;
-          letter-spacing: 1px;
-          margin-top: 10px;
-          margin-bottom: 5px;
-        }
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        color: white;
-        width: 100%;
-
-        .soundScapeContainer {
-          position: relative;
-          width: 95%;
-          height: 90px;
-          // border: solid 3px rgb(233, 233, 233);
-          border-radius: 2px;
-          max-width: 750px;
-          background-color: $blueAccent;
-          transition: scale 0.2s, box-shadow 0.2s;
-
-          .loadingBackground {
-            background-color: $blueAccent;
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .sleep {
-              color: rgb(171, 201, 238);
-            }
-            h1 {
-              color: rgb(143, 183, 231);
-              font-size: 1.4rem;
-              margin-bottom: 10px;
-            }
-          }
-
-          .soundScapeImg {
-            pointer-events: none;
-            z-index: 2;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-          }
-
-          .infoContainer {
-            position: relative;
-            z-index: 3;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-
-            .top,
-            .bottom {
-              width: 100%;
-              display: flex;
-              align-items: center;
-            }
-
-            .top {
-              justify-content: space-between;
-              height: 25px;
-
-              .left {
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                padding-left: 10px;
-                height: 100%;
-                width: 150px;
-                // background-color: purple;
-
-                .timeText {
-                  font-size: 0.8rem;
-                  font-weight: 300;
-                  letter-spacing: 1px;
-                  text-shadow: 0px 2px 3px black;
-                }
-              }
-
-              .right {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100%;
-                width: 60px;
-                // background-color: green;
-                gap: 1px;
-
-                .comments,
-                .likes {
-                  position: relative;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  height: 100%;
-                  width: 49%;
-
-                  .soundscapeIcon {
-                    z-index: 1;
-                    position: absolute;
-                    width: 20px;
-                  }
-
-                  .comments {
-                    filter: invert(100%);
-                    margin-top: 1px;
-                  }
-                }
-              }
-
-              .likes {
-                .likeText {
-                  font-size: 0.6rem;
-                  z-index: 2;
-                  margin-bottom: 1px;
-                  font-weight: 400;
-                }
-              }
-
-              .comments {
-                .commentText {
-                  font-size: 0.6rem;
-                  font-weight: 400;
-                  margin-bottom: 3px;
-                  margin-left: 1px;
-                }
-              }
-            }
-
-            .bottom {
-              height: 40px;
-              display: flex;
-              background-color: rgba(29, 29, 29, 0.007);
-              backdrop-filter: blur(2px);
-              -webkit-backdrop-filter: blur(2px);
-              justify-content: space-evenly;
-              .left {
-                padding-left: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: center;
-                // background-color: red;
-                width: 85%;
-                height: 100%;
-
-                .soundScapeTitle {
-                  font-size: 0.9rem;
-                  font-weight: 700;
-                }
-
-                .locationContainer {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 5px;
-
-                  .soundScapeLocation {
-                    font-weight: 300;
-                    font-size: 0.8rem;
-                    letter-spacing: 1px;
-                  }
-
-                  .locationIcon {
-                    filter: invert(100%);
-                    width: 12px;
-                  }
-                }
-              }
-              .right {
-                // background-color: blue;
-                width: 15%;
-                height: 100%;
-              }
-            }
-          }
-
-          &:hover {
-            scale: 105%;
-            outline: none;
-            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.115);
-          }
-        }
       }
 
       .sleepScapes {
@@ -1087,6 +986,219 @@ main {
           .scapeTitle {
             width: 270px;
           }
+        }
+      }
+    }
+
+    .headerContainer {
+      width: 100%;
+      height: 40px;
+      // background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      max-width: 750px;
+      padding-left: 20px;
+
+      .defaultPageHeader {
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+    }
+
+    //////////////////SLEEPSCAPE COVER STYLES
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      width: 100%;
+
+      .soundScapeContainer {
+        position: relative;
+        width: 95%;
+        height: 90px;
+        min-height: 90px;
+        // border: solid 3px rgb(233, 233, 233);
+        border-radius: 2px;
+        max-width: 750px;
+        background-color: $blueAccent;
+        transition: scale 0.2s, box-shadow 0.2s;
+
+        .loadingBackground {
+          background-color: $blueAccent;
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .sleep {
+            color: rgb(171, 201, 238);
+          }
+          h1 {
+            color: rgb(143, 183, 231);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+          }
+        }
+
+        .soundScapeImg {
+          pointer-events: none;
+          z-index: 2;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .infoContainer {
+          position: relative;
+          z-index: 3;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+
+          .top,
+          .bottom {
+            width: 100%;
+            display: flex;
+            align-items: center;
+          }
+
+          .top {
+            justify-content: space-between;
+            height: 25px;
+
+            .left {
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              padding-left: 10px;
+              height: 100%;
+              width: 150px;
+              // background-color: purple;
+
+              .timeText {
+                font-size: 0.8rem;
+                font-weight: 300;
+                letter-spacing: 1px;
+                text-shadow: 0px 2px 3px black;
+              }
+            }
+
+            .right {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              width: 60px;
+              // background-color: green;
+              gap: 1px;
+
+              .comments,
+              .likes {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 49%;
+
+                .soundscapeIcon {
+                  z-index: 1;
+                  position: absolute;
+                  width: 20px;
+                }
+
+                .comments {
+                  filter: invert(100%);
+                  margin-top: 1px;
+                }
+              }
+            }
+
+            .likes {
+              .likeText {
+                font-size: 0.6rem;
+                z-index: 2;
+                margin-bottom: 1px;
+                font-weight: 400;
+              }
+            }
+
+            .comments {
+              .commentText {
+                font-size: 0.6rem;
+                font-weight: 400;
+                margin-bottom: 3px;
+                margin-left: 1px;
+              }
+            }
+          }
+
+          .bottom {
+            height: 40px;
+            display: flex;
+            background-color: rgba(29, 29, 29, 0.007);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            justify-content: space-evenly;
+            .left {
+              padding-left: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              justify-content: center;
+              // background-color: red;
+              width: 85%;
+              height: 100%;
+
+              .soundScapeTitle {
+                font-size: 0.9rem;
+                font-weight: 700;
+              }
+
+              .locationContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+
+                .soundScapeLocation {
+                  font-weight: 300;
+                  font-size: 0.8rem;
+                  letter-spacing: 1px;
+                }
+
+                .locationIcon {
+                  filter: invert(100%);
+                  width: 12px;
+                }
+              }
+            }
+            .right {
+              // background-color: blue;
+              width: 15%;
+              height: 100%;
+            }
+          }
+        }
+
+        &:hover {
+          scale: 105%;
+          outline: none;
+          box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.115);
         }
       }
     }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_212713) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_27_031015) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -37,6 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_212713) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admin_likes", force: :cascade do |t|
+    t.integer "liked_id"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_admin_likes_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -98,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_212713) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "admin_likes", "users"
   add_foreign_key "comments", "sleepscapes"
   add_foreign_key "followers", "users"
   add_foreign_key "followings", "users"

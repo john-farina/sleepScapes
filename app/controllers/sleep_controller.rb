@@ -4,6 +4,9 @@ class SleepController < ApplicationController
   end
 
   def home
+    @recent_posts = Sleepscape.order('created_at DESC').limit(5)
+    @recent_users = User.order('created_at DESC').limit(4)
+    @admin_likes = AdminLike.all
   end
 
   def show
@@ -92,6 +95,35 @@ class SleepController < ApplicationController
       redirect_to sleepscape_page_url(user_id: @user.id, sleepscape_id: @sleepscape.id)
     else
 
+    end
+  end
+
+  def secret_admin
+  end
+
+  def create_secret_admin
+    @user = User.find(params[:id])
+
+    @user.admin = true
+
+    if @user.save
+      redirect_to root_path
+    end
+  end
+
+  def admin_like
+    @like = AdminLike.new(user_id: params[:id], liked_id: params[:liked_id])
+
+    if @like.save
+      redirect_to root_path
+    end
+  end
+
+  def admin_dislike
+    @like = AdminLike.find_by(liked_id: params[:id])
+
+    if @like.destroy
+      redirect_to root_path
     end
   end
 

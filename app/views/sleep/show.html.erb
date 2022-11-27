@@ -49,7 +49,12 @@
           <%= image_tag("defaultUser",class: "userPic")%>
         <%end %>
       </div>
-      <div class="userName"><%= @user.name %></div>
+      <div class="userName">
+      <p class="nameText"><%= @user.name %></p>
+      <% if @user.admin %>
+        <%= image_tag("verifiedIcon", class: "verfiedIcon") %>
+      <% end %>
+      </div>
     </div>
     <div class="right">
       <a href=<%= user_following_url(id: @user.id) %>>
@@ -70,9 +75,9 @@
 <div class="bodyContainer">
 <% if @sleepscapes.length < 1 %>
 <% else %>
-<div class="headerContainer">
- <h3 class="defaultUserHeader"><%= @user.name %>'s [sleepScapes]</h3>
-</div>
+  <div class="headerContainer">
+  <h3 class="defaultPageHeader"><%= @user.name %>'s [sleepScapes]</h3>
+  </div>
 
   <% @sleepscapes.each do |sleep|%>
     <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
@@ -113,11 +118,10 @@
   <% end %>
 <% end %>
 <br>
-<br>
-<br>
+
 
 <div class="headerContainer">
-<h3 class="defaultUserHeader" ><%= @user.name %> likes <%= pluralize(@user.likes.length, 'post') %></h3>
+<h3 class="defaultPageHeader" ><%= @user.name %> likes <%= pluralize(@user.likes.length, 'post') %></h3>
 </div>
 
 <% @user.likes.each do |likes|%>

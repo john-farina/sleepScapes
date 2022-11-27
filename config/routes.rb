@@ -20,9 +20,13 @@ Rails.application.routes.draw do
   get '/user/:id/followers', to: 'sleep#followers', as: 'user_followers'
   post '/:user_id/follow', to: 'sleep#add_following', as: 'add_following'
   post '/:user_id/remove_follow', to: 'sleep#remove_following', as: 'remove_following'
-  get 'user/:id/create', to: 'sleep#create', as: 'create'
-  post 'user/:id/create', to: 'sleep#create', as: 'create_form'
+  get '/user/:id/create', to: 'sleep#create', as: 'create'
+  post '/user/:id/create', to: 'sleep#create', as: 'create_form'
 
+  get '/secret/very/very/secret', to: 'sleep#secret_admin'
+  post '/secret', to: 'sleep#create_secret_admin', as: 'secret_admin'
+  post '/admin_like', to: 'sleep#admin_like', as: 'admin_like'
+  post '/admin_dislike', to: 'sleep#admin_dislike', as: 'admin_dislike'
 
   get '/sleepscape/:sleepscape_id/:user_id', to: 'sleep#sleepscape', as: 'sleepscape_page'
   post '/:sleepscape_id', to: 'sleep#like_sleepscape', as: 'like_sleepscape'
