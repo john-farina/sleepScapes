@@ -67,9 +67,13 @@
     </div>
   </div>
 <%# .              END OF HEADER             %>
+<div class="bodyContainer">
 <% if @sleepscapes.length < 1 %>
 <% else %>
-  <h3 class="defaultUserHeader"><%= @user.name %>'s [sleepScapes]</h3>
+<div class="headerContainer">
+ <h3 class="defaultUserHeader"><%= @user.name %>'s [sleepScapes]</h3>
+</div>
+
   <% @sleepscapes.each do |sleep|%>
     <a href="">
       <div class="soundScapeContainer">
@@ -111,7 +115,11 @@
 <br>
 <br>
 <br>
-<h3><%= @user.name %> has <%= pluralize(@user.likes.length, 'like') %></h3>
+
+<div class="headerContainer">
+<h3 class="defaultUserHeader" ><%= @user.name %> likes <%= pluralize(@user.likes.length, 'post') %></h3>
+</div>
+
 <% @user.likes.each do |likes|%>
   <% sleep = Sleepscape.find(likes.liked_id) %>
     <a href="">
@@ -150,4 +158,5 @@
       </div>
     </a>
 <% end %>
+</div>
 </div>

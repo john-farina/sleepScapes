@@ -21,7 +21,6 @@ body {
   display: flex;
   background-color: $darkBackground;
   color: white;
-  overflow: auto;
 }
 
 header,
@@ -287,6 +286,7 @@ main {
     height: 100%;
     background-color: rgb(31, 31, 31);
     overflow-y: scroll;
+    overflow-x: hidden;
 
     .backgroundImage {
       position: absolute;
@@ -627,6 +627,7 @@ main {
       align-items: start;
       width: 100%;
       height: 100%;
+
       .userHeader {
         display: flex;
         align-items: center;
@@ -794,9 +795,42 @@ main {
         }
       }
 
+      .bodyContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .headerContainer {
+        width: 100%;
+        height: 40px;
+        // background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        max-width: 750px;
+        padding-left: 20px;
+
+        .defaultUserHeader {
+          font-size: 1.2rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin-top: 10px;
+          margin-bottom: 5px;
+        }
+      }
+
       a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-decoration: none;
         color: white;
+        width: 100%;
 
         .soundScapeContainer {
           position: relative;
@@ -804,8 +838,7 @@ main {
           height: 90px;
           // border: solid 3px rgb(233, 233, 233);
           border-radius: 2px;
-          margin-bottom: 10px; //temp
-          max-width: 600px;
+          max-width: 750px;
           background-color: $blueAccent;
           transition: scale 0.2s, box-shadow 0.2s;
 
@@ -1055,12 +1088,6 @@ main {
             width: 270px;
           }
         }
-      }
-
-      .defaultUserHeader {
-        font-size: 1.3rem;
-        margin-top: 10px;
-        margin-bottom: 5px;
       }
     }
 
