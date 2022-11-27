@@ -1496,9 +1496,11 @@ main {
   @keyframes moveMenuBtnLeft {
     0% {
       margin-left: 20%;
+      // translate: 0% 0px;
     }
     100% {
       margin-left: 0%;
+      // translate: -10% 0px;
     }
   }
   @keyframes moveMenuBtnRight {
