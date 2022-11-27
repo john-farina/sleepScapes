@@ -64,6 +64,7 @@ loop: :loop, muted: true) %>
         <h3 class="infoLocation"><%= @sleepscape.recorded_at %></h3>
         <div class="line"></div>
         <p class="infoDescription"><%= @sleepscape.description %></p>
+        <% if signed_in? %>
         <% if current_user.admin? %>
         <br>
           <h4>admin panel:</h4>
@@ -79,6 +80,7 @@ loop: :loop, muted: true) %>
               <%= f.submit %>
             <% end %>
           <% end %>
+        <% end %>
         <% end %>
       </div>
 
