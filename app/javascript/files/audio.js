@@ -3,6 +3,7 @@ const audioTag = document.querySelector("#soundscapeAudio");
 const playBtn = document.querySelector("#scapePlayBtn");
 const pauseBtn = document.querySelector("#scapePauseBtn");
 const volumeSlider = document.querySelector("#audioVolume");
+const soundscapeVideo = document.querySelector("#soundscapeVideo");
 
 if (audioTag) {
   let volumeInterval;

@@ -1,6 +1,6 @@
 <% if @sleepscape.sleepscape_video.attached? %>
-  <%= video_tag(url_for(@sleepscape.sleepscape_video), class: "backgroundImage sleepscapeBackground",autoplay: :autoplay,
-loop: :loop, muted: true) %>
+  <%= video_tag(url_for(@sleepscape.sleepscape_video), class: "backgroundImage sleepscapeBackground",id: "soundscapeVideo" ,autoplay: :autoplay,
+loop: :loop, muted: true, controls: false) %>
 <% else %>
   <h5>i dont have a video</h5>
 <% end %>
