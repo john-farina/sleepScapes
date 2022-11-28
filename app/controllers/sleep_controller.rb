@@ -4,7 +4,9 @@ class SleepController < ApplicationController
   end
 
   def home
-    @recent_posts = Sleepscape.order('created_at DESC').limit(5)
+    admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
+    @random_post = Sleepscape.find(admin_like.liked_id)
+    @recent_posts = Sleepscape.order('created_at DESC').limit(4)
     @recent_users = User.order('created_at DESC').limit(4)
     @admin_likes = AdminLike.all
   end
@@ -66,7 +68,14 @@ class SleepController < ApplicationController
 
   def create_comment
     @sleepscape = Sleepscape.find(params[:sleepscape_id])
-    @comment = @sleepscape.comments.new(params.permit(:content, :user_id))
+    @comment_text = params[:content]
+
+    if Obscenity.profane?(@comment_text)
+     @comment_text = Obscenity.sanitize(@comment_text)
+    end
+
+    @comment = @sleepscape.comments.new(content: @comment_text, user_id: params[:user_id])
+
     if @comment.save
       redirect_to sleepscape_page_url(sleepscape_id: @sleepscape.id, user_id: @sleepscape.user_id)
     else
@@ -99,6 +108,18 @@ class SleepController < ApplicationController
   def create
     @user = User.find(params[:id])
     @sleepscape = @user.sleepscapes.new(get_params)
+
+    if Obscenity.profane?(@sleepscape.title)
+      @sleepscape.title = Obscenity.sanitize(@sleepscape.title)
+    end
+
+    if Obscenity.profane?(@sleepscape.recorded_at)
+      @sleepscape.recorded_at = Obscenity.sanitize(@sleepscape.recorded_at)
+    end
+
+    if Obscenity.profane?(@sleepscape.description)
+      @sleepscape.description = Obscenity.sanitize(@sleepscape.description)
+    end
 
     if @sleepscape.save
       redirect_to sleepscape_page_url(user_id: @user.id, sleepscape_id: @sleepscape.id)

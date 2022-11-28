@@ -2,13 +2,16 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = user_from_params
-
+    #not allowing swears in names
+    if Obscenity.profane?(@user.name)
+    else
     if @user.save
       sign_in @user
      redirect_to home_path
     else
       render template: "users/new", status: :unprocessable_entity
     end
+  end
   end
 
   private

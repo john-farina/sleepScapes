@@ -2,47 +2,64 @@
   <a class="pageATag" href="/">
     <h1 class="homeTitle">[soundScapes]</h1>
   </a>
-  <div class="headerContainer homeHeaderContainer">
-    <p class="defaultPageHeader homeHeader">curated <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
+  <a href=<%= sleepscape_page_url(user_id: @random_post.user_id, sleepscape_id: @random_post.id) %>>
+    <div class="recommendContainer">
+      <%= image_tag(@random_post.sleepscape_still_picture, class: "recommendPic") %>
+      <div class="recomendInfoContainer">
+    <div class="bottomBox">
+      <p class="bottomHeader">Recommended:</p>
+      <div class="info">
+        <p class="infoTitle"><%= @random_post.title %></p>
+        <p><%= @random_post.recorded_at %></p>
+      </div>
+    </div>
   </div>
-  <div class="adminLikesContainer">
-    <% @admin_likes.each do |admin| %>
-      <% sleep = Sleepscape.find(admin.liked_id) %>
-      <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+</div>
+</a>
+<div class="headerContainer homeHeaderContainer">
+  <p class="defaultPageHeader homeHeader">curated <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
+  <a href="" class="viewAll">
+    <p>View All</p>
+  </a>
+</div>
+<div class="adminLikesContainer">
+  <% @admin_likes.each do |admin| %>
+    <% sleep = Sleepscape.find(admin.liked_id) %>
+    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
         <div class="soundScapeContainer">
           <div class="loadingBackground">
           <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
           </div>
           <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
           <div class="infoContainer">
-        <div class="top">
-          <div class="left">
-            <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-          </div>
-          <div class="right">
-            <div class="comments">
-              <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-              <%= image_tag("comments", class: "soundscapeIcon comments") %>
-            </div>
-            <div class="likes">
-              <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-              <%= image_tag("heart", class: "soundscapeIcon heart") %>
-            </div>
-          </div>
+      <div class="top">
+        <div class="left">
+          <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
         </div>
-        <div class="bottom">
-          <div class="left">
-            <p class="soundScapeTitle"><%= sleep.title %></p>
-            <div class="locationContainer">
-              <%= image_tag("locationIcon", class: "locationIcon") %>
-              <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-            </div>
+        <div class="right">
+          <div class="comments">
+            <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+            <%= image_tag("comments", class: "soundscapeIcon comments") %>
           </div>
-          <div class="right"></div>
+          <div class="likes">
+            <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+            <%= image_tag("heart", class: "soundscapeIcon heart") %>
+          </div>
         </div>
       </div>
+      <div class="bottom">
+        <div class="left">
+          <p class="soundScapeTitle"><%= sleep.title %></p>
+          <div class="locationContainer">
+            <%= image_tag("locationIcon", class: "locationIcon") %>
+            <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+          </div>
+        </div>
+        <div class="right"></div>
+      </div>
     </div>
-  </a>
+  </div>
+</a>
 <% end %>
 </div>
 <div class="headerContainer homeHeaderContainer">
@@ -69,6 +86,9 @@
 </a>
 </div>
 <div class="headerContainer homeHeaderContainer">
+  <a href="" class="viewAll">
+    <p>View All</p>
+  </a>
   <p class="defaultPageHeader homeHeader">recent <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
 </div>
 <div class="recentPostsContainer">
