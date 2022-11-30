@@ -1,6 +1,14 @@
 # sleepScapes *(sleep sounds)*
 
-# MODELS (basic idea brainstorm)
+## WHAT I NEED TO FINISH
+- category home pages
+- a user generated content page
+- all users page with most followed users etc
+- emails for when you get follows, comments
+- edit videos/photos before i save them to databse
+- etc.
+
+### MODELS (basic idea brainstorm)
 ## USER (ontop of clearance)
 - [x] name:string
 - [ ] bio:string
