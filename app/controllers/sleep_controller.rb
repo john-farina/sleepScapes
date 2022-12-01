@@ -7,7 +7,7 @@ class SleepController < ApplicationController
     admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
     @random_post = Sleepscape.find(admin_like.liked_id)
     @recent_posts = Sleepscape.order('created_at DESC').limit(4)
-    @recent_users = User.order('created_at DESC').limit(4)
+    @recent_users = User.order('created_at DESC').limit(6)
     @admin_likes = AdminLike.all
   end
 

@@ -130,4 +130,35 @@
 </a>
 <% end %>
 </div>
+<div class="headerContainer homeHeaderContainer">
+  <a href="" class="viewAll">
+    <p>View All</p>
+  </a>
+  <p class="defaultPageHeader homeHeader">recent <span class="blue first">[</span>users<span class="blue">]</span></p>
+</div>
+<div class="recentUserContainers">
+  <% @recent_users.each do |user| %>
+    <a href=<%= user_page_url(id: user.id) %>>
+      <div class="userBox">
+        <% if user.profile_picture.attached? %>
+          <% profile_pic = url_for(user.profile_picture) %>
+        <% else %>
+          <% profile_pic = "defaultUser"%>
+        <% end %>
+        <% if user.profile_banner.attached? %>
+          <% profile_ban = url_for(user.profile_banner) %>
+        <% else %>
+          <% profile_ban = "defaultUserBanner"%>
+        <% end %>
+        <div class="accountCover">
+      <p class="timeText"><%= time_ago_in_words(user.created_at) %> ago.</p>
+      <%= image_tag(profile_ban, class: "backgroundImg") %>
+      <%= image_tag(profile_pic, class: "userPicture") %>
+      <p class="userName"><%= user.name %></p>
+    </div>
+  </div>
+</a>
+<% end %>
+<div class="userBox"></div>
+</div>
 </div>
