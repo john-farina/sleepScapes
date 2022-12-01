@@ -9,14 +9,22 @@ Rails.application.routes.draw do
       only: [:edit, :update]
   end
 
+  root "sleep#index"
+
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   get "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
+
   get "/home" => "sleep#home", as: "home"
+
   get "/sleepscapes" => "sleep#sleep_home", as: 'sleepscapes_home'
   get "/studyscapes" => "sleep#study_home", as: 'studyscapes_home'
   get "/distractionscapes" => "sleep#distraction_home", as: 'distractionscapes_home'
-  root "sleep#index"
+
+  get "/curated" => "sleep#curated_home", as: 'curated_home'
+  get "/recent" => "sleep#recent_soundscapes_home", as: "recent_soundscapes_home"
+
+  get "/users" => "sleep#users_home", as: 'users_home'
 
   get '/user/:id', to: 'sleep#show', as: 'user_page'
   get '/user/:id/following', to: 'sleep#following', as: 'user_following'

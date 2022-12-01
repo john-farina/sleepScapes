@@ -20,6 +20,15 @@ class SleepController < ApplicationController
   def distraction_home
   end
 
+  def curated_home
+  end
+
+  def recent_soundscapes_home
+  end
+
+  def users_home
+  end
+
   def show
     @user = User.find(params[:id])
     @followers = Following.where(:following_id => @user.id)
