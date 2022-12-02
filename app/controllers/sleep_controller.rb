@@ -6,9 +6,10 @@ class SleepController < ApplicationController
   def home
     admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
     @random_post = Sleepscape.find(admin_like.liked_id)
+    @admin_likes = AdminLike.all
+
     @recent_posts = Sleepscape.order('created_at DESC').limit(4)
     @recent_users = User.order('created_at DESC').limit(6)
-    @admin_likes = AdminLike.all
   end
 
   def sleep_home
@@ -37,7 +38,38 @@ class SleepController < ApplicationController
 
   def edit_user
     @user = User.find(params[:id])
+  end
 
+  def edit_user_form
+    @user = User.find(params[:user_id])
+
+    if @user.profile_picture.attached?
+      if params[:profile_picture].present?
+        @user.profile_picture = params[:profile_picture]
+      end
+    else
+      if params[:profile_picture].present?
+        @user.profile_picture = params[:profile_picture]
+      end
+    end
+
+    if @user.profile_banner.attached?
+      if params[:profile_banner].present?
+        @user.profile_banner = params[:profile_banner]
+      end
+    else
+      if params[:profile_banner].present?
+        @user.profile_banner = params[:profile_banner]
+      end
+    end
+
+    if params[:name].present?
+      @user.name = params[:name]
+    end
+
+    if @user.save
+      redirect_to root_path
+    end
   end
 
   def following

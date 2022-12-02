@@ -17,70 +17,71 @@
       <% if signed_in? %>
         <% if current_user.id === @user.id %>
           <%# WHERE THE EDIT BUTTON WILL BE %>
-          <div class="userBtns editUserBtn" id="editUserBtn">
-            <%= image_tag("editIcon", class: "editIcon") %>
-            <p>EDIT</p>
-          </div>
-        <% else %>
-          <% if current_user.followings.find_by(following_id: @user.id) %>
-            <%= form_with url: remove_following_url(user_id: current_user.id) do |form| %>
-              <%= form.hidden_field :follow_id, value: @user.id %>
-              <%= form.submit :remove_follow , value: "UNFOLLOW", class: "userBtns followBtns followingBtn" %>
-            <% end %>
-          <% else %>
-            <%= form_with url: add_following_url(user_id: current_user.id) do |form| %>
-              <%= form.hidden_field :follow_id, value: @user.id %>
-              <%= form.submit :follow, value: "FOLLOW", class: "userBtns followBtns" %>
-            <% end %>
-          <% end %>
+          <a href=<%= edit_user_url(id: current_user.id) %>>
+            <div class="userBtns editUserBtn" id="editUserBtn">
+              <%= image_tag("editIcon", class: "editIcon") %>
+              <p>EDIT</p>
+        </div>
+      </a>
+    <% else %>
+      <% if current_user.followings.find_by(following_id: @user.id) %>
+        <%= form_with url: remove_following_url(user_id: current_user.id) do |form| %>
+          <%= form.hidden_field :follow_id, value: @user.id %>
+          <%= form.submit :remove_follow , value: "UNFOLLOW", class: "userBtns followBtns followingBtn" %>
         <% end %>
       <% else %>
-        <div class="userBtns signInButton" id="editUserBtn">
-          <p>SIGN IN
-            TO FOLLOW</p>
-        </div>
+        <%= form_with url: add_following_url(user_id: current_user.id) do |form| %>
+          <%= form.hidden_field :follow_id, value: @user.id %>
+          <%= form.submit :follow, value: "FOLLOW", class: "userBtns followBtns" %>
+        <% end %>
       <% end %>
+    <% end %>
+  <% else %>
+    <div class="userBtns signInButton" id="editUserBtn">
+      <p>SIGN IN
+        TO FOLLOW</p>
     </div>
-    <div class="middle">
-      <div class="userPicture">
-        <% if @user.profile_picture.attached? %>
-          <%= image_tag(url_for(@user.profile_picture), class: "userPic") %>
-        <% else %>
-          <%= image_tag("defaultUser",class: "userPic")%>
-        <%end %>
-      </div>
-      <div class="userName">
-      <p class="nameText"><%= @user.name %></p>
-      <% if @user.admin %>
-        <%= image_tag("verifiedIcon", class: "verfiedIcon") %>
-      <% end %>
-      </div>
-    </div>
-    <div class="right">
-      <a href=<%= user_following_url(id: @user.id) %>>
+  <% end %>
+</div>
+<div class="middle">
+  <div class="userPicture">
+    <% if @user.profile_picture.attached? %>
+      <%= image_tag(url_for(@user.profile_picture), class: "userPic") %>
+    <% else %>
+      <%= image_tag("defaultUser",class: "userPic")%>
+    <%end %>
+  </div>
+  <div class="userName">
+    <p class="nameText"><%= @user.name %></p>
+    <% if @user.admin %>
+      <%= image_tag("verifiedIcon", class: "verfiedIcon") %>
+    <% end %>
+  </div>
+</div>
+<div class="right">
+  <a href=<%= user_following_url(id: @user.id) %>>
         <div class="followersBox">
           <p class="followCount"><%= @user.followings.length %></p>
-        <p class="followTitle">Following</p>
-        </div>
-      </a>
-      <a href=<%= user_followers_url(id: @user.id) %>>
+    <p class="followTitle">Following</p>
+  </div>
+</a>
+<a href=<%= user_followers_url(id: @user.id) %>>
         <div class="followersBox">
           <p class="followCount"><%= @followers.length %> </p>
-          <p class="followTitle">Followers</p>
-        </div>
-      </a>
-    </div>
-  </div>
+  <p class="followTitle">Followers</p>
+</div>
+</a>
+</div>
+</div>
 <%# .              END OF HEADER             %>
 <div class="bodyContainer">
-<% if @sleepscapes.length < 1 %>
-<% else %>
-  <div class="headerContainer">
-  <h3 class="defaultPageHeader"><%= @user.name %>'s [sleepScapes]</h3>
-  </div>
-
-  <% @sleepscapes.each do |sleep|%>
-    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+  <% if @sleepscapes.length < 1 %>
+  <% else %>
+    <div class="headerContainer">
+      <h3 class="defaultPageHeader"><%= @user.name %>'s [sleepScapes]</h3>
+    </div>
+    <% @sleepscapes.each do |sleep|%>
+      <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
       <div class="soundScapeContainer">
         <div class="loadingBackground">
         <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
@@ -93,8 +94,8 @@
           </div>
           <div class="right">
             <div class="comments">
-             <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-            <%= image_tag("comments", class: "soundscapeIcon comments") %>
+              <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+              <%= image_tag("comments", class: "soundscapeIcon comments") %>
             </div>
             <div class="likes">
               <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
@@ -103,64 +104,61 @@
           </div>
         </div>
         <div class="bottom">
-        <div class="left">
-          <p class="soundScapeTitle"><%= sleep.title %></p>
-          <div class="locationContainer">
-            <%= image_tag("locationIcon", class: "locationIcon") %>
-            <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+          <div class="left">
+            <p class="soundScapeTitle"><%= sleep.title %></p>
+            <div class="locationContainer">
+              <%= image_tag("locationIcon", class: "locationIcon") %>
+              <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+            </div>
           </div>
-        </div>
-        <div class="right"></div>
-        </div>
+          <div class="right"></div>
         </div>
       </div>
-    </a>
-  <% end %>
+    </div>
+  </a>
+<% end %>
 <% end %>
 <br>
-
-
 <div class="headerContainer">
-<h3 class="defaultPageHeader" ><%= @user.name %> likes <%= pluralize(@user.likes.length, 'post') %></h3>
+  <h3 class="defaultPageHeader" ><%= @user.name %> likes <%= pluralize(@user.likes.length, 'post') %></h3>
 </div>
-
 <% @user.likes.each do |likes|%>
   <% sleep = Sleepscape.find(likes.liked_id) %>
-    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+  <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
       <div class="soundScapeContainer">
         <div class="loadingBackground">
         <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
         </div>
         <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
         <div class="infoContainer">
-        <div class="top">
-          <div class="left">
-            <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-          </div>
-          <div class="right">
-            <div class="comments">
-             <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-            <%= image_tag("comments", class: "soundscapeIcon comments") %>
-            </div>
-            <div class="likes">
-              <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-              <%= image_tag("heart", class: "soundscapeIcon heart") %>
-            </div>
-          </div>
+    <div class="top">
+      <div class="left">
+        <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
+      </div>
+      <div class="right">
+        <div class="comments">
+          <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+          <%= image_tag("comments", class: "soundscapeIcon comments") %>
         </div>
-        <div class="bottom">
-        <div class="left">
-          <p class="soundScapeTitle"><%= sleep.title %></p>
-          <div class="locationContainer">
-            <%= image_tag("locationIcon", class: "locationIcon") %>
-            <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-          </div>
-        </div>
-        <div class="right"></div>
-        </div>
+        <div class="likes">
+          <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+          <%= image_tag("heart", class: "soundscapeIcon heart") %>
         </div>
       </div>
-    </a>
+    </div>
+    <div class="bottom">
+      <div class="left">
+        <p class="soundScapeTitle"><%= sleep.title %></p>
+        <div class="locationContainer">
+          <%= image_tag("locationIcon", class: "locationIcon") %>
+          <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
+  </div>
+</div>
+</a>
 <% end %>
 </div>
 </div>

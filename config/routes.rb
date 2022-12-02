@@ -26,6 +26,9 @@ Rails.application.routes.draw do
 
   get "/users" => "sleep#users_home", as: 'users_home'
 
+  get "/edit/:id" => "sleep#edit_user", as: 'edit_user'
+  post "/edit/:user_id" => "sleep#edit_user_form", as: 'edit_user_form'
+
   get '/user/:id', to: 'sleep#show', as: 'user_page'
   get '/user/:id/following', to: 'sleep#following', as: 'user_following'
   get '/user/:id/followers', to: 'sleep#followers', as: 'user_followers'
