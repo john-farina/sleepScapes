@@ -1748,17 +1748,19 @@ main {
                   flex-direction: column;
                   align-items: center;
                   gap: 5px;
-                  justify-content: center;
+                  justify-content: end;
                   height: 100%;
                   width: 15%;
-                  background-color: rgba(0, 0, 0, 0.202);
+                  // background-color: rgba(0, 0, 0, 0.202);
 
                   .userPicture {
-                    width: 50px;
-                    height: 50px;
+                    width: 42px;
+                    height: 42px;
                     background-color: blue;
                     border-radius: 5px;
                     border: 0.5px white solid;
+                    margin-right: -10px;
+                    margin-bottom: -2px;
 
                     .commentPic {
                       width: 100%;
@@ -1769,7 +1771,7 @@ main {
 
                   .userName {
                     text-align: center;
-                    font-size: 0.6rem;
+                    font-size: 0.7rem;
                   }
                 }
                 .right {
@@ -1812,6 +1814,7 @@ main {
                 width: 100%;
                 padding: 0;
                 margin: 0;
+
                 .commentTextInput {
                   background-color: rgba(255, 255, 255, 0.732);
                   resize: none;
