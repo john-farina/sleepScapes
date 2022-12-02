@@ -111,7 +111,7 @@ loop: :loop, muted: true, controls: false) %>
           <% if signed_in? %>
             <%= form_with url: create_comment_url(sleepscape_id: @sleepscape.id) do |form|%>
               <%= form.hidden_field :user_id, value: current_user.id %>
-              <%= form.text_area :content, class: "commentTextInput", placeholder: "Type your comment here!" %>
+              <%= form.text_field :content, class: "commentTextInput", placeholder: "Type your comment here!" %>
               <%= form.submit :submit, class: "commentSubmit" %>
             <% end %>
           <% end %>
