@@ -1760,6 +1760,7 @@ main {
             justify-content: start;
             flex-direction: column;
             padding-left: 5px;
+            width: 100%;
             .infoTitle {
               margin-top: 20px;
               font-size: 1.4rem;
@@ -1777,6 +1778,23 @@ main {
 
             input[type="checkbox"] {
               background-color: green;
+            }
+
+            .editContainer {
+              width: 100%;
+              // background-color: blue;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+
+              .lineBreak {
+                width: 100%;
+                height: 1px;
+                background-color: white;
+                margin-bottom: 10px;
+                margin-top: 15px;
+              }
             }
           }
 
@@ -2048,6 +2066,28 @@ main {
           margin-top: 5px;
           font-size: 1rem;
         }
+
+        .checkBoxes {
+          margin-top: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          padding-left: 3px;
+          padding-right: 3px;
+          color: black;
+          background-color: white;
+          height: 30px;
+          border-radius: 2px;
+
+          .box {
+            display: flex;
+            gap: 2px;
+          }
+
+          input[type="checkbox"] {
+            background-color: green;
+          }
+        }
       }
 
       .defaultSubmit {
@@ -2068,6 +2108,10 @@ main {
           filter: brightness(80%);
           scale: 103%;
         }
+      }
+
+      .defaultDelete {
+        background-color: rgb(206, 52, 52);
       }
 
       .defaultLinks {

@@ -210,12 +210,31 @@ class SleepController < ApplicationController
       end
     end
 
+    if params[:title] != @soundscape.title
+      @soundscape.title = params[:title]
+    end
+
+    if params[:location] != @soundscape.recorded_at
+      @soundscape.recorded_at = params[:location]
+    end
+
+    if params[:description] != @soundscape.description
+      @soundscape.description = params[:description]
+    end
+
 
 
     if @soundscape.save
       redirect_to sleepscape_page_url(user_id: @soundscape.user_id, sleepscape_id: @soundscape.id)
     end
 
+  end
+
+  def delete_soundscape
+    @soundscape = Sleepscape.find(params[:id])
+   if @soundscape.destroy
+    redirect_to user_page_url(id: @soundscape.user_id)
+   end
   end
 
   def secret_admin

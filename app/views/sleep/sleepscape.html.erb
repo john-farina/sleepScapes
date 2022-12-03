@@ -77,51 +77,80 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
         <p class="infoDescription"><%= @sleepscape.description %></p>
         <% if signed_in? %>
           <% if @sleepscape.user_id === current_user.id %>
-            <h1>this is ur post</h1>
-            <%= form_with(url: edit_soundscape_url(id: @sleepscape.id)) do |f| %>
-              <div class="checkBoxes">
-                <%# SLEEP %>
-                <%= f.label :sleep_category, "[sleep]" %>
-                <% if @sleepscape.categorys.find_by(category: "sleep") %>
-                  <%= f.check_box :sleep_category, checked: true %>
-                <% else %>
-                  <%= f.check_box :sleep_category %>
-                <% end %>
-                <%# STUDY %>
-                <%= f.label :study_category, "[study]"%>
-                <% if @sleepscape.categorys.find_by(category: "study") %>
-                  <%= f.check_box :study_category, checked: true  %>
-                <% else %>
-                  <%= f.check_box :study_category %>
-                <% end %>
+            <div class="editContainer">
+              <div class="lineBreak"></div>
+              <h2>Edit SoundScape</h2>
+              <%= form_with(url: edit_soundscape_url(id: @sleepscape.id), class: "defaultForm") do |f| %>
+                <div class="inputContainer">
+                  <%= f.label "Categorys" %>
+                  <div class="checkBoxes">
+                    <%# SLEEP %>
+                    <div class="box">
+                      <%= f.label :sleep_category, "[sleep]" %>
+                      <% if @sleepscape.categorys.find_by(category: "sleep") %>
+                        <%= f.check_box :sleep_category, checked: true %>
+                      <% else %>
+                        <%= f.check_box :sleep_category %>
+                      <% end %>
+                    </div>
+                    <%# STUDY %>
+                    <div class="box">
+                      <%= f.label :study_category, "[study]"%>
+                      <% if @sleepscape.categorys.find_by(category: "study") %>
+                        <%= f.check_box :study_category, checked: true  %>
+                      <% else %>
+                        <%= f.check_box :study_category %>
+                      <% end %>
+                    </div>
+                    <%# DISTRACTION %>
+                    <div class="box">
+                      <%= f.label :distract_category, "[distraction]" %>
+                      <% if @sleepscape.categorys.find_by(category: "distraction") %>
+                        <%= f.check_box :distract_category, checked: true %>
+                      <% else %>
+                        <%= f.check_box :distract_category %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <div class="inputContainer">
+                  <%= f.label :title %>
+                  <%= f.text_field :title, value: @sleepscape.title %>
+                </div>
+                <div class="inputContainer">
+                  <%= f.label :location %>
+                  <%= f.text_field :location, value: @sleepscape.recorded_at %>
+                </div>
+                <div class="inputContainer">
+                  <%= f.label :description %>
+                  <%= f.text_field :description, value: @sleepscape.description %>
+                </div>
                 <%# DISTRACTION %>
-                <%= f.label :distract_category, "[distraction]" %>
-                <% if @sleepscape.categorys.find_by(category: "distraction") %>
-                  <%= f.check_box :distract_category, checked: true %>
-                <% else %>
-                  <%= f.check_box :distract_category %>
+                <%= f.submit "[save]", class: "defaultSubmit" %>
+              <% end %>
+              <div class="lineBreak"></div>
+              <%= form_with(url: delete_soundscape_url(id: @sleepscape.id),method: "DELETE", class: "defaultForm") do |f| %>
+                <br>
+                <%= f.submit "[delete post forever]", class: "defaultSubmit defaultDelete", onclick: "return confirm('Are you sure you want to delete this post forever?')" %>
+              <% end %>
+            <% end %>
+            <%# ADMIN PANEL %>
+            <% if current_user.admin? %>
+              <br>
+              <h2>admin panel:</h2>
+              <% if AdminLike.find_by(liked_id: @sleepscape.id) %>
+                <%= form_with(url: admin_dislike_url) do |f| %>
+                  <%= f.hidden_field :id, value: @sleepscape.id %>
+                  <%= f.submit "Remove Admin Like" %>
                 <% end %>
-              </div>
-              <%# DISTRACTION %>
-              <%= f.submit %>
-            <% end %>
-          <% end %>
-          <%# ADMIN PANEL %>
-          <% if current_user.admin? %>
-            <br>
-            <h4>admin panel:</h4>
-            <% if AdminLike.find_by(liked_id: @sleepscape.id) %>
-              <%= form_with(url: admin_dislike_url) do |f| %>
-                <%= f.hidden_field :id, value: @sleepscape.id %>
-                <%= f.submit "remove like" %>
+              <% else %>
+                <%= form_with(url: admin_like_url) do |f| %>
+                  <%= f.hidden_field :id, value: current_user.id %>
+                  <%= f.hidden_field :liked_id, value: @sleepscape.id %>
+                  <%= f.submit "Add Admin like" %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= form_with(url: admin_like_url) do |f| %>
-                <%= f.hidden_field :id, value: current_user.id %>
-                <%= f.hidden_field :liked_id, value: @sleepscape.id %>
-                <%= f.submit %>
-              <% end %>
-            <% end %>
+            </div>
           <% end %>
           <%# END OF ADMIN PANEL %>
         <% end %>

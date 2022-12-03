@@ -9,6 +9,6 @@ class Sleepscape < ApplicationRecord
   has_one_attached :sleepscape_audio
   has_one_attached :sleepscape_still_picture
 
-  has_many :comments
-  has_many :categorys
+  has_many :comments, dependent: :destroy
+  has_many :categorys, dependent: :destroy
 end

@@ -47,4 +47,5 @@ Rails.application.routes.draw do
   post '/:user_id/remove_like', to: 'sleep#remove_like_sleepscape', as: 'remove_like_sleepscape'
   post '/comment/:sleepscape_id', to: 'sleep#create_comment', as: 'create_comment'
   post '/edit/soundscape/:id', to: 'sleep#edit_soundscape', as: 'edit_soundscape'
+  delete '/delete/soundscape/:id', to: 'sleep#delete_soundscape', as: 'delete_soundscape'
 end
