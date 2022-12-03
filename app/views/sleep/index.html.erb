@@ -1,5 +1,5 @@
 <%# image_tag("lake.jpg", class: "backgroundImage") %>
-<%= video_tag("lake.mp4", id: "indexVideo" , class: "backgroundImage", autoplay: true, loop: true, muted: true, playsinline: true, controls: false) %>
+<%= video_tag(url_for(@random_video), id: "indexVideo" , class: "backgroundImage", autoplay: true, loop: true, muted: true, playsinline: true, controls: false) %>
 <div class="titleContainer" id="rootPage">
   <%# <h1 class="pageTitle">[soundScapes]</h1> %>
   <div class="animatedTitleContainer">

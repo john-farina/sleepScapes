@@ -385,6 +385,9 @@ main {
       // animation: titleBarGrow 0.5s ease-in-out;
       width: 100%;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4%);
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
 
       .animatedTitleContainer {
         display: flex;
@@ -529,7 +532,7 @@ main {
               width: 95%;
               max-width: 750px;
               height: 95%;
-              background-color: rgb(18, 18, 18);
+              // background-color: rgb(18, 18, 18);
               border-radius: 3px;
 
               .timeText {
@@ -537,12 +540,12 @@ main {
                 right: 0;
                 bottom: 0;
                 font-size: 0.8rem;
-                margin-right: 9px;
+                margin-right: 25px;
                 margin-bottom: 7px;
                 color: white;
                 opacity: 100%;
                 z-index: 3;
-                opacity: 60%;
+                opacity: 40%;
               }
 
               .backgroundImg {
