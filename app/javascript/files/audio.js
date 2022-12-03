@@ -4,11 +4,21 @@ const playBtn = document.querySelector("#scapePlayBtn");
 const pauseBtn = document.querySelector("#scapePauseBtn");
 const volumeSlider = document.querySelector("#audioVolume");
 const soundscapeVideo = document.querySelector("#soundscapeVideo");
+let clickedPage = false;
+const loadingIcon = document.querySelector("#loadingContainer");
+const soundscapeClickBox = document.querySelector("#soundscapeClickBox");
 
 if (audioTag) {
   let volumeInterval;
   audioTag.remove();
   Howler.volume(0.37);
+
+  if (typeof screen.orientation !== "undefined") {
+  } else {
+    volumeSlider.style.display = "none";
+    playBtn.classList.add("mobilePlay");
+    pauseBtn.classList.add("mobilePlay");
+  }
 
   function zeroToHundredDecimal(value) {
     if (value <= 9) {
@@ -48,11 +58,26 @@ if (audioTag) {
     clearInterval(volumeInterval);
   });
 
+  soundscapeVideo.onloadeddata = function () {
+    // loadingIcon.style.display = "none";
+  };
+
   playBtn.addEventListener("click", () => {
     soundScape.play();
+    soundscapeVideo.play();
+    clickedPage = true;
+    loadingIcon.style.display = "none";
   });
 
   pauseBtn.addEventListener("click", () => {
     soundScape.pause();
+  });
+
+  soundscapeClickBox.addEventListener("click", () => {
+    if (!clickedPage) {
+      clickedPage = true;
+      soundScape.play();
+      soundscapeVideo.play();
+    }
   });
 }

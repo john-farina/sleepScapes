@@ -1,6 +1,5 @@
 <%# image_tag("lake.jpg", class: "backgroundImage") %>
-<%= video_tag("lake.mp4", class: "backgroundImage",autoplay: :autoplay,
-loop: :loop, muted: true) %>
+<%= video_tag("lake.mp4", id: "indexVideo" , class: "backgroundImage", autoplay: true, loop: true, muted: true, playsinline: true, controls: false) %>
 <div class="titleContainer" id="rootPage">
   <%# <h1 class="pageTitle">[soundScapes]</h1> %>
   <div class="animatedTitleContainer">
@@ -20,9 +19,4 @@ loop: :loop, muted: true) %>
     <p class="pageTitle">Scapes</p>
     <p class="pageTitle bracket">]</p>
   </div>
-  <% if signed_in? %>
-    <p class="subTitle">"welcome back."</p>
-  <% else %>
-    <p class="subTitle">"welcome sleeper."</p>
-  <% end %>
 </div>

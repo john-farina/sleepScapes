@@ -293,10 +293,16 @@ main {
 
     .backgroundImage {
       position: absolute;
-      z-index: 1;
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    video::-webkit-media-controls {
+      display: none !important;
+    }
+    x video::-webkit-media-controls-overlay-play-button {
+      display: none;
     }
 
     .signUpPage {
@@ -1493,22 +1499,64 @@ main {
       }
     }
 
+    .sleepscapeBackground {
+      z-index: 4;
+    }
+
+    .loadingContainer {
+      position: absolute;
+      margin-top: -40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 70%;
+      max-width: 400px;
+      height: 10px;
+      // background-color: blue;
+      position: absolute;
+      z-index: 2;
+
+      .loadingGif {
+        width: 100%;
+        filter: blur(4px) $blueAccentFILTER;
+      }
+      .loadingText {
+        color: $blueAccent;
+        font-size: 1.5rem;
+        font-weight: 800;
+        opacity: 70%;
+        filter: blur(0.9px);
+      }
+    }
+
     .sleepScapeContainer {
+      touch-action: manipulation;
+      position: relative;
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       z-index: 4;
 
+      .clickBox {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        // background-color: green;
+      }
+
       .audioContainer {
-        position: relative;
+        position: absolute;
+        right: 0;
         opacity: 50%;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: end;
+        justify-content: center;
         position: absolute;
         top: 0;
         margin-top: 50px;
@@ -1540,8 +1588,11 @@ main {
             display: flex;
             width: 35px;
             height: 35px;
+            min-width: 35px;
+            min-height: 35px;
             background-color: rgb(67, 67, 67);
             border-radius: 20px;
+            margin-right: 20px;
 
             .playIcon {
               width: 20px;
@@ -1554,6 +1605,16 @@ main {
             }
           }
 
+          .mobilePlay {
+            // background-color: green;
+            margin-right: -5px;
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            min-height: 50px;
+            border-radius: 50%;
+          }
+
           .pauseBtn {
             display: none;
           }
@@ -1561,6 +1622,7 @@ main {
 
         input[type="range"] {
           position: absolute;
+          left: 0;
           rotate: -90deg;
         }
 
@@ -1585,6 +1647,7 @@ main {
         opacity: 10%;
         animation: slowlyFadeOut 5s;
         transition: opacity 0.7s;
+        z-index: 6;
 
         .topBar {
           display: flex;

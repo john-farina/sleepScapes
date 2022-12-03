@@ -1,10 +1,15 @@
 <% if @sleepscape.sleepscape_video.attached? %>
-  <%= video_tag(url_for(@sleepscape.sleepscape_video), class: "backgroundImage sleepscapeBackground",id: "soundscapeVideo" ,autoplay: :autoplay,
-loop: :loop, muted: true, controls: false) %>
+  <%= video_tag(url_for(@sleepscape.sleepscape_video), id: "soundscapeVideo" , class: "backgroundImage sleepscapeBackground",autoplay: :autoplay,
+loop: :loop, muted: true, playsinline: true, controls: false) %>
 <% else %>
   <h5>i dont have a video</h5>
 <% end %>
+<div class="loadingContainer" id="loadingContainer">
+  <%= image_tag("loading", class: "loadingGif") %>
+  <p class="loadingText">Loading Video...</p>
+</div>
 <div class="sleepScapeContainer" id="soundscapePage">
+  <div class="clickBox" id="soundscapeClickBox"></div>
   <% if @sleepscape.sleepscape_audio.attached? %>
     <%= audio_tag(url_for(@sleepscape.sleepscape_audio), id: "soundscapeAudio") %>
   <% else %>
