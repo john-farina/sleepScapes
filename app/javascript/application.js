@@ -5,3 +5,4 @@ import "./files/userPage";
 import "./files/audio";
 import "./files/title";
 import "./files/swupConfig";
+import "./files/forms";

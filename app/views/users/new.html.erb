@@ -1,33 +1,32 @@
 <div class="signUpPage">
-  <div id="clearance" class="sign-up headerForms">
-    <h2>Sign Up</h2>
-    <%= form_for @user do |form| %>
-      <div class="field">
-        <%= form.label :email %>
+  <%= form_for @user do |form| %>
+    <div class="defaultForm signUpForm">
+      <div class="inputContainer">
+        <%= form.label :email, class: "defaultLabel" %>
         <%= form.email_field :email %>
       </div>
-      <div class="field">
-        <%= form.label :name %>
+      <div class="inputContainer">
+        <%= form.label :name, class: "defaultLabel" %>
         <%= form.text_field :name %>
       </div>
-      <div class="field">
-        <%= form.label :profile_picture %>
+      <div class="inputContainer">
+        <%= form.label :profile_picture, class: "defaultLabel" %>
         <%= form.file_field :profile_picture, accept: 'image/png, image/gif, image/jpeg' %>
       </div>
-      <div class="field">
-        <%= form.label :profile_banner %>
+      <div class="inputContainer">
+        <%= form.label :profile_banner, class: "defaultLabel" %>
         <%= form.file_field :profile_banner, accept: 'image/png, image/jpeg' %>
       </div>
-      <div class="field">
-        <%= form.label :password %>
+      <div class="inputContainer">
+        <%= form.label :password, class: "defaultLabel" %>
         <%= form.password_field :password %>
       </div>
-      <div class="field">
-        <%= form.submit class: "submitBtn" %>
-      </div>
+      <%= form.submit class: "defaultSubmit" %>
+      <p>||</p>
       <div class="other-links">
-        <%= link_to t(".sign_in"), sign_in_path %>
+        <%= link_to t(".sign_in"), sign_in_path, class: "defaultLinks" %>
       </div>
     <% end %>
   </div>
 </div>
+<%# </div> %>

@@ -1,21 +1,20 @@
 <h1>EDIT</h1>
 <% if signed_in? %>
   <% if current_user.id === @user.id %>
-    <p>edit ur page</p>
-    <%= form_with(url: edit_user_form_url(user_id: current_user.id)) do |f| %>
-      <div class="">
+    <%= form_with(url: edit_user_form_url(user_id: current_user.id), class: "defaultForm") do |f| %>
+      <div class="inputContainer">
         <%= f.label :name %> <br>
         <%= f.text_field :name, value: @user.name  %>
       </div>
-      <div class="">
+      <div class="inputContainer">
         <%= f.label :profile_picture %> <br>
         <%= f.file_field :profile_picture %>
       </div>
-      <div class="">
+      <div class="inputContainer">
         <%= f.label :profile_banner %> <br>
         <%= f.file_field :profile_banner %>
       </div>
-      <%= f.submit "Save Edits" %>
+      <%= f.submit "save edits", class: "defaultSubmit" %>
     <% end %>
   <% end %>
 <% end %>

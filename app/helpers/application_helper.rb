@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def title_helper(title)
     if title.present?
-      title + "- [soundScapes]"
+      title + "[soundScapes]"
     else
       "[soundScapes]"
     end
