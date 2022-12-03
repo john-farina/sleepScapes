@@ -10,4 +10,5 @@ class Sleepscape < ApplicationRecord
   has_one_attached :sleepscape_still_picture
 
   has_many :comments
+  has_many :categorys
 end

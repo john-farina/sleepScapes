@@ -70,9 +70,43 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
       <div id="infoContainer">
         <h3 class="infoTitle"><%= @sleepscape.title %></h3>
         <h3 class="infoLocation"><%= @sleepscape.recorded_at %></h3>
+        <% @sleepscape.categorys.all.each do |category| %>
+          <p>category: <%= category.category %></p>
+        <% end %>
         <div class="line"></div>
         <p class="infoDescription"><%= @sleepscape.description %></p>
         <% if signed_in? %>
+          <% if @sleepscape.user_id === current_user.id %>
+            <h1>this is ur post</h1>
+            <%= form_with(url: edit_soundscape_url(id: @sleepscape.id)) do |f| %>
+              <div class="checkBoxes">
+                <%# SLEEP %>
+                <%= f.label :sleep_category, "[sleep]" %>
+                <% if @sleepscape.categorys.find_by(category: "sleep") %>
+                  <%= f.check_box :sleep_category, checked: true %>
+                <% else %>
+                  <%= f.check_box :sleep_category %>
+                <% end %>
+                <%# STUDY %>
+                <%= f.label :study_category, "[study]"%>
+                <% if @sleepscape.categorys.find_by(category: "study") %>
+                  <%= f.check_box :study_category, checked: true  %>
+                <% else %>
+                  <%= f.check_box :study_category %>
+                <% end %>
+                <%# DISTRACTION %>
+                <%= f.label :distract_category, "[distraction]" %>
+                <% if @sleepscape.categorys.find_by(category: "distraction") %>
+                  <%= f.check_box :distract_category, checked: true %>
+                <% else %>
+                  <%= f.check_box :distract_category %>
+                <% end %>
+              </div>
+              <%# DISTRACTION %>
+              <%= f.submit %>
+            <% end %>
+          <% end %>
+          <%# ADMIN PANEL %>
           <% if current_user.admin? %>
             <br>
             <h4>admin panel:</h4>
@@ -89,6 +123,7 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
               <% end %>
             <% end %>
           <% end %>
+          <%# END OF ADMIN PANEL %>
         <% end %>
       </div>
       <div id="commentsContainer">

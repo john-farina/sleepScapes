@@ -1405,7 +1405,6 @@ main {
               }
             }
             .right {
-              // background-color: blue;
               width: 15%;
               height: 100%;
             }
@@ -1774,6 +1773,10 @@ main {
               background-color: white;
               margin-top: 5px;
               margin-bottom: 10px;
+            }
+
+            input[type="checkbox"] {
+              background-color: green;
             }
           }
 

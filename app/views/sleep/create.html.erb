@@ -1,6 +1,9 @@
 <% if signed_in? %>
   <% if @user.id === current_user.id %>
     <h1>create</h1>
+    <% if flash[:messages] %>
+      <h2><%= flash[:messages] %></h2>
+    <% end %>
     <%= form_with url: create_form_url(id: current_user.id), class: "defaultForm" do |form|%>
       <div class="inputContainer">
         <%= form.label :title, class: "defaultLabel" %> <br>
@@ -26,7 +29,10 @@
         <%= form.label :description, class: "defaultLabel" %> <br>
         <%= form.text_field :description %>
       </div>
-      <%= form.submit "[upload]" ,class: "defaultSubmit" %>
+      <div class="checkBoxContainer">
+        <%= form.check_box :sleep_category %>
+      </div>
+      <%= form.submit "[upload]", class: "defaultSubmit" %>
     <% end %>
   <% else %>
     <h4>oops... wrong page</h4>

@@ -165,10 +165,57 @@ class SleepController < ApplicationController
     end
 
     if @sleepscape.save
-      redirect_to sleepscape_page_url(user_id: @user.id, sleepscape_id: @sleepscape.id)
+    redirect_to sleepscape_page_url(user_id: @user.id, sleepscape_id: @sleepscape.id)
     else
-
     end
+  end
+
+  def edit_soundscape
+    @soundscape = Sleepscape.find(params[:id])
+
+
+    if params[:study_category] === "1"
+      if !@soundscape.categorys.find_by(category: "study")
+        @soundscape.categorys.new(category: 'study')
+      end
+    end
+
+    if params[:study_category] === "0"
+      if @soundscape.categorys.find_by(category: "study")
+        @soundscape.categorys.find_by(category: "study").destroy
+      end
+    end
+
+    if params[:distract_category] === "1"
+      if !@soundscape.categorys.find_by(category: "distraction")
+        @soundscape.categorys.new(category: 'distraction')
+      end
+    end
+
+    if params[:distract_category] === "0"
+      if @soundscape.categorys.find_by(category: "distraction")
+        @soundscape.categorys.find_by(category: "distraction").destroy
+      end
+    end
+
+    if params[:sleep_category] === "1"
+      if !@soundscape.categorys.find_by(category: "sleep")
+        @soundscape.categorys.new(category: 'sleep')
+      end
+    end
+
+    if params[:sleep_category] === "0"
+      if @soundscape.categorys.find_by(category: "sleep")
+        @soundscape.categorys.find_by(category: "sleep").destroy
+      end
+    end
+
+
+
+    if @soundscape.save
+      redirect_to sleepscape_page_url(user_id: @soundscape.user_id, sleepscape_id: @soundscape.id)
+    end
+
   end
 
   def secret_admin

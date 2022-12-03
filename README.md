@@ -1,7 +1,18 @@
 # sleepScapes *(sleep sounds)*
 
+categorys
+
+- sleep
+- study
+- distraction
+
+sleepscapes has many categorys (MAX 3)
+
+category model (belongs_to sleepscape)
+category:string (which whill be "sleep", "study", "distraction")
+
 ## WHAT I NEED TO FINISH
-- category home pages
+- X category home pages
 - a user generated content page
 - all users page with most followed users etc
 - emails for when you get follows, comments
