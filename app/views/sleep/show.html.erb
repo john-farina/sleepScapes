@@ -1,3 +1,6 @@
+<% content_for :title do %>
+  <%= @user.name %>'s Account
+<% end %>
 <div class="usersPage">
   <div class="userHeader">
     <% if @user.profile_banner.attached? %>

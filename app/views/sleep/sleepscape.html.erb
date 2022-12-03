@@ -1,3 +1,6 @@
+<% content_for :title do %>
+  <%= @sleepscape.title %>
+<% end %>
 <% if @sleepscape.sleepscape_video.attached? %>
   <%= video_tag(url_for(@sleepscape.sleepscape_video), id: "soundscapeVideo" , class: "backgroundImage sleepscapeBackground",autoplay: :autoplay,
 loop: :loop, muted: true, playsinline: true, controls: false) %>

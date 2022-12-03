@@ -3,3 +3,10 @@
 //= link_tree ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
+//= link favicon/apple-touch-icon.png
+//= link favicon/favicon-32x32.png
+//= link favicon/favicon-16x16.png
+//= link favicon/site.webmanifest
+//= link favicon/safari-pinned-tab.svg
+//= link favicon/favicon.ico
+//= link favicon/browserconfig.xml
