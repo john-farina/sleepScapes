@@ -6,3 +6,4 @@ import "./files/audio";
 import "./files/title";
 import "./files/swupConfig";
 import "./files/forms";
+import "./files/footer";
