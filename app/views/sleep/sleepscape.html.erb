@@ -133,6 +133,7 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
                 <br>
                 <%= f.submit "[delete post forever]", class: "defaultSubmit defaultDelete", onclick: "return confirm('Are you sure you want to delete this post forever?')" %>
               <% end %>
+              <br>
             <% end %>
             <%# ADMIN PANEL %>
             <% if current_user.admin? %>
@@ -149,6 +150,10 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
                   <%= f.hidden_field :liked_id, value: @sleepscape.id %>
                   <%= f.submit "Add Admin like" %>
                 <% end %>
+              <% end %>
+              <%= form_with(url: delete_soundscape_url(id: @sleepscape.id),method: "DELETE") do |f| %>
+                <br>
+                <%= f.submit "[delete users post forever]", onclick: "return confirm('Are you sure you want to delete this post forever?')" %>
               <% end %>
             </div>
           <% end %>

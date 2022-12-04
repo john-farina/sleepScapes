@@ -15,12 +15,33 @@ class SleepController < ApplicationController
   end
 
   def sleep_home
+    @all_sleepscapes = []
+    sleepscapes = Category.where(:category => "sleep")
+    x = 0
+    while x < sleepscapes.length
+      @all_sleepscapes.push(Sleepscape.find(sleepscapes[x].sleepscape_id))
+      x = x + 1
+    end
   end
 
   def study_home
+    @all_studyscapes = []
+    sleepscapes = Category.where(:category => "study")
+    x = 0
+    while x < sleepscapes.length
+      @all_studyscapes.push(Sleepscape.find(sleepscapes[x].sleepscape_id))
+      x = x + 1
+    end
   end
 
   def distraction_home
+    @all_distractscapes = []
+    sleepscapes = Category.where(:category => "distraction")
+    x = 0
+    while x < sleepscapes.length
+      @all_distractscapes.push(Sleepscape.find(sleepscapes[x].sleepscape_id))
+      x = x + 1
+    end
   end
 
   def curated_home
