@@ -1365,6 +1365,7 @@ main {
           }
 
           .bottom {
+            position: relative;
             height: 40px;
             display: flex;
             background-color: rgba(29, 29, 29, 0.007);
@@ -1378,7 +1379,7 @@ main {
               align-items: start;
               justify-content: center;
               // background-color: red;
-              width: 85%;
+              width: 75%;
               height: 100%;
 
               .soundScapeTitle {
@@ -1405,8 +1406,47 @@ main {
               }
             }
             .right {
-              width: 15%;
-              height: 100%;
+              position: absolute;
+              right: 0;
+              width: 100px;
+              height: 90%;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: end;
+              -webkit-justify-content: flex-end;
+              -webkit-align-items: center;
+              // padding-right: 2px;
+              padding-right: 3px;
+              gap: 3px;
+
+              .categoryBox {
+                width: 30px;
+                height: 30px;
+                min-width: 30px;
+                min-height: 30px;
+                background-color: rgb(39, 39, 39);
+                border-radius: 4px;
+                opacity: 80%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .categoryicon {
+                  width: 70%;
+                  opacity: 60%;
+                }
+              }
+
+              .sleepBox {
+                background-color: $sleepPurple;
+              }
+              .distractBox {
+                background-color: $distractionRed;
+              }
+              .studyBox {
+                background-color: $studyGreen;
+              }
             }
           }
         }
@@ -1802,7 +1842,7 @@ main {
             display: flex;
             flex-direction: column;
             width: 100%;
-            gap: 3px;
+
             .commentsBox {
               padding-top: 10px;
               display: flex;
@@ -1819,55 +1859,84 @@ main {
               .comment {
                 position: relative;
                 display: flex;
+                flex-direction: column;
                 width: 100%;
-                height: 75px;
-                min-height: 75px;
+                height: 105px;
+                min-height: 105px;
+                gap: 2px;
+                max-width: 750px;
+                margin-bottom: -10px;
                 // background-color: gray;
 
-                .timeAgoText {
-                  position: absolute;
-                  bottom: 0;
-                  right: 0;
-                  margin-bottom: -20px;
-                }
-                .left {
+                .top {
                   display: flex;
-                  flex-direction: column;
+                  flex-direction: row;
                   align-items: center;
                   gap: 5px;
-                  justify-content: end;
-                  height: 100%;
-                  width: 15%;
+                  justify-content: start;
+                  height: 30%;
+                  width: 100%;
+                  position: relative;
                   // background-color: rgba(0, 0, 0, 0.202);
 
-                  .userPicture {
-                    width: 42px;
-                    height: 42px;
-                    background-color: blue;
-                    border-radius: 5px;
-                    border: 0.5px white solid;
-                    margin-right: -10px;
-                    margin-bottom: -2px;
+                  a {
+                    min-width: 130px;
+                    width: 150px;
+                    max-width: 350px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    padding-left: 3px;
+                    gap: 5px;
 
-                    .commentPic {
-                      width: 100%;
-                      height: 100%;
+                    .userPicture {
+                      width: 25px;
+                      height: 25px;
+                      background-color: rgb(31, 31, 31);
                       border-radius: 5px;
+                      border: 0.5px white solid;
+                      margin-left: 2px;
+                      // margin-bottom: -2px;
+
+                      .commentPic {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 5px;
+                      }
+                    }
+
+                    .userName {
+                      text-align: center;
+                      font-size: 0.9rem;
+                      font-weight: 600;
+                      letter-spacing: 1px;
+                    }
+
+                    .commentVerified {
+                      width: 20px;
+                      margin-left: -4px;
+                      filter: $blueAccentFILTER brightness(130%);
                     }
                   }
 
-                  .userName {
-                    text-align: center;
-                    font-size: 0.7rem;
+                  .timeAgoText {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    margin-right: 4px;
+                    font-size: 0.9rem;
+                    font-weight: 200;
+                    letter-spacing: 1px;
                   }
                 }
-                .right {
+                .bottom {
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   // background-color: blue;
-                  height: 100%;
-                  width: 85%;
+                  height: 70%;
+                  width: 100%;
 
                   .bubble {
                     width: 99%;
@@ -1878,7 +1947,8 @@ main {
                     padding-right: 5px;
 
                     .commentText {
-                      font: 0.6rem;
+                      font-size: 0.9rem;
+                      font-weight: 400;
                       margin-left: 5px;
                       margin-top: 5px;
                       word-wrap: break-word;
@@ -1943,6 +2013,19 @@ main {
                   &:active {
                     filter: brightness(110%);
                   }
+                }
+              }
+
+              .signInCommentBox {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                // background-color: green;
+
+                p {
+                  font-size: 0.9rem;
                 }
               }
             }

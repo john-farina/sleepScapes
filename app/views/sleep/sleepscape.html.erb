@@ -165,18 +165,23 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
           <% @comments.each do |comment| %>
             <% commentUser = User.find(comment.user_id) %>
             <div class="comment">
-              <p class="timeAgoText"><%= time_ago_in_words(comment.created_at) %> ago</p>
-              <div class="left">
-                <div class="userPicture">
-                  <% if commentUser.profile_picture.attached? %>
-                    <%= image_tag(commentUser.profile_picture, class: "commentPic")%>
-                  <% else %>
-                    <%= image_tag("defaultUser", class: "commentPic")%>
+              <div class="top">
+                <a href=<%= user_page_url(id: commentUser.id) %>>
+                  <div class="userPicture">
+                    <% if commentUser.profile_picture.attached? %>
+                      <%= image_tag(commentUser.profile_picture, class: "commentPic")%>
+                    <% else %>
+                      <%= image_tag("defaultUser", class: "commentPic")%>
+                    <% end %>
+                  </div>
+                  <div class="userName"><%= commentUser.name %></div>
+                  <% if commentUser.admin? %>
+                    <%= image_tag("verifiedIcon", class: "commentVerified") %>
                   <% end %>
-                </div>
-                <div class="userName"><%= commentUser.name %></div>
+                </a>
+                <p class="timeAgoText"><%= time_ago_in_words(comment.created_at) %> ago</p>
               </div>
-              <div class="right">
+              <div class="bottom">
                 <div class="bubble">
                   <p class="commentText"><%= comment.content %></p>
                 </div>
@@ -191,6 +196,10 @@ loop: :loop, muted: true, playsinline: true, controls: false) %>
               <%= form.text_field :content, class: "commentTextInput", placeholder: "Type your comment here!" %>
               <%= form.submit :submit, class: "commentSubmit" %>
             <% end %>
+          <% else %>
+            <div class="signInCommentBox">
+              <p>Sign up/Sign in to post a comment!</p>
+            </div>
           <% end %>
         </div>
       </div>

@@ -58,7 +58,28 @@
             <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
           </div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+          <% if sleep.categorys.length === 0 %>
+          <% else %>
+            <% sleep.categorys.each do |category| %>
+              <% if category.category === "sleep" %>
+                <div class="categoryBox sleepBox">
+                  <%= image_tag("sleepIcon", class: "categoryicon") %>
+                </div>
+              <% end %>
+              <% if category.category === "distraction" %>
+                <div class="categoryBox distractBox">
+                  <%= image_tag("headphoneIcon", class: "categoryicon") %>
+                </div>
+              <% end %>
+              <% if category.category === "study" %>
+                <div class="categoryBox studyBox">
+                  <%= image_tag("studyIcon", class: "categoryicon") %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -126,7 +147,28 @@
             <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
           </div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+          <% if sleep.categorys.length === 0 %>
+          <% else %>
+            <% sleep.categorys.each do |category| %>
+              <% if category.category === "sleep" %>
+                <div class="categoryBox sleepBox">
+                  <%= image_tag("sleepIcon", class: "categoryicon") %>
+                </div>
+              <% end %>
+              <% if category.category === "distraction" %>
+                <div class="categoryBox distractBox">
+                  <%= image_tag("headphoneIcon", class: "categoryicon") %>
+                </div>
+              <% end %>
+              <% if category.category === "study" %>
+                <div class="categoryBox studyBox">
+                  <%= image_tag("studyIcon", class: "categoryicon") %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
