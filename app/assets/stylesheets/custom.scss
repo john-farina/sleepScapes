@@ -1371,8 +1371,10 @@ main {
             background-color: rgba(29, 29, 29, 0.007);
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
-            justify-content: space-evenly;
+            justify-content: start;
+            align-items: center;
             .left {
+              // background-color: red;
               padding-left: 10px;
               display: flex;
               flex-direction: column;
@@ -1734,8 +1736,10 @@ main {
 
             .commentsNum {
               font-size: 0.6rem;
-              margin-bottom: 6px;
+              margin-bottom: 3px;
               margin-left: 1px;
+              -webkit-margin-before: -2px;
+              -webkit-margin-start: 0px;
             }
             &:hover {
               background-color: white;
