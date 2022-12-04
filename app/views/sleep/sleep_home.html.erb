@@ -1,3 +1,4 @@
+<% content_for :title do %>sleepDefaultTitleWierdName_-_-<% end %>
 <div class="homeContainer categoryContainer" id="homePage">
   <a class="pageATag" href="/home">
     <h1 class="homeTitle sleepTitle">[sleepScapes]</h1>
@@ -17,7 +18,7 @@
         <div class="left">
           <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
         </div>
-        <div class="right">
+        <div class="right">/sleepscape/14/1
           <div class="comments">
             <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
             <%= image_tag("comments", class: "soundscapeIcon comments") %>
