@@ -272,6 +272,7 @@ class SleepController < ApplicationController
 
   def delete_soundscape
     @soundscape = Sleepscape.find(params[:id])
+
    if @soundscape.destroy
     redirect_to user_page_url(id: @soundscape.user_id)
    end
