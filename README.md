@@ -16,7 +16,7 @@ category:string (which whill be "sleep", "study", "distraction")
 - a user generated content page
 - all users page with most followed users etc
 - emails for when you get follows, comments
-- edit videos/photos before i save them to databse
+- (working on now) edit videos/photos before i save them to databse
 - record 8-10 admin soundscapes
 - use 6-7 fake ones from free internet content
 
