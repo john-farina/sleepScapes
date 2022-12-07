@@ -7,7 +7,6 @@ categorys
 - distraction
 
 sleepscapes has many categorys (MAX 3)
-
 category model (belongs_to sleepscape)
 category:string (which whill be "sleep", "study", "distraction")
 
