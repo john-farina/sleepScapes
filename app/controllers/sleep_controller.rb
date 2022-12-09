@@ -34,6 +34,8 @@ class SleepController < ApplicationController
 
       x = x + 1
     end
+
+    @random_post = @curated_sleepscapes[ rand(@curated_sleepscapes.length) ]
   end
 
   def study_home
@@ -51,16 +53,26 @@ class SleepController < ApplicationController
 
       x = x + 1
     end
+
+    @random_post = @curated_studyscapes[ rand(@curated_studyscapes.length) ]
   end
 
   def distraction_home
     @all_distractscapes = []
+    @curated_distractscapes = []
     sleepscapes = Category.where(:category => "distraction")
     x = 0
+
     while x < sleepscapes.length
       @all_distractscapes.push(Sleepscape.find(sleepscapes[x].sleepscape_id))
+
+      if AdminLike.find_by(liked_id: sleepscapes[x].sleepscape_id)
+        @curated_distractscapes.push(Sleepscape.find(sleepscapes[x].sleepscape_id))
+      end
       x = x + 1
     end
+
+    @random_post = @curated_distractscapes[ rand(@curated_distractscapes.length) ]
   end
 
   def curated_home
@@ -70,6 +82,7 @@ class SleepController < ApplicationController
   end
 
   def users_home
+    @all_users = User.all
   end
 
   def show

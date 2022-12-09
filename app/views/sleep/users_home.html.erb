@@ -1,1 +1,30 @@
-<h1>All Users</h1>
+<div class="homeContainer categoryContainer allUsersContainer">
+  <div class="homeContainer categoryContainer" id="homePage">
+    <a class="pageATag" href="/home">
+      <h1 class="homeTitle">[users].all</h1>
+    </a>
+    <%# <input type="text" name="" id=""> %>
+    <div class="headerContainer homeHeaderContainer categoryHeader">
+      <p class="defaultPageHeader homeHeader">topThree <span class="blue first">[</span>users<span class="blue">]</span></p>
+    </div>
+    <div class="headerContainer homeHeaderContainer categoryHeader">
+      <p class="defaultPageHeader homeHeader"><span class="blue first">[</span>users<span class="blue">]</span>.all</p>
+    </div>
+    <div class="allUsersGrid">
+      <% @all_users.each do |user| %>
+        <a href=<%= user_page_url(id: user.id) %>>
+          <div class="gridItem">
+            <div class="userImage">
+              <% if user.profile_picture.attached? %>
+                <% url = url_for(user.profile_picture) %>
+              <% else %>
+                <% url = "defaultUser" %>
+              <% end %>
+              <%= image_tag(url, class: "image") %>
+            </div>
+          <p class="userName"><%= user.name %></p>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

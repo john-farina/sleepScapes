@@ -3,44 +3,98 @@
   <a class="pageATag" href="/home">
     <h1 class="homeTitle distractionTitle">[distractionScapes]</h1>
   </a>
-  <div class="headerContainer homeHeaderContainer categoryHeader">
-    <p class="defaultPageHeader homeHeader">curated <span class="red first">[</span>distractionScapes<span class="red">]</span></p>
+  <a href=<%= sleepscape_page_url(user_id: @random_post.user_id, sleepscape_id: @random_post.id) %>>
+    <div class="recommendContainer">
+      <%= image_tag(@random_post.sleepscape_still_picture, class: "recommendPic") %>
+      <div class="recomendInfoContainer">
+    <div class="bottomBox">
+      <p class="bottomHeader">Recommended:</p>
+      <div class="info">
+        <p class="infoTitle"><%= @random_post.title %></p>
+        <p><%= @random_post.recorded_at %></p>
+      </div>
+    </div>
   </div>
-  <% @all_distractscapes.each do |sleep| %>
-    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+</div>
+</a>
+<div class="headerContainer homeHeaderContainer categoryHeader">
+  <p class="defaultPageHeader homeHeader">curated <span class="red first">[</span>distractionScapes<span class="red">]</span></p>
+</div>
+<% @curated_distractscapes.each do |sleep| %>
+  <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
         <div class="soundScapeContainer">
           <div class="loadingBackground">
           <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
           </div>
           <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
           <div class="infoContainer">
-      <div class="top">
-        <div class="left">
-          <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-        </div>
-        <div class="right">
-          <div class="comments">
-            <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-            <%= image_tag("comments", class: "soundscapeIcon comments") %>
-          </div>
-          <div class="likes">
-            <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-            <%= image_tag("heart", class: "soundscapeIcon heart") %>
-          </div>
-        </div>
+    <div class="top">
+      <div class="left">
+        <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
       </div>
-      <div class="bottom">
-        <div class="left">
-          <p class="soundScapeTitle"><%= sleep.title %></p>
-          <div class="locationContainer">
-            <%= image_tag("locationIcon", class: "locationIcon") %>
-            <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-          </div>
+      <div class="right">
+        <div class="comments">
+          <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+          <%= image_tag("comments", class: "soundscapeIcon comments") %>
         </div>
-        <div class="right"></div>
+        <div class="likes">
+          <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+          <%= image_tag("heart", class: "soundscapeIcon heart") %>
+        </div>
       </div>
     </div>
+    <div class="bottom">
+      <div class="left">
+        <p class="soundScapeTitle"><%= sleep.title %></p>
+        <div class="locationContainer">
+          <%= image_tag("locationIcon", class: "locationIcon") %>
+          <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
   </div>
+</div>
+</a>
+<% end %>
+<div class="headerContainer homeHeaderContainer categoryHeader">
+  <p class="defaultPageHeader homeHeader">recent <span class="red first">[</span>distractionScapes<span class="red">]</span></p>
+</div>
+<% @all_distractscapes.each do |sleep| %>
+  <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
+        <div class="soundScapeContainer">
+          <div class="loadingBackground">
+          <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
+          </div>
+          <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
+          <div class="infoContainer">
+    <div class="top">
+      <div class="left">
+        <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
+      </div>
+      <div class="right">
+        <div class="comments">
+          <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+          <%= image_tag("comments", class: "soundscapeIcon comments") %>
+        </div>
+        <div class="likes">
+          <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+          <%= image_tag("heart", class: "soundscapeIcon heart") %>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="left">
+        <p class="soundScapeTitle"><%= sleep.title %></p>
+        <div class="locationContainer">
+          <%= image_tag("locationIcon", class: "locationIcon") %>
+          <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
+  </div>
+</div>
 </a>
 <% end %>
 </div>
