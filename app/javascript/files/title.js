@@ -4,38 +4,33 @@ const backVideo = document.querySelector("#indexVideo");
 const rootPage = document.querySelector("#rootPage");
 
 if (animationCont) {
-  setTimeout(() => {
+  backVideo.controls = false;
+  backVideo.play();
+
+  function addRemoveAnimationClass() {
     animationCont.classList.add("scrollAnimation");
     animationGoing = true;
     setTimeout(() => {
-      backVideo.controls = false;
-      backVideo.play();
       animationCont.classList.remove("scrollAnimation");
       animationGoing = false;
     }, 1700);
+  }
+
+  setTimeout(() => {
+    addRemoveAnimationClass();
   }, 400);
 
   animationCont.addEventListener("click", () => {
     backVideo.play();
     if (!animationGoing) {
-      animationCont.classList.add("scrollAnimation");
-      animationGoing = true;
-      setTimeout(() => {
-        animationCont.classList.remove("scrollAnimation");
-        animationGoing = false;
-      }, 1700);
+      addRemoveAnimationClass();
     }
   });
 
   rootPage.addEventListener("click", () => {
     backVideo.play();
     if (!animationGoing) {
-      animationCont.classList.add("scrollAnimation");
-      animationGoing = true;
-      setTimeout(() => {
-        animationCont.classList.remove("scrollAnimation");
-        animationGoing = false;
-      }, 1700);
+      addRemoveAnimationClass();
     }
   });
 }

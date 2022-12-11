@@ -87,14 +87,4 @@ menuBtn.addEventListener("click", () => {
   }
 });
 
-if (rootPage) {
-  closeHeader();
-}
-
-if (homePage) {
-  closeHeader();
-}
-
-if (soundscapePage) {
-  closeHeader();
-}
+closeHeader();

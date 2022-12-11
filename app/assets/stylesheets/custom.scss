@@ -1873,7 +1873,7 @@ main {
         }
 
         .bottomContainer {
-          display: none;
+          // display: flex;
           width: 100%;
           height: 250px;
           // background-color: blue;
@@ -1893,6 +1893,51 @@ main {
             .infoLocation {
               font-size: 1rem;
             }
+
+            .tagContainers {
+              margin-top: 5px;
+              margin-bottom: -5px;
+              width: 100%;
+              height: 30px;
+              min-height: 30px;
+              display: flex;
+              gap: 10px;
+
+              a {
+                width: 30px;
+                height: 30px;
+
+                .categoryTag {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 4px;
+                  font-size: 0.2rem;
+                  width: 30px;
+                  height: 30px;
+
+                  .categoryIcon {
+                    width: 60%;
+                    opacity: 60%;
+                  }
+                }
+              }
+              .sleep {
+                background-color: $sleepPurple;
+              }
+              .study {
+                background-color: $studyGreen;
+              }
+              .distraction {
+                background-color: $distractionRed;
+              }
+            }
+
+            .infoDescription {
+              font-size: 0.9rem;
+              letter-spacing: 0.4px;
+            }
+
             .line {
               width: 100%;
               height: 0.3px;
