@@ -321,9 +321,9 @@ class SleepController < ApplicationController
     end
   end
 
-  private
+    private
 
-  def get_params
-    params.permit(:title, :recorded_at, :description, :sleepscape_video, :sleepscape_audio, :sleepscape_still_picture)
-  end
+    def get_params
+      params.permit(:title, :recorded_at, :description, :sleepscape_video, :sleepscape_audio, :sleepscape_still_picture)
+    end
 end
