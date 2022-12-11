@@ -14,7 +14,6 @@ class SleepController < ApplicationController
     admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
     @random_post = Sleepscape.find(admin_like.liked_id)
     @admin_likes = AdminLike.all
-
     @recent_posts = Sleepscape.order('created_at DESC').limit(4)
     @recent_users = User.order('created_at DESC').limit(6)
   end
@@ -69,6 +68,7 @@ class SleepController < ApplicationController
       if AdminLike.find_by(liked_id: sleepscapes[x].sleepscape_id)
         @curated_distractscapes.push(Sleepscape.find(sleepscapes[x].sleepscape_id))
       end
+
       x = x + 1
     end
 
@@ -289,6 +289,7 @@ class SleepController < ApplicationController
    if @soundscape.destroy
     redirect_to user_page_url(id: @soundscape.user_id)
    end
+
   end
 
   def secret_admin
