@@ -410,11 +410,9 @@ main {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          // background-color: red;
           overflow-y: hidden;
           min-height: 32px;
           max-height: 32px;
-          // background-color: blue;
           min-width: 130px;
           max-width: 130px;
           margin-right: -2px;
@@ -429,7 +427,6 @@ main {
             align-items: center;
             justify-content: center;
             .firstWord {
-              // margin-bottom: 50px;
               margin: 0;
             }
           }
