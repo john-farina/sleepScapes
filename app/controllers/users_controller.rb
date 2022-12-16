@@ -2,6 +2,7 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = user_from_params
+
     #not allowing swears in names
     if Obscenity.profane?(@user.name)
     else

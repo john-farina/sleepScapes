@@ -76,9 +76,11 @@ class SleepController < ApplicationController
   end
 
   def curated_home
+
   end
 
   def recent_soundscapes_home
+
   end
 
   def users_home
