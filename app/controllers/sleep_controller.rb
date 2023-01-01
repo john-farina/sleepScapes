@@ -1,4 +1,5 @@
 class SleepController < ApplicationController
+  # happy new years
   def index
     @users = User.all
     admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
@@ -7,7 +8,7 @@ class SleepController < ApplicationController
 
   def testing
     movie = FFMPEG::Movie.new(url_for(Sleepscape.fifth.sleepscape_video))
-   @screenshot = movie.screenshot("screenshot.jpg", seek_time: 2)
+    @screenshot = movie.screenshot("screenshot.jpg", seek_time: 2)
   end
 
   def home

@@ -1,41 +1,52 @@
 <% if signed_in? %>
   <% if @user.id === current_user.id %>
     <h1>create</h1>
+
     <% if flash[:messages] %>
       <h2><%= flash[:messages] %></h2>
     <% end %>
+
     <%= form_with url: create_form_url(id: current_user.id), class: "defaultForm" do |form|%>
       <div class="inputContainer">
         <%= form.label :title, class: "defaultLabel" %> <br>
         <%= form.text_field :title %>
       </div>
+
       <div class="inputContainer">
         <%= form.label :recorded_at, "Location", class: "defaultLabel" %> <br>
         <%= form.text_field :recorded_at %>
       </div>
+
       <div class="inputContainer">
         <%= form.label :sleepscape_video, "video[soundScape]" ,class: "defaultLabel" %>
         <%= form.file_field :sleepscape_video, id: "soundscapeVideo" %>
       </div>
+
       <div class="inputContainer">
         <%= form.label :sleepscape_still_picture, "stillPicture[soundScape]", class: "defaultLabel" %> <br>
         <%= form.file_field :sleepscape_still_picture %>
       </div>
+
       <div class="inputContainer">
         <%= form.label :sleepscape_audio, "audio[soundScape]", class: "defaultLabel" %> <br>
         <%= form.file_field :sleepscape_audio %>
       </div>
+
       <div class="inputContainer">
         <%= form.label :description, class: "defaultLabel" %> <br>
         <%= form.text_field :description %>
       </div>
+
       <div class="checkBoxContainer">
         <%= form.check_box :sleep_category %>
       </div>
+
       <%= form.submit "[upload]", class: "defaultSubmit" %>
     <% end %>
+
   <% else %>
     <h4>oops... wrong page</h4>
+
     <a href=<%= create_url(id: current_user) %>>try this link instead</a>
   <% end %>
 <% end %>
