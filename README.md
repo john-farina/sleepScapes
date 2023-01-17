@@ -13,6 +13,29 @@
 </div>
 
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Rails</a>
+      <ul>
+        <li><a>Models</a></li>
+        <li><a>Controller</a></li>
+        <li><a>Views</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -27,8 +50,8 @@ I then manipulate the DOM to place a random fortune after Zoltar has spoken wisd
 <br/>
 
 ### Built With
- - Javascript
- - CSS
+ - Ruby on Rails
+ - SCSS
 <br/>
 <br/>
 <!-- USAGE EXAMPLES -->
@@ -49,7 +72,23 @@ Project Link: [github.com/john-farina/Zoltar](https://github.com/john-farina/sle
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-////////////////////////
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 # sleepScapes *(sleep sounds)*
 
