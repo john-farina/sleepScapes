@@ -12,6 +12,7 @@ gem "clearance"
 gem 'htmlbeautifier'
 gem 'aws-sdk-s3'
 gem 'obscenity' # censor swears
+gem 'haml'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
