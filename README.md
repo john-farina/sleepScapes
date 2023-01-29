@@ -72,6 +72,7 @@ Each user has their own page where they can see the posts they have created, the
 
 ### Built With
  - Ruby on Rails
+ - AWS
  - JavaScript
  - HTML
  - SCSS
@@ -94,6 +95,13 @@ The Soundscape controller is controlling everything to do with Posting, viewing,
 the soundScapes model has_many: comments, and likes. The comments and likes are being produced by join tables which are storing a id to the user that liked it, etc.
 
 #### **Users**
+The users are being controlled with Clearance for the best authentication and security i needed for this project, and added on top of the included Model and Controller. <br/>
+Users on soundScapes can Follow other users, like posts and comment, these things are linked to the user. User's likes will show up on their profile to save it for later. <br/>
+Users can also edit their Name, Profile Picture, or Profile Banner as well. without messing with any other value that they do not want to edit.
+
+## Database
+For the saved User Images, soundScape videos and all other large files i am using `Rails Action Storage` that links with `AWS S3`. I chose AWS because i find it is the most reliable and easily scalable with not being too expensive if the website ever gets popular. <br/>
+For the base databse i am using Postgres in production this i found works best with rails and makes it very easy to control and view what i am doing specifically.
 
 <!-- USAGE EXAMPLES -->
 
