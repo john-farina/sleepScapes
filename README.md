@@ -121,8 +121,7 @@ Project Link: [github.com/john-farina/Zoltar](https://github.com/john-farina/sle
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<br/>
+<!-- <br/>
 <br/>
 <br/>
 <br/>
@@ -196,4 +195,4 @@ category:string (which whill be "sleep", "study", "distraction")
 
 ### *SLEEPSCAPES*
 #### - has_many *COMMENTS*
-#### - has_many *LIKES?* *(think ill be getting these from the user model relations and just counting how many has the post id or something)*
+#### - has_many *LIKES?* *(think ill be getting these from the user model relations and just counting how many has the post id or something)* -->
