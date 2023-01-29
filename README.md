@@ -47,6 +47,7 @@ MAIN:
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+   <li><a href="#structure">Structure</a></li>
       </ul>
     </li>
     <li>
@@ -74,7 +75,6 @@ Each user has their own page where they can see the posts they have created, the
  - JavaScript
  - HTML
  - SCSS
-<br/>
 
 ### Structure
 Here are the main folders i used for this project.
@@ -85,7 +85,15 @@ Here are the main folders i used for this project.
 
 ## Rails
 
-### Models
+### Controllers
+#### **Home Pages**
+The Home Pages are all the same with different parameters, the Main homepage is all of the Soundscapes mixed together so all of them, but for studyScapes for example everything on that page needs to have the study tag or else it wont show up. Giving a sence of orginization on the site.
+
+#### **Soundscape**
+The Soundscape controller is controlling everything to do with Posting, viewing, deleting soundscapes. Allowing users to Like and comment on posts. And removing those likes or commenst. <br/>
+the soundScapes model has_many: comments, and likes. The comments and likes are being produced by join tables which are storing a id to the user that liked it, etc.
+
+#### **Users**
 
 <!-- USAGE EXAMPLES -->
 
