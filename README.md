@@ -29,7 +29,8 @@ MAIN:
 <br />
 <div align="center">
 
-<h1 align="center">[soundScapes] - Background Noise App</h1>
+
+<h1 align="center">[soundScapes]</h1>
 
   <p align="center">
   This app is intended to use for sleeping, studying, or just a distraction. Users can create accounts, post their own <i>soundScapes</i>, follow users, comment, like posts, and more.
@@ -70,8 +71,17 @@ Each user has their own page where they can see the posts they have created, the
 
 ### Built With
  - Ruby on Rails
+ - JavaScript
+ - HTML
  - SCSS
 <br/>
+
+### Structure
+Here are the main folders i used for this project.
+
+- <a href="">`app/controllers/`</a>
+- <a href="">`app/javascript/files/`</a>
+- <a href="">`app/views/home_pages/`</a>
 
 ## Rails
 
@@ -79,12 +89,6 @@ Each user has their own page where they can see the posts they have created, the
 
 <!-- USAGE EXAMPLES -->
 
-## Structure
-Here are the main folders i used for this project.
-
-- <a href="">`app/controllers/`</a>
-- <a href="">`app/javascript/files/`</a>
-- <a href="">`app/views/home_pages/`</a>
 
 ## Usage
 
