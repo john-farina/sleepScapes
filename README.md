@@ -41,11 +41,8 @@
 
 For this project I used layers of images then animated, and oriented it with CSS. Using Javascript to add and remove animations as well. Created design with Images, and pure CSS.
 
-<img src="./src/img/ZoltarFirst.gif" alt="a gif of Zoltar with hand moving and lamps flickering" />
 
 I then manipulate the DOM to place a random fortune after Zoltar has spoken wisdom, which is randomized and played using [Howler](howler.link) The random fortunes come from an array and generates a unique set of lucky numbers for each fortune.
-
-<img src="./src/img/ZoltarSecond.gif" alt="Zoltars fortune sliding down the screen and closing it" />
 
 <br/>
 
@@ -55,6 +52,12 @@ I then manipulate the DOM to place a random fortune after Zoltar has spoken wisd
 <br/>
 <br/>
 <!-- USAGE EXAMPLES -->
+
+## Structure
+Here is the file structure for this project,
+- <a href="">`app/controllers/`</a>
+- <a href="">`app/javascript/files/`</a>
+- <a href="">`app/views/home_pages/`</a>
 
 ## Usage
 
