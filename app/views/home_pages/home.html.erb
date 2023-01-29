@@ -122,7 +122,9 @@
           <div class="loadingBackground">
           <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
           </div>
-          <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
+          <% if sleep.sleepscape_still_picture.attached? %>
+            <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
+          <% end %>
           <div class="infoContainer">
       <div class="top">
         <div class="left">

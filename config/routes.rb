@@ -15,39 +15,38 @@ Rails.application.routes.draw do
   get "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
-  get "/home" => "sleep#home", as: "home"
+  get "/home" => "home_pages#home", as: "home"
+  get "/sleepscapes" => "home_pages#sleep_home", as: 'sleepscapes_home'
+  get "/studyscapes" => "home_pages#study_home", as: 'studyscapes_home'
+  get "/distractionscapes" => "home_pages#distraction_home", as: 'distractionscapes_home'
+  get "/curated" => "home_pages#curated_home", as: 'curated_home'
+  get "/recent" => "home_pages#recent_soundscapes_home", as: "recent_soundscapes_home"
+  get "/users" => "home_pages#users_home", as: 'users_home'
 
-  get "/sleepscapes" => "sleep#sleep_home", as: 'sleepscapes_home'
-  get "/studyscapes" => "sleep#study_home", as: 'studyscapes_home'
-  get "/distractionscapes" => "sleep#distraction_home", as: 'distractionscapes_home'
+  get "/edit/:id" => "users#edit_user", as: 'edit_user'
+  post "/edit/:user_id" => "users#edit_user_form", as: 'edit_user_form'
 
-  get "/curated" => "sleep#curated_home", as: 'curated_home'
-  get "/recent" => "sleep#recent_soundscapes_home", as: "recent_soundscapes_home"
+  get '/user/:id', to: 'users#show', as: 'user_page'
+  get '/user/:id/following', to: 'users#following', as: 'user_following'
+  get '/user/:id/followers', to: 'users#followers', as: 'user_followers'
+  post '/:user_id/follow', to: 'users#add_following', as: 'add_following'
+  post '/:user_id/remove_follow', to: 'users#remove_following', as: 'remove_following'
 
-  get "/users" => "sleep#users_home", as: 'users_home'
-
-  get "/edit/:id" => "sleep#edit_user", as: 'edit_user'
-  post "/edit/:user_id" => "sleep#edit_user_form", as: 'edit_user_form'
-
-  get '/user/:id', to: 'sleep#show', as: 'user_page'
-  get '/user/:id/following', to: 'sleep#following', as: 'user_following'
-  get '/user/:id/followers', to: 'sleep#followers', as: 'user_followers'
-  post '/:user_id/follow', to: 'sleep#add_following', as: 'add_following'
-  post '/:user_id/remove_follow', to: 'sleep#remove_following', as: 'remove_following'
-  get '/user/:id/create', to: 'sleep#create', as: 'create'
-  post '/user/:id/create', to: 'sleep#create', as: 'create_form'
 
   # get '/secret/very/very/secret', to: 'sleep#secret_admin'
-  post '/secret', to: 'sleep#create_secret_admin', as: 'secret_admin'
-  post '/admin_like', to: 'sleep#admin_like', as: 'admin_like'
-  post '/admin_dislike', to: 'sleep#admin_dislike', as: 'admin_dislike'
+  post '/secret', to: 'soundscape#create_secret_admin', as: 'secret_admin'
+  post '/admin_like', to: 'soundscape#admin_like', as: 'admin_like'
+  post '/admin_dislike', to: 'soundscape#admin_dislike', as: 'admin_dislike'
 
-  get '/sleepscape/:sleepscape_id/:user_id', to: 'sleep#sleepscape', as: 'sleepscape_page'
-  post '/:sleepscape_id', to: 'sleep#like_sleepscape', as: 'like_sleepscape'
-  post '/:user_id/remove_like', to: 'sleep#remove_like_sleepscape', as: 'remove_like_sleepscape'
-  post '/comment/:sleepscape_id', to: 'sleep#create_comment', as: 'create_comment'
-  post '/edit/soundscape/:id', to: 'sleep#edit_soundscape', as: 'edit_soundscape'
-  delete '/delete/soundscape/:id', to: 'sleep#delete_soundscape', as: 'delete_soundscape'
+  get '/user/:id/create', to: 'soundscape#create', as: 'create'
+  post '/user/:id/create', to: 'soundscape#create', as: 'create_form'
+
+  get '/sleepscape/:sleepscape_id/:user_id', to: 'soundscape#sleepscape', as: 'sleepscape_page'
+  post '/:sleepscape_id', to: 'soundscape#like_sleepscape', as: 'like_sleepscape'
+  post '/comment/:sleepscape_id', to: 'soundscape#create_comment', as: 'create_comment'
+  post '/:user_id/remove_like', to: 'soundscape#remove_like_sleepscape', as: 'remove_like_sleepscape'
+  post '/edit/soundscape/:id', to: 'soundscape#edit_soundscape', as: 'edit_soundscape'
+  delete '/delete/soundscape/:id', to: 'soundscape#delete_soundscape', as: 'delete_soundscape'
 
   get "/testing", to: 'sleep#testing'
 end

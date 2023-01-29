@@ -1,0 +1,2 @@
+module SoundscapeHelper
+end
