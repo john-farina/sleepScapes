@@ -4,9 +4,9 @@ const playBtn = document.querySelector("#scapePlayBtn");
 const pauseBtn = document.querySelector("#scapePauseBtn");
 const volumeSlider = document.querySelector("#audioVolume");
 const soundscapeVideo = document.querySelector("#soundscapeVideo");
-let clickedPage = false;
 const loadingIcon = document.querySelector("#loadingContainer");
 const soundscapeClickBox = document.querySelector("#soundscapeClickBox");
+let clickedPage = false;
 
 if (audioTag) {
   let volumeInterval;
@@ -38,34 +38,33 @@ if (audioTag) {
     loop: true,
     onplay: () => {
       playBtn.style.display = "none";
+
       pauseBtn.style.display = "flex";
     },
     onpause: () => {
       playBtn.style.display = "flex";
+
       pauseBtn.style.display = "none";
     },
   });
 
   volumeSlider.addEventListener("mousedown", () => {
-    console.log("click");
     volumeInterval = setInterval(() => {
       Howler.volume(zeroToHundredDecimal(volumeSlider.value));
     }, 50);
   });
 
   volumeSlider.addEventListener("mouseup", () => {
-    console.log("unclick");
     clearInterval(volumeInterval);
   });
 
-  soundscapeVideo.onloadeddata = function () {
-    // loadingIcon.style.display = "none";
-  };
-
   playBtn.addEventListener("click", () => {
     soundScape.play();
+
     soundscapeVideo.play();
+
     clickedPage = true;
+
     loadingIcon.style.display = "none";
   });
 
@@ -76,7 +75,9 @@ if (audioTag) {
   soundscapeClickBox.addEventListener("click", () => {
     if (!clickedPage) {
       clickedPage = true;
+
       soundScape.play();
+
       soundscapeVideo.play();
     }
   });

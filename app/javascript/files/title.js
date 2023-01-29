@@ -5,23 +5,29 @@ const rootPage = document.querySelector("#rootPage");
 
 if (animationCont) {
   backVideo.controls = false;
+
   backVideo.play();
 
   function addRemoveAnimationClass() {
     animationCont.classList.add("scrollAnimation");
+
     animationGoing = true;
+
     setTimeout(() => {
       animationCont.classList.remove("scrollAnimation");
+
       animationGoing = false;
     }, 1700);
   }
 
+  // start the animation after open
   setTimeout(() => {
     addRemoveAnimationClass();
   }, 400);
 
   animationCont.addEventListener("click", () => {
     backVideo.play();
+
     if (!animationGoing) {
       addRemoveAnimationClass();
     }
@@ -29,6 +35,7 @@ if (animationCont) {
 
   rootPage.addEventListener("click", () => {
     backVideo.play();
+
     if (!animationGoing) {
       addRemoveAnimationClass();
     }

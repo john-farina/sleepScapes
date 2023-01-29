@@ -5,77 +5,65 @@ const commentsBtn = document.querySelector("#commentsBtn");
 const infoContainer = document.querySelector("#infoContainer");
 const commentsContainer = document.querySelector("#commentsContainer");
 let menuIsOpen = false;
+
+function displayFlex(object) {
+  object.style.display = "flex";
+}
+
+function displayNone(object) {
+  object.style.display = "none";
+}
+
 let whichMenu = undefined;
 
 if (sleepscapeMenu) {
-  bottomMenu.style.display = "none";
-  infoContainer.style.display = "none";
-  commentsContainer.style.display = "none";
+  displayNone(bottomMenu);
+  displayNone(infoContainer);
+  displayNone(commentsContainer);
 
   infoBtn.addEventListener("click", () => {
     if (!menuIsOpen && whichMenu === undefined) {
       menuIsOpen = true;
-
-      bottomMenu.style.display = "flex";
-
-      infoContainer.style.display = "flex";
-
       whichMenu = "info";
-      //OPEN WHATEVER MENU IS CLICKED
-      //menuIsOpen = true
-      //log which menu
+
+      displayFlex(bottomMenu);
+      displayFlex(infoContainer);
     } else if (menuIsOpen && whichMenu === "info") {
       menuIsOpen = false;
-
-      bottomMenu.style.display = "none";
-
-      infoContainer.style.display = "none";
-
       whichMenu = undefined;
 
-      //CLOSE THE MENU
-      //menuIsOpen = false
-      //log which menu back to undefined
+      displayNone(bottomMenu);
+      displayNone(infoContainer);
     } else if (menuIsOpen && whichMenu === "comments") {
       menuIsOpen = true;
-
-      commentsContainer.style.display = "none";
-
-      infoContainer.style.display = "flex";
-
       whichMenu = "info";
 
-      //KEEP MENU OPEN BUT CHANGE SCREEN TO THIS ONE
-      //menyIsOpen = true
-      //log which menu
+      displayNone(commentsContainer);
+
+      displayFlex(infoContainer);
     }
   });
 
   commentsBtn.addEventListener("click", () => {
     if (!menuIsOpen && whichMenu === undefined) {
       menuIsOpen = true;
-
-      bottomMenu.style.display = "flex";
-
-      commentsContainer.style.display = "flex";
-
       whichMenu = "comments";
+
+      displayFlex(bottomMenu);
+      displayFlex(commentsContainer);
     } else if (menuIsOpen && whichMenu === "comments") {
       menuIsOpen = false;
-
-      bottomMenu.style.display = "none";
-
-      commentsContainer.style.display = "none";
-
       whichMenu = undefined;
+
+      displayNone(bottomMenu);
+      displayNone(commentsContainer);
     } else if (menuIsOpen && whichMenu === "info") {
       menuIsOpen = true;
-
-      infoContainer.style.display = "none";
-
-      commentsContainer.style.display = "flex";
-
       whichMenu = "comments";
+
+      displayNone(infoContainer);
+
+      displayFlex(commentsContainer);
     }
   });
 }
