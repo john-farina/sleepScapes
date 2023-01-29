@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       only: [:edit, :update]
   end
 
-  root "sleep#index"
+  root "home_pages#index"
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   get "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
   get "/edit/:id" => "users#edit_user", as: 'edit_user'
   post "/edit/:user_id" => "users#edit_user_form", as: 'edit_user_form'
-
   get '/user/:id', to: 'users#show', as: 'user_page'
   get '/user/:id/following', to: 'users#following', as: 'user_following'
   get '/user/:id/followers', to: 'users#followers', as: 'user_followers'

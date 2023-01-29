@@ -1,22 +1,4 @@
 class UsersController < Clearance::UsersController
-
-  def create
-    @user = user_from_params
-
-    #not allowing swears in names
-    if Obscenity.profane?(@user.name)
-    else
-    if @user.save
-      sign_in @user
-     redirect_to home_path
-    else
-      render template: "users/new", status: :unprocessable_entity
-    end
-  end
-  end
-
-  ############ END OF CLEARANCE
-
   def show
     @user = User.find(params[:id])
     @followers = Following.where(:following_id => @user.id)
@@ -25,6 +7,36 @@ class UsersController < Clearance::UsersController
 
   def edit_user
     @user = User.find(params[:id])
+  end
+
+
+  def following
+    @followings = User.find(params[:id]).followings.all
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @followers = Following.where(:following_id => @user.id)
+  end
+
+  def add_following
+    @user = User.find(params[:user_id])
+    @following = @user.followings.new(following_id: params[:follow_id] )
+
+    if @following.save
+      redirect_to  user_page_url(id: params[:follow_id])
+    else
+    end
+  end
+
+  def remove_following
+    @user = User.find(params[:user_id])
+    @following = Following.find_by(following_id: params[:follow_id])
+
+    if @following.destroy
+      redirect_to user_page_url(id: params[:follow_id])
+    else
+    end
   end
 
   def edit_user_form
@@ -58,35 +70,23 @@ class UsersController < Clearance::UsersController
       redirect_to root_path
     end
   end
+  ############ CLEARANCE
+  def create
+    @user = user_from_params
 
-  def following
-    @followings = User.find(params[:id]).followings.all
-  end
-
-  def followers
-    @user = User.find(params[:id])
-    @followers = Following.where(:following_id => @user.id)
-  end
-
-  def add_following
-    @user = User.find(params[:user_id])
-    @following = @user.followings.new(following_id: params[:follow_id] )
-
-    if @following.save
-      redirect_to  user_page_url(id: params[:follow_id])
+    #not allowing swears in names
+    if Obscenity.profane?(@user.name)
     else
+    if @user.save
+      sign_in @user
+     redirect_to home_path
+    else
+      render template: "users/new", status: :unprocessable_entity
     end
   end
-
-  def remove_following
-    @user = User.find(params[:user_id])
-    @following = Following.find_by(following_id: params[:follow_id])
-
-    if @following.destroy
-      redirect_to user_page_url(id: params[:follow_id])
-    else
-    end
   end
+
+
 
   private
 
