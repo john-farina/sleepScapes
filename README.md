@@ -1,5 +1,26 @@
 <a name="readme-top"></a>
 
+what did i do in this project
+MAIN:
+- Created a CRUD app where users can create, read, update, and delete.
+- Users can Follow other users, comment on posts, like posts, and creaste posts.
+- Users can then edit there own posts or delete there own posts.
+- Created home pages with random suggestions for all of the admin chose soundscapes
+- Made a admin chosen Soundscape list where i can accept any soundscape for it to get added to the reccomended so there is a quality check for the home page
+- created 3 home pages for each category where it will only show the soundscapes that are tagged with the corresponding category
+- Users can look at other users page and see what they have posted or who they are following, can also like posts and save there posts on ur profile.
+- Using clearance for the base users to secure more authentication and adding more to the clearance model.
+
+
+DESIGN:
+- The home animation was made with CSS having a stack of words move up and down on a div that is masking out everything outside of it. creating the illusuion of a spinning wheel. (also has a random background every time you visit the page.)
+- styled it entirely from SCSS and Javascript to add and remove classnames that correspond with an animation.
+- Tried to style it clean but unique so it isnt distracting when users are looking for a new sound to listen too.
+- Was inspired by a minimalistic website look with alot of background blurring to help with the effect.
+- User Home pages where made to fit the websites style even tho users can choose any background image or profile picture. The border fits to the size of the screen and adjusts itself properly.
+- Went with a main blue accent color but the color switches if you go to any of the category home pages.
+
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -39,10 +60,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-For this project I used layers of images then animated, and oriented it with CSS. Using Javascript to add and remove animations as well. Created design with Images, and pure CSS.
-
-
-I then manipulate the DOM to place a random fortune after Zoltar has spoken wisdom, which is randomized and played using [Howler](howler.link) The random fortunes come from an array and generates a unique set of lucky numbers for each fortune.
 
 <br/>
 
@@ -54,7 +71,8 @@ I then manipulate the DOM to place a random fortune after Zoltar has spoken wisd
 <!-- USAGE EXAMPLES -->
 
 ## Structure
-Here is the file structure for this project,
+Here are the main folders i used for this project.
+
 - <a href="">`app/controllers/`</a>
 - <a href="">`app/javascript/files/`</a>
 - <a href="">`app/views/home_pages/`</a>
