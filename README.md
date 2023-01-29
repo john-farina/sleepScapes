@@ -1,6 +1,12 @@
 <a name="readme-top"></a>
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
+![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+<br/>
 
-what did i do in this project
+<!-- what did i do in this project
 MAIN:
 - Created a CRUD app where users can create, read, update, and delete.
 - Users can Follow other users, comment on posts, like posts, and creaste posts.
@@ -9,16 +15,14 @@ MAIN:
 - Made a admin chosen Soundscape list where i can accept any soundscape for it to get added to the reccomended so there is a quality check for the home page
 - created 3 home pages for each category where it will only show the soundscapes that are tagged with the corresponding category
 - Users can look at other users page and see what they have posted or who they are following, can also like posts and save there posts on ur profile.
-- Using clearance for the base users to secure more authentication and adding more to the clearance model.
-
-
-DESIGN:
+- Using clearance for the base users to secure more authentication and adding more to the clearance model. -->
+<!-- DESIGN:
 - The home animation was made with CSS having a stack of words move up and down on a div that is masking out everything outside of it. creating the illusuion of a spinning wheel. (also has a random background every time you visit the page.)
 - styled it entirely from SCSS and Javascript to add and remove classnames that correspond with an animation.
 - Tried to style it clean but unique so it isnt distracting when users are looking for a new sound to listen too.
 - Was inspired by a minimalistic website look with alot of background blurring to help with the effect.
 - User Home pages where made to fit the websites style even tho users can choose any background image or profile picture. The border fits to the size of the screen and adjusts itself properly.
-- Went with a main blue accent color but the color switches if you go to any of the category home pages.
+- Went with a main blue accent color but the color switches if you go to any of the category home pages. -->
 
 
 <!-- PROJECT LOGO -->
