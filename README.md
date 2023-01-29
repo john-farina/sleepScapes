@@ -59,15 +59,20 @@ DESIGN:
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+[soundScapes] is a platform for users to share their favorite sounds for Studying, Sleeping, etc. with the community. Users can create, read, update, and delete Soundscapes, as well as follow other users, comment on posts, like posts, and create posts.
 
-
+Each user has their own page where they can see the posts they have created, the posts they have liked, and the users they are following. Additionally, there are three category-specific home pages for easier navigation and a home page with random soundscape suggestions selected by an admin.
 <br/>
 
 ### Built With
  - Ruby on Rails
  - SCSS
 <br/>
-<br/>
+
+## Rails
+
+### Models
+
 <!-- USAGE EXAMPLES -->
 
 ## Structure
