@@ -1,8 +1,9 @@
 <a name="readme-top"></a>
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
 ![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
-![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 <br/>
 
@@ -91,17 +92,22 @@ Here are the main folders i used for this project.
 The Home Pages are all the same with different parameters, the Main homepage is all of the Soundscapes mixed together so all of them, but for studyScapes for example everything on that page needs to have the study tag or else it wont show up. Giving a sence of orginization on the site.
 
 #### **Soundscape**
-The Soundscape controller is controlling everything to do with Posting, viewing, deleting soundscapes. Allowing users to Like and comment on posts. And removing those likes or commenst. <br/>
-the soundScapes model has_many: comments, and likes. The comments and likes are being produced by join tables which are storing a id to the user that liked it, etc.
+The soundScape Controller manages all interaction for each soundScape, including creating, viewing, and deleting Soundscapes, also allowing users to like and comment on posts and to remove them. The Soundscape model has a relationship with comments and likes through join tables that store user IDs. Each Soundscape can have multiple attachments such as Video, Audio, and Screenshot. Soundscapes can then be properly tagged to the relevant theme after posting a new one.
 
 #### **Users**
 The users are being controlled with Clearance for the best authentication and security i needed for this project, and added on top of the included Model and Controller. <br/>
 Users on soundScapes can Follow other users, like posts and comment, these things are linked to the user. User's likes will show up on their profile to save it for later. <br/>
 Users can also edit their Name, Profile Picture, or Profile Banner as well. without messing with any other value that they do not want to edit.
+- Users can follow other users, and see who is following them and who they are following.
+- Can like soundScapes to view it at a later point on their profile and also share to there followers what they like.
+- Users can edit their profile and change there name, profile picture, and banner.
+- Users can also post soundscapes and delete them if they choose to.
+- Users can comment on each post.
+
 
 ## Database
 For the saved User Images, soundScape videos and all other large files i am using `Rails Action Storage` that links with `AWS S3`. I chose AWS because i find it is the most reliable and easily scalable with not being too expensive if the website ever gets popular. <br/>
-For the base databse i am using Postgres in production this i found works best with rails and makes it very easy to control and view what i am doing specifically.
+For the text databse i am using Postgres in production this i found works best with rails and makes it very easy to control and view what i am doing specifically.
 
 <!-- USAGE EXAMPLES -->
 
