@@ -24,7 +24,6 @@
     "@rails/webpacker": "5.4.3",
     "filepond": "^4.30.4",
     "howler": "^2.2.3",
-    "react-scripts": "^5.0.1",
     "swup": "^2.0.19",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
