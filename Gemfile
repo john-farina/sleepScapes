@@ -8,7 +8,6 @@ ruby "3.1.2"
 gem "rails", "~> 7.0.3.1"
 
 gem 'webpacker'
-gem 'react-rails'
 gem "clearance"
 gem 'htmlbeautifier'
 gem 'aws-sdk-s3'
