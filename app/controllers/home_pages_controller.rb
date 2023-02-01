@@ -1,13 +1,21 @@
 class HomePagesController < ApplicationController
   def index
     @users = User.all
+
+    if AdminLike.count > 0
     admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
+
     @random_video = Sleepscape.find(admin_like.liked_id).sleepscape_video
+    end
   end
 
   def home
     admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
-    @random_post = Sleepscape.find(admin_like.liked_id)
+
+    if Sleepscape.count > 1
+      @random_post = Sleepscape.find(admin_like.liked_id)
+    end
+
     @admin_likes = AdminLike.all
     @recent_posts = Sleepscape.order('created_at DESC').limit(4)
     @recent_users = User.order('created_at DESC').limit(6)
@@ -29,7 +37,9 @@ class HomePagesController < ApplicationController
       x = x + 1
     end
 
-    @random_post = @curated_sleepscapes[ rand(@curated_sleepscapes.length) ]
+    if @curated_sleepscapes.length > 0
+      @random_post = @curated_sleepscapes[ rand(@curated_sleepscapes.length) ]
+    end
   end
 
   def study_home
@@ -48,7 +58,9 @@ class HomePagesController < ApplicationController
       x = x + 1
     end
 
-    @random_post = @curated_studyscapes[ rand(@curated_studyscapes.length) ]
+    if @curated_sleepscapes
+      @random_post = @curated_studyscapes[ rand(@curated_studyscapes.length) ]
+    end
   end
 
   def distraction_home
@@ -67,7 +79,9 @@ class HomePagesController < ApplicationController
       x = x + 1
     end
 
-    @random_post = @curated_distractscapes[ rand(@curated_distractscapes.length) ]
+    if @curated_distractscapes
+      @random_post = @curated_distractscapes[ rand(@curated_distractscapes.length) ]
+    end
   end
 
   def curated_home
