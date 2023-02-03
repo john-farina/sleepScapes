@@ -66,7 +66,7 @@ MAIN:
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-[soundScapes] is a platform for users to share their favorite sounds for Studying, Sleeping, etc. with the community. Users can create, read, update, and delete Soundscapes, as well as follow other users, comment on posts, like posts, and create posts.
+[soundScapes] is a platform for users to share their favorite sounds for Studying, Sleeping, etc. with the community. Users can create, read, update, and delete Soundscapes, as follow other users, comment on posts, like posts, and create posts.
 
 <img src="./app/assets/images/readme/soundscapes-intro.gif" />
 
@@ -91,30 +91,30 @@ Here are the main folders i used for this project.
 
 ### Controllers
 #### **Home Pages**
-The Home Pages are all the same with different parameters, the Main homepage is all of the Soundscapes mixed together so all of them, but for studyScapes for example everything on that page needs to have the study tag or else it wont show up. Giving a sence of orginization on the site.
+The Home Pages are all the same with different parameters, the Main homepage is all the Soundscapes mixed together so all of them, but for studyScapes for example everything on that page needs to have the study tag or else it won't show up. Giving a sense of organization on the site.
 
 #### **Soundscape**
 The soundScape Controller manages all interaction for each soundScape, including creating, viewing, and deleting Soundscapes, also allowing users to like and comment on posts and to remove them. The Soundscape model has a relationship with comments and likes through join tables that store user IDs. Each Soundscape can have multiple attachments such as Video, Audio, and Screenshot. Soundscapes can then be properly tagged to the relevant theme after posting a new one.
 
 #### **Users**
-The users are being controlled with the `Clearance` gem for the best authentication and security i needed for this project, and added on top of the included Model and Controller. <br/>
+The users are being controlled with the `Clearance` gem for the best authentication and security I needed for this project, and added on top of the included Model and Controller. <br/>
 Users on soundScapes can Follow other users, like posts and comment, these things are linked to the user. User's likes will show up on their profile to save it for later. <br/>
-Users can also edit their Name, Profile Picture, or Profile Banner as well. without messing with any other value that they do not want to edit.
+Users can also edit their Name, Profile Picture, or Profile Banner as well. Without messing with any other value that they do not want to edit.
 - Users can follow other users, and see who is following them and who they are following.
-- Can like soundScapes to view it at a later point on their profile and also share to there followers what they like.
+- Can like soundScapes to view it at a later point on their profile and also share to their followers what they like.
 - Users can edit their profile and change there name, profile picture, and banner.
 - Users can also post soundscapes and delete them if they choose to.
 - Users can comment on each post.
 
 ### Gems
-Some of the important gems i used in this project are <br>
+Some of the important gems I used in this project are <br>
 `gem "clearance"` - *Clearance is being used for user authentication for this website*<br>
 `gem 'aws-sdk-s3'` - *AWS SDK is being used to communicate with AWS in a better way with rails* <br>
 `gem 'obscenity'` - *Obscenity is being used to censor any swear words anywhere on the website*<br>
 
 ## Database
-For the saved User Images, soundScape videos and all other large files i am using `Rails Action Storage` that links with `AWS S3`. I chose AWS because i find it is the most reliable and easily scalable with not being too expensive if the website ever gets popular. <br/>
-For the text databse i am using Postgres in production this i found works best with rails and makes it very easy to control and view what i am doing specifically.
+For the saved User Images, soundScape videos and all other large files I am using `Rails Action Storage` that links with `AWS S3`. I chose AWS because I find it is the most reliable and easily scalable with not being too expensive if the website ever gets popular. <br/>
+For the text database I am using Postgres in production this I found works best with rails and makes it very easy to control and view what I am doing specifically.
 
 
 <!-- USAGE EXAMPLES -->
