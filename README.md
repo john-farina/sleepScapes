@@ -97,7 +97,7 @@ The Home Pages are all the same with different parameters, the Main homepage is 
 The soundScape Controller manages all interaction for each soundScape, including creating, viewing, and deleting Soundscapes, also allowing users to like and comment on posts and to remove them. The Soundscape model has a relationship with comments and likes through join tables that store user IDs. Each Soundscape can have multiple attachments such as Video, Audio, and Screenshot. Soundscapes can then be properly tagged to the relevant theme after posting a new one.
 
 #### **Users**
-The users are being controlled with Clearance for the best authentication and security i needed for this project, and added on top of the included Model and Controller. <br/>
+The users are being controlled with the `Clearance` gem for the best authentication and security i needed for this project, and added on top of the included Model and Controller. <br/>
 Users on soundScapes can Follow other users, like posts and comment, these things are linked to the user. User's likes will show up on their profile to save it for later. <br/>
 Users can also edit their Name, Profile Picture, or Profile Banner as well. without messing with any other value that they do not want to edit.
 - Users can follow other users, and see who is following them and who they are following.
@@ -106,17 +106,23 @@ Users can also edit their Name, Profile Picture, or Profile Banner as well. with
 - Users can also post soundscapes and delete them if they choose to.
 - Users can comment on each post.
 
+### Gems
+Some of the important gems i used in this project are <br>
+`gem "clearance"` - *Clearance is being used for user authentication for this website*<br>
+`gem 'aws-sdk-s3'` - *AWS SDK is being used to communicate with AWS in a better way with rails* <br>
+`gem 'obscenity'` - *Obscenity is being used to censor any swear words anywhere on the website*<br>
 
 ## Database
 For the saved User Images, soundScape videos and all other large files i am using `Rails Action Storage` that links with `AWS S3`. I chose AWS because i find it is the most reliable and easily scalable with not being too expensive if the website ever gets popular. <br/>
 For the text databse i am using Postgres in production this i found works best with rails and makes it very easy to control and view what i am doing specifically.
+
 
 <!-- USAGE EXAMPLES -->
 
 
 ## Usage
 
-Open Zoltar when you're facing troubles, open Zoltar when you're curious. Get fortunes *(without the quarters!)*
+Find one of your favorite sounds and keep it on in the background to focus. You can also create an account to save the sounds that you like, or follow users who post good sounds.
 <br/>
 <br/>
 
@@ -125,7 +131,7 @@ Open Zoltar when you're facing troubles, open Zoltar when you're curious. Get fo
 
 **John Farina** - johnfarina8@gmail.com
 
-Project Link: [github.com/john-farina/Zoltar](https://github.com/john-farina/sleepScapes)
+Project Link: [github.com/john-farina/sleepScapes](https://github.com/john-farina/sleepScapes)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
