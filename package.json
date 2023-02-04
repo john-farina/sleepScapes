@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bundle exec puma -C config/puma.rb && rake assets:precompile"
+    "build": "yarn install --frozen-lockfile && rake assets:precompile",
+    "start": "bundle exec puma -C config/puma.rb"
   },
   "repository": {
     "type": "git",
