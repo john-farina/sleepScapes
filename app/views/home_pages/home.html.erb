@@ -7,6 +7,7 @@
     <h1 class="homeTitle">[soundScapes]</h1>
   </a>
 
+<% if @random_post %>
   <a href=<%= sleepscape_page_url(user_id: @random_post.user_id, sleepscape_id: @random_post.id) %>>
     <div class="recommendContainer">
       <%= image_tag(@random_post.sleepscape_still_picture, class: "recommendPic") %>
@@ -23,6 +24,7 @@
       </div>
     </div>
   </a>
+<% end %>
 
 <div class="headerContainer homeHeaderContainer">
   <p class="defaultPageHeader homeHeader">curated <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
