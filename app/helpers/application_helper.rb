@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def title_helper(title)
     if title.present?
       if title == "sleepDefaultTitleWierdName_-_-"
@@ -7,13 +6,12 @@ module ApplicationHelper
       elsif title == "studyDefaultTitleWierdName_-_-"
         "[studyScapes]"
       elsif title == "distractDefaultTitleWierdName_-_-"
-      "[distractionScapes]"
+        "[distractionScapes]"
       else
-      title + "[soundScapes]"
+        title + "[soundScapes]"
       end
     else
       "[soundScapes]"
     end
   end
-
 end

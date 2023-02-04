@@ -9,7 +9,6 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
   end
 
-
   def following
     @followings = User.find(params[:id]).followings.all
   end
@@ -21,10 +20,10 @@ class UsersController < Clearance::UsersController
 
   def add_following
     @user = User.find(params[:user_id])
-    @following = @user.followings.new(following_id: params[:follow_id] )
+    @following = @user.followings.new(following_id: params[:follow_id])
 
     if @following.save
-      redirect_to  user_page_url(id: params[:follow_id])
+      redirect_to user_page_url(id: params[:follow_id])
     else
     end
   end
@@ -70,50 +69,48 @@ class UsersController < Clearance::UsersController
       redirect_to root_path
     end
   end
+
   ############ CLEARANCE
   def create
     @user = user_from_params
 
-    #not allowing swears in names
+    # not allowing swears in names
     if Obscenity.profane?(@user.name)
     else
-    if @user.save
-      sign_in @user
-     redirect_to home_path
-    else
-      render template: "users/new", status: :unprocessable_entity
+      if @user.save
+        sign_in @user
+        redirect_to home_path
+      else
+        render template: "users/new", status: :unprocessable_entity
+      end
     end
   end
-  end
-
-
 
   private
 
-    def redirect_signed_in_users
-      if signed_in?
-        redirect_to home_path
-      end
+  def redirect_signed_in_users
+    if signed_in?
+      redirect_to home_path
     end
+  end
 
-    def user_from_params
-        email = user_params.delete(:email)
-        name = user_params.delete(:name)
-        profile_picture = user_params.delete(:profile_picture)
-        profile_banner = user_params.delete(:profile_banner)
-        password = user_params.delete(:password)
+  def user_from_params
+    email = user_params.delete(:email)
+    name = user_params.delete(:name)
+    profile_picture = user_params.delete(:profile_picture)
+    profile_banner = user_params.delete(:profile_banner)
+    password = user_params.delete(:password)
 
-        Clearance.configuration.user_model.new(user_params).tap do |user|
-        user.email = email
-        user.name = name
-        user.profile_picture = profile_picture
-        user.profile_banner = profile_banner
-        user.password = password
-        end
+    Clearance.configuration.user_model.new(user_params).tap do |user|
+      user.email = email
+      user.name = name
+      user.profile_picture = profile_picture
+      user.profile_banner = profile_banner
+      user.password = password
     end
+  end
 
-    def user_params
-        params.require(:user).permit(:email, :name, :profile_picture, :profile_banner, :password)
-    end
-
+  def user_params
+    params.require(:user).permit(:email, :name, :profile_picture, :profile_banner, :password)
+  end
 end

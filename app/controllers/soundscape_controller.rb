@@ -5,7 +5,6 @@ class SoundscapeController < ApplicationController
     @all_likes = Like.where(:liked_id => @sleepscape.id)
   end
 
-
   def create
     @user = User.find(params[:id])
     @sleepscape = @user.sleepscapes.new(get_params)
@@ -23,22 +22,21 @@ class SoundscapeController < ApplicationController
     end
 
     if @sleepscape.save
-    redirect_to sleepscape_page_url(user_id: @user.id, sleepscape_id: @sleepscape.id)
+      redirect_to sleepscape_page_url(user_id: @user.id, sleepscape_id: @sleepscape.id)
     else
     end
   end
 
-
   def like_sleepscape
-      @user = current_user
-      @sleepscape = Sleepscape.find(params[:sleepscape_id])
+    @user = current_user
+    @sleepscape = Sleepscape.find(params[:sleepscape_id])
 
-      @like = @user.likes.new(params.permit(:user_id, :liked_id))
+    @like = @user.likes.new(params.permit(:user_id, :liked_id))
 
-      if @like.save
-        redirect_to sleepscape_page_url(sleepscape_id: @sleepscape.id, user_id: @sleepscape.user_id)
-      else
-      end
+    if @like.save
+      redirect_to sleepscape_page_url(sleepscape_id: @sleepscape.id, user_id: @sleepscape.user_id)
+    else
+    end
   end
 
   def remove_like_sleepscape
@@ -57,7 +55,7 @@ class SoundscapeController < ApplicationController
     @comment_text = params[:content]
 
     if Obscenity.profane?(@comment_text)
-     @comment_text = Obscenity.sanitize(@comment_text)
+      @comment_text = Obscenity.sanitize(@comment_text)
     end
 
     @comment = @sleepscape.comments.new(content: @comment_text, user_id: params[:user_id])
@@ -70,7 +68,6 @@ class SoundscapeController < ApplicationController
 
   def edit_soundscape
     @soundscape = Sleepscape.find(params[:id])
-
 
     if params[:study_category] === "1"
       if !@soundscape.categorys.find_by(category: "study")
@@ -120,21 +117,17 @@ class SoundscapeController < ApplicationController
       @soundscape.description = params[:description]
     end
 
-
-
     if @soundscape.save
       redirect_to sleepscape_page_url(user_id: @soundscape.user_id, sleepscape_id: @soundscape.id)
     end
-
   end
 
   def delete_soundscape
     @soundscape = Sleepscape.find(params[:id])
 
-   if @soundscape.destroy
-    redirect_to user_page_url(id: @soundscape.user_id)
-   end
-
+    if @soundscape.destroy
+      redirect_to user_page_url(id: @soundscape.user_id)
+    end
   end
 
   def secret_admin

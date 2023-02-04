@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   resources :users, controller: "clearance/users", only: [:create] do
     resource :password,
-      controller: "clearance/passwords",
-      only: [:edit, :update]
+             controller: "clearance/passwords",
+             only: [:edit, :update]
   end
 
   root "home_pages#index"
@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   get '/user/:id/followers', to: 'users#followers', as: 'user_followers'
   post '/:user_id/follow', to: 'users#add_following', as: 'add_following'
   post '/:user_id/remove_follow', to: 'users#remove_following', as: 'remove_following'
-
 
   # get '/secret/very/very/secret', to: 'sleep#secret_admin'
   post '/secret', to: 'soundscape#create_secret_admin', as: 'secret_admin'

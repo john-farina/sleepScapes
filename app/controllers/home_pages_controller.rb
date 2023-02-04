@@ -3,14 +3,14 @@ class HomePagesController < ApplicationController
     @users = User.all
 
     if AdminLike.count > 0
-    admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
+      admin_like = AdminLike.all[rand(AdminLike.all.length)]
 
-    @random_video = Sleepscape.find(admin_like.liked_id).sleepscape_video
+      @random_video = Sleepscape.find(admin_like.liked_id).sleepscape_video
     end
   end
 
   def home
-    admin_like = AdminLike.all[ rand(AdminLike.all.length) ]
+    admin_like = AdminLike.all[rand(AdminLike.all.length)]
 
     if Sleepscape.count > 1
       @random_post = Sleepscape.find(admin_like.liked_id)
@@ -38,7 +38,7 @@ class HomePagesController < ApplicationController
     end
 
     if @curated_sleepscapes.length > 0
-      @random_post = @curated_sleepscapes[ rand(@curated_sleepscapes.length) ]
+      @random_post = @curated_sleepscapes[rand(@curated_sleepscapes.length)]
     end
   end
 
@@ -59,7 +59,7 @@ class HomePagesController < ApplicationController
     end
 
     if @curated_sleepscapes
-      @random_post = @curated_studyscapes[ rand(@curated_studyscapes.length) ]
+      @random_post = @curated_studyscapes[rand(@curated_studyscapes.length)]
     end
   end
 
@@ -80,20 +80,17 @@ class HomePagesController < ApplicationController
     end
 
     if @curated_distractscapes
-      @random_post = @curated_distractscapes[ rand(@curated_distractscapes.length) ]
+      @random_post = @curated_distractscapes[rand(@curated_distractscapes.length)]
     end
   end
 
   def curated_home
-
   end
 
   def recent_soundscapes_home
-
   end
 
   def users_home
     @all_users = User.all
   end
-
 end
