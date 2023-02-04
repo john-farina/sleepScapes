@@ -1,96 +1,110 @@
 <% content_for :title do %>
   Home
 <% end %>
+
 <div class="homeContainer" id="homePage">
   <a class="pageATag" href="/">
     <h1 class="homeTitle">[soundScapes]</h1>
   </a>
 
-  <% if @random_post %>
-    <a href=<%= sleepscape_page_url(user_id: @random_post.user_id, sleepscape_id: @random_post.id) %>>
+  <a href=<%= sleepscape_page_url(user_id: @random_post.user_id, sleepscape_id: @random_post.id) %>>
     <div class="recommendContainer">
       <%= image_tag(@random_post.sleepscape_still_picture, class: "recommendPic") %>
+
       <div class="recomendInfoContainer">
-      <div class="bottomBox">
-        <p class="bottomHeader">Recommended:</p>
-        <div class="info">
-          <p class="infoTitle"><%= @random_post.title %></p>
-          <p><%= @random_post.recorded_at %></p>
+        <div class="bottomBox">
+          <p class="bottomHeader">Recommended:</p>
+
+          <div class="info">
+            <p class="infoTitle"><%= @random_post.title %></p>
+            <p><%= @random_post.recorded_at %></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</a>
-<% end %>
+  </a>
 
 <div class="headerContainer homeHeaderContainer">
   <p class="defaultPageHeader homeHeader">curated <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
+
   <a href=<%= curated_home_url %> class="viewAll">
     <p>View All</p>
   </a>
 </div>
 
-<% if @admin_likes %>
-  <div class="adminLikesContainer">
-    <% @admin_likes.each do |admin| %>
-      <% sleep = Sleepscape.find(admin.liked_id) %>
+<div class="adminLikesContainer">
+  <% @admin_likes.each do |admin| %>
+    <% sleep = Sleepscape.find(admin.liked_id) %>
+
       <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
         <div class="soundScapeContainer">
           <div class="loadingBackground">
-          <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
+            <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
           </div>
+
           <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
+
           <div class="infoContainer">
-        <div class="top">
-          <div class="left">
-            <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-          </div>
-          <div class="right">
-            <div class="comments">
-              <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-              <%= image_tag("comments", class: "soundscapeIcon comments") %>
+            <div class="top">
+              <div class="left">
+                <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
+              </div>
+
+              <div class="right">
+                <div class="comments">
+                  <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
+                  <%= image_tag("comments", class: "soundscapeIcon comments") %>
+                </div>
+
+                <div class="likes">
+                  <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
+                  <%= image_tag("heart", class: "soundscapeIcon heart") %>
+                </div>
+              </div>
             </div>
-            <div class="likes">
-              <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-              <%= image_tag("heart", class: "soundscapeIcon heart") %>
-            </div>
-          </div>
-        </div>
-        <div class="bottom">
-          <div class="left">
-            <p class="soundScapeTitle"><%= sleep.title %></p>
-            <div class="locationContainer">
-              <%= image_tag("locationIcon", class: "locationIcon") %>
-              <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-            </div>
-          </div>
-          <div class="right">
-            <% if sleep.categorys.length === 0 %>
-            <% else %>
-              <% sleep.categorys.each do |category| %>
-                <% if category.category === "sleep" %>
-                  <div class="categoryBox sleepBox">
-                    <%= image_tag("sleepIcon", class: "categoryicon") %>
-                  </div>
+
+            <div class="bottom">
+              <div class="left">
+                <p class="soundScapeTitle"><%= sleep.title %></p>
+
+                <div class="locationContainer">
+                  <%= image_tag("locationIcon", class: "locationIcon") %>
+                  <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
+                </div>
+
+              </div>
+
+              <div class="right">
+                <% if sleep.categorys.length === 0 %>
+
+                <% else %>
+                  <% sleep.categorys.each do |category| %>
+                    <% if category.category === "sleep" %>
+                      <div class="categoryBox sleepBox">
+                        <%= image_tag("sleepIcon", class: "categoryicon") %>
+                      </div>
+                    <% end %>
+
+                    <% if category.category === "distraction" %>
+                      <div class="categoryBox distractBox">
+                        <%= image_tag("headphoneIcon", class: "categoryicon") %>
+                      </div>
+                    <% end %>
+
+                    <% if category.category === "study" %>
+                      <div class="categoryBox studyBox">
+                        <%= image_tag("studyIcon", class: "categoryicon") %>
+                      </div>
+                    <% end %>
+
+                  <% end %>
                 <% end %>
-                <% if category.category === "distraction" %>
-                  <div class="categoryBox distractBox">
-                    <%= image_tag("headphoneIcon", class: "categoryicon") %>
-                  </div>
-                <% end %>
-                <% if category.category === "study" %>
-                  <div class="categoryBox studyBox">
-                    <%= image_tag("studyIcon", class: "categoryicon") %>
-                  </div>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
+              </div>
+
         </div>
       </div>
     </div>
   </a>
-<% end %>
 <% end %>
 
 <div class="headerContainer homeHeaderContainer">
@@ -124,6 +138,7 @@
   <a href=<%= recent_soundscapes_home_url %> class="viewAll">
     <p>View All</p>
   </a>
+
   <p class="defaultPageHeader homeHeader">recent <span class="blue first">[</span>soundScapes<span class="blue">]</span></p>
 </div>
 
@@ -190,12 +205,13 @@
   </a>
 <% end %>
 <% end %>
-
 </div>
+
 <div class="headerContainer homeHeaderContainer">
   <a href=<%= users_home_url %> class="viewAll">
     <p>View All</p>
   </a>
+
   <p class="defaultPageHeader homeHeader">recent <span class="blue first">[</span>users<span class="blue">]</span></p>
 </div>
 
@@ -203,28 +219,32 @@
   <div class="recentUserContainers">
     <% @recent_users.each do |user| %>
       <a href=<%= user_page_url(id: user.id) %>>
-      <div class="userBox">
-        <% if user.profile_picture.attached? %>
-          <% profile_pic = url_for(user.profile_picture) %>
-        <% else %>
-          <% profile_pic = "defaultUser"%>
-        <% end %>
-        <% if user.profile_banner.attached? %>
-          <% profile_ban = url_for(user.profile_banner) %>
-        <% else %>
-          <% profile_ban = "defaultUserBanner"%>
-        <% end %>
-        <div class="accountCover">
-        <p class="timeText"><%= time_ago_in_words(user.created_at) %> ago.</p>
-        <%= image_tag(profile_ban, class: "backgroundImg") %>
-        <%= image_tag(profile_pic, class: "userPicture") %>
-        <p class="userName"><%= user.name %></p>
-      </div>
-    </div>
-  </a>
-<% end %>
+          <div class="userBox">
+            <% if user.profile_picture.attached? %>
+              <% profile_pic = url_for(user.profile_picture) %>
+            <% else %>
+              <% profile_pic = "defaultUser"%>
+            <% end %>
+
+            <% if user.profile_banner.attached? %>
+              <% profile_ban = url_for(user.profile_banner) %>
+            <% else %>
+              <% profile_ban = "defaultUserBanner"%>
+            <% end %>
+
+            <div class="accountCover">
+            <p class="timeText"><%= time_ago_in_words(user.created_at) %> ago.</p>
+            <%= image_tag(profile_ban, class: "backgroundImg") %>
+            <%= image_tag(profile_pic, class: "userPicture") %>
+            <p class="userName"><%= user.name %></p>
+            </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
 <% end %>
 
 <div class="userBox"></div>
 </div>
-</div>
+
+
