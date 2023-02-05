@@ -7,25 +7,6 @@
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 <br/>
 
-<!-- what did i do in this project
-MAIN:
-- Created a CRUD app where users can create, read, update, and delete.
-- Users can Follow other users, comment on posts, like posts, and creaste posts.
-- Users can then edit there own posts or delete there own posts.
-- Created home pages with random suggestions for all of the admin chose soundscapes
-- Made a admin chosen Soundscape list where i can accept any soundscape for it to get added to the reccomended so there is a quality check for the home page
-- created 3 home pages for each category where it will only show the soundscapes that are tagged with the corresponding category
-- Users can look at other users page and see what they have posted or who they are following, can also like posts and save there posts on ur profile.
-- Using clearance for the base users to secure more authentication and adding more to the clearance model. -->
-<!-- DESIGN:
-- The home animation was made with CSS having a stack of words move up and down on a div that is masking out everything outside of it. creating the illusuion of a spinning wheel. (also has a random background every time you visit the page.)
-- styled it entirely from SCSS and Javascript to add and remove classnames that correspond with an animation.
-- Tried to style it clean but unique so it isnt distracting when users are looking for a new sound to listen too.
-- Was inspired by a minimalistic website look with alot of background blurring to help with the effect.
-- User Home pages where made to fit the websites style even tho users can choose any background image or profile picture. The border fits to the size of the screen and adjusts itself properly.
-- Went with a main blue accent color but the color switches if you go to any of the category home pages. -->
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -66,7 +47,7 @@ MAIN:
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-[soundScapes] is a platform for users to share their favorite sounds for Studying, Sleeping, etc. with the community. Users can create, read, update, and delete Soundscapes, as follow other users, comment on posts, like posts, and create posts.
+[soundScapes] is a platform for users to share their favorite sounds for Studying, Sleeping, etc. with the community. Users can create, read, update, and delete Soundscapes. As well as following other users, comment on posts, like posts, and create posts.
 
 <img src="./app/assets/images/readme/soundscapes-intro.gif" />
 
@@ -81,7 +62,7 @@ Each user has their own page where they can see the posts they have created, the
  - SCSS
 
 ### Structure
-Here are the main folders i used for this project.
+Here are the main folders I used for this project.
 
 - <a href="">`app/controllers/`</a>
 - <a href="">`app/javascript/files/`</a>
@@ -116,6 +97,33 @@ Some of the important gems I used in this project are <br>
 For the saved User Images, soundScape videos and all other large files I am using `Rails Action Storage` that links with `AWS S3`. I chose AWS because I find it is the most reliable and easily scalable with not being too expensive if the website ever gets popular. <br/>
 For the text database I am using Postgres in production this I found works best with rails and makes it very easy to control and view what I am doing specifically.
 
+## Design
+
+### Intro
+for the intro animation I wanted to portray all the sounds that can be posted on soundscapes, so I created a scroll through animation of category names. The category names are on top of each other inside a div that hides all overflow. I then scroll from top to bottom and then reset the animation. <br>
+With a blurred background to put the attention onto the starting animation. *(intro video is randomized with the curated soundscapes)*
+
+<img src="./app/assets/images/readme/soundscapes-intro.gif" />
+
+### Home Pages
+#### Layout
+I am going for a rectangular modern design for this website, what I thought would be a good interactive way to lay out the soundscapes on any page.
+
+#### Sound Tiles
+The sound tiles are made up from a screenshot of the soundscapes, filling the entirety with the div as the background, then using a blur to push it more back.
+I show two icons on the top right showing the like and comment count for each post, having the category icons right below that data. These icons show which category these sounds where placed in from the 3.
+
+<img src="./app/assets/images/readme/soundscape-tile.png" />
+
+### User Pages
+The user pages have a banner that shows the user profile picture and profile banner, as well as showing who the user is following or followed.
+
+The User page body shows which soundscapes they have liked for ease of use to come back to a sound you listened too previously, And to show the soundscapes that this user has posted.
+
+### [soundScapes]
+The soundscapes are designed with the video as the background which fills the screen at any size, and a play and pause tab on the top right.
+<!-- image -->
+The Information, Comments, and Likes are all stored on the tab on the bottom, as styled in a minimalist way, with the blurred background with white.
 
 <!-- USAGE EXAMPLES -->
 
@@ -131,82 +139,8 @@ Find one of your favorite sounds and keep it on in the background to focus. You 
 
 **John Farina** - johnfarina8@gmail.com
 
+My Website: [johnfarina.co](https://johnfarina.co)
+
 Project Link: [github.com/john-farina/sleepScapes](https://github.com/john-farina/sleepScapes)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-# sleepScapes *(sleep sounds)*
-
-categorys
-
-- sleep
-- study
-- distraction
-
-sleepscapes has many categorys (MAX 3)
-category model (belongs_to sleepscape)
-category:string (which whill be "sleep", "study", "distraction")
-
-## WHAT I NEED TO FINISH
-- X category home pages
-- a user generated content page
-- all users page with most followed users etc
-- emails for when you get follows, comments
-- (working on now) edit videos/photos before i save them to databse
-- record 8-10 admin soundscapes
-- use 6-7 fake ones from free internet content
-
-### MODELS (basic idea brainstorm)
-## USER (ontop of clearance)
-- [x] name:string
-- [ ] bio:string
-- [x] admin:boolean *(def => false)*
-- [x] profile_picture:image
-- [x] banner_picture:image
-- [x] has_many *likes*
-- [x] has_many *sleepscapes*
-- [x] has_many *following*
-
-## SLEEPSCAPE
-- [x] title:string
-- [x] description:string
-- [x] audio:audio? (will loop the audio minimum 1 min long)
-- [x] short_video:video? (video will be muted and loop over audio)
-
-
-
-## HOW I THINK I WILL SCTRUCTURE THIS
-
-#### -USER MODELS
-#### -SLEEPSCAPE *(post)* MODELS
-#### -COMMENT MODELS
-#### -LIKES MODELS
-
-## RELATIONS TO MODELS
-
-### *USER*
-#### - has_many *SLEEPSCAPES*
-#### - has_many *LIKES*
-#### - has_many *FOLLOWERS & FOLLOWING*
-
-### *SLEEPSCAPES*
-#### - has_many *COMMENTS*
-#### - has_many *LIKES?* *(think ill be getting these from the user model relations and just counting how many has the post id or something)* -->
