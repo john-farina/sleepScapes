@@ -8,7 +8,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 gem "clearance"
 gem 'htmlbeautifier'
-gem 'aws-sdk-s3'
+gem "aws-sdk-s3", require: false
 # gem 'azure-storage'
 gem 'obscenity' # censor swears
 gem 'haml'
