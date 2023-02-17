@@ -7,14 +7,14 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-# amazon:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-east-1
-#   bucket: new-soundscapes
-#   referrer_policy: "strict-origin-when-cross-origin"
+amazon:
+  service: S3
+  access_key_id: <%= ENV['ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ['SECRET_ACCESS_KEY_ID'] %>
+  region: us-east-1
+  bucket: new-soundscapes
 
+  # referrer_policy: "strict-origin-when-cross-origin"
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
@@ -23,11 +23,11 @@ local:
 #   bucket: your_own_bucket-<%= Rails.env %>
 
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
-microsoft:
-  service: AzureStorage
-  storage_account_name: farinasoundscapes
-  storage_access_key: <%= ENV['STORAGE_ACCESS_KEY'] %>
-  container: new-container
+# microsoft:
+#   service: AzureStorage
+#   storage_account_name: farinasoundscapes
+#   storage_access_key: <%= ENV['STORAGE_ACCESS_KEY'] %>
+#   container: new-container
 # mirror:
 #   service: Mirror
 #   primary: local
