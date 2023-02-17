@@ -7,12 +7,12 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-# amazon:
-#   service: S3
-#   access_key_id: <%= ENV['ACCESS_KEY_ID'] %>
-#   secret_access_key: <%= ['SECRET_ACCESS_KEY'] %>
-#   region: us-east-1
-#   bucket: new-soundscapes
+amazon:
+  service: S3
+  access_key_id: <%= ENV['ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ['SECRET_ACCESS_KEY'] %>
+  region: us-east-1
+  bucket: new-soundscapes
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
@@ -22,11 +22,11 @@ local:
 
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 
-azure:
-  service: AzureStorage
-  storage_account_name: farinasoundscapes
-  storage_access_key: <%= ENV['STORAGE_ACCESS_KEY'] %>
-  container: new-container
+# azure:
+#   service: AzureStorage
+#   storage_account_name: farinasoundscapes
+#   storage_access_key: <%= ENV['STORAGE_ACCESS_KEY'] %>
+#   container: new-container
 # mirror:
 #   service: Mirror
 #   primary: local
