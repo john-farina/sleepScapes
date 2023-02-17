@@ -17,7 +17,7 @@
   <p align="center">
   This app is intended to use for sleeping, studying, or just a distraction. Users can create accounts, post their own <i>soundScapes</i>, follow users, comment, like posts, and more.
     <br />
-    <a href="https://linktowebsite.com">View Live Demo</a>
+    <a href="https://soundscapes.johnfarina.co">View Live Demo</a>
 </div>
 
 
