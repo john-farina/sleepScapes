@@ -11,6 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "timescaledb"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -18,8 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness",
-                                                             unique: true
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -42,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
 
   create_table "admin_likes", force: :cascade do |t|
     t.integer "liked_id"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_admin_likes_on_user_id"
@@ -50,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
-    t.integer "sleepscape_id", null: false
+    t.bigint "sleepscape_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sleepscape_id"], name: "index_categories_on_sleepscape_id"
@@ -58,24 +61,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "sleepscape_id", null: false
+    t.bigint "sleepscape_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["sleepscape_id"], name: "index_comments_on_sleepscape_id"
   end
 
-  create_table "followers", force: :cascade do |t|
-    t.string "follower_id"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_followers_on_user_id"
-  end
-
   create_table "followings", force: :cascade do |t|
     t.string "following_id"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_followings_on_user_id"
@@ -83,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "liked_id"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_likes_on_user_id"
@@ -93,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
     t.string "title"
     t.string "recorded_at"
     t.string "description"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sleepscapes_on_user_id"
@@ -118,7 +113,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202955) do
   add_foreign_key "admin_likes", "users"
   add_foreign_key "categories", "sleepscapes"
   add_foreign_key "comments", "sleepscapes"
-  add_foreign_key "followers", "users"
   add_foreign_key "followings", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "sleepscapes", "users"
