@@ -46,6 +46,7 @@
     </div>
   <% end %>
 </div>
+
 <div class="middle">
   <div class="userPicture">
     <% if @user.profile_picture.attached? %>
@@ -61,149 +62,47 @@
     <% end %>
   </div>
 </div>
+
 <div class="right">
   <a href=<%= user_following_url(id: @user.id) %>>
-        <div class="followersBox">
-          <p class="followCount"><%= @user.followings.length %></p>
-    <p class="followTitle">Following</p>
-  </div>
-</a>
-<a href=<%= user_followers_url(id: @user.id) %>>
-        <div class="followersBox">
-          <p class="followCount"><%= @followers.length %> </p>
-  <p class="followTitle">Followers</p>
-</div>
-</a>
+    <div class="followersBox">
+      <p class="followCount"><%= @user.followings.length %></p>
+      <p class="followTitle">Following</p>
+    </div>
+  </a>
+
+  <a href=<%= user_followers_url(id: @user.id) %>>
+    <div class="followersBox">
+      <p class="followCount"><%= @followers.length %> </p>
+      <p class="followTitle">Followers</p>
+    </div>
+  </a>
 </div>
 </div>
 <%# .              END OF HEADER             %>
 <div class="bodyContainer">
   <% if @sleepscapes.length < 1 %>
+
   <% else %>
     <div class="headerContainer">
       <h3 class="defaultPageHeader"><%= @user.name %>'s [sleepScapes]</h3>
     </div>
+
     <% @sleepscapes.each do |sleep|%>
-      <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
-      <div class="soundScapeContainer">
-        <div class="loadingBackground">
-        <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
-        </div>
-        <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
-        <div class="infoContainer">
-        <div class="top">
-          <div class="left">
-            <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-          </div>
-          <div class="right">
-            <div class="comments">
-              <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-              <%= image_tag("comments", class: "soundscapeIcon comments") %>
-            </div>
-            <div class="likes">
-              <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-              <%= image_tag("heart", class: "soundscapeIcon heart") %>
-            </div>
-          </div>
-        </div>
-        <div class="bottom">
-          <div class="left">
-            <p class="soundScapeTitle"><%= sleep.title %></p>
-            <div class="locationContainer">
-              <%= image_tag("locationIcon", class: "locationIcon") %>
-              <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-            </div>
-          </div>
-          <div class="right">
-            <% if sleep.categorys.length === 0 %>
-            <% else %>
-              <% sleep.categorys.each do |category| %>
-                <% if category.category === "sleep" %>
-                  <div class="categoryBox sleepBox">
-                    <%= image_tag("sleepIcon", class: "categoryicon") %>
-                  </div>
-                <% end %>
-                <% if category.category === "distraction" %>
-                  <div class="categoryBox distractBox">
-                    <%= image_tag("headphoneIcon", class: "categoryicon") %>
-                  </div>
-                <% end %>
-                <% if category.category === "study" %>
-                  <div class="categoryBox studyBox">
-                    <%= image_tag("studyIcon", class: "categoryicon") %>
-                  </div>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
+        <%= render 'layouts/soundscape_tile', sleep_values: sleep %>
+    <% end %>
 <% end %>
-<% end %>
+
 <br>
+
 <div class="headerContainer">
   <h3 class="defaultPageHeader" ><%= @user.name %> likes <%= pluralize(@user.likes.length, 'post') %></h3>
 </div>
+
 <% @user.likes.each do |likes|%>
   <% sleep = Sleepscape.find(likes.liked_id) %>
-  <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
-      <div class="soundScapeContainer">
-        <div class="loadingBackground">
-        <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
-        </div>
-        <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
-        <div class="infoContainer">
-    <div class="top">
-      <div class="left">
-        <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-      </div>
-      <div class="right">
-        <div class="comments">
-          <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-          <%= image_tag("comments", class: "soundscapeIcon comments") %>
-        </div>
-        <div class="likes">
-          <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-          <%= image_tag("heart", class: "soundscapeIcon heart") %>
-        </div>
-      </div>
-    </div>
-    <div class="bottom">
-      <div class="left">
-        <p class="soundScapeTitle"><%= sleep.title %></p>
-        <div class="locationContainer">
-          <%= image_tag("locationIcon", class: "locationIcon") %>
-          <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-        </div>
-      </div>
-      <div class="right">
-        <% if sleep.categorys.length === 0 %>
-        <% else %>
-          <% sleep.categorys.each do |category| %>
-            <% if category.category === "sleep" %>
-              <div class="categoryBox sleepBox">
-                <%= image_tag("sleepIcon", class: "categoryicon") %>
-              </div>
-            <% end %>
-            <% if category.category === "distraction" %>
-              <div class="categoryBox distractBox">
-                <%= image_tag("headphoneIcon", class: "categoryicon") %>
-              </div>
-            <% end %>
-            <% if category.category === "study" %>
-              <div class="categoryBox studyBox">
-                <%= image_tag("studyIcon", class: "categoryicon") %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-</a>
+
+  <%= render 'layouts/soundscape_tile', sleep_values: sleep %>
 <% end %>
 </div>
 </div>

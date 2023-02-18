@@ -8,20 +8,22 @@
 
   <% if @random_post %>
     <a href=<%= sleepscape_page_url(user_id: @random_post.user_id, sleepscape_id: @random_post.id) %>>
-    <div class="recommendContainer">
-      <%= image_tag(@random_post.sleepscape_still_picture, class: "recommendPic") %>
-      <div class="recomendInfoContainer">
-      <div class="bottomBox">
-        <p class="bottomHeader">Recommended:</p>
-        <div class="info">
-          <p class="infoTitle"><%= @random_post.title %></p>
-          <p><%= @random_post.recorded_at %></p>
+      <div class="recommendContainer">
+        <%= image_tag(@random_post.sleepscape_still_picture, class: "recommendPic") %>
+
+        <div class="recomendInfoContainer">
+        <div class="bottomBox">
+          <p class="bottomHeader">Recommended:</p>
+
+          <div class="info">
+            <p class="infoTitle"><%= @random_post.title %></p>
+            <p><%= @random_post.recorded_at %></p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</a>
-<% end %>
+      </div>
+    </a>
+  <% end %>
 
 <div class="headerContainer homeHeaderContainer categoryHeader">
   <p class="defaultPageHeader homeHeader">curated <span class="purple first">[</span>sleepScapes<span class="purple">]</span></p>
@@ -29,42 +31,8 @@
 
 <% if @curated_sleepscapes %>
   <% @curated_sleepscapes.each do |sleep| %>
-    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
-        <div class="soundScapeContainer">
-          <div class="loadingBackground">
-          <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
-          </div>
-          <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
-          <div class="infoContainer">
-      <div class="top">
-        <div class="left">
-          <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-        </div>
-        <div class="right">
-          <div class="comments">
-            <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-            <%= image_tag("comments", class: "soundscapeIcon comments") %>
-          </div>
-          <div class="likes">
-            <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-            <%= image_tag("heart", class: "soundscapeIcon heart") %>
-          </div>
-        </div>
-      </div>
-      <div class="bottom">
-        <div class="left">
-          <p class="soundScapeTitle"><%= sleep.title %></p>
-          <div class="locationContainer">
-            <%= image_tag("locationIcon", class: "locationIcon") %>
-            <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-          </div>
-        </div>
-        <div class="right"></div>
-      </div>
-    </div>
-  </div>
-</a>
-<% end %>
+    <%= render 'layouts/soundscape_tile', sleep_values: sleep %>
+  <% end %>
 <% end %>
 
 <div class="headerContainer homeHeaderContainer categoryHeader">
@@ -73,41 +41,7 @@
 
 <% if @all_sleepscapes %>
   <% @all_sleepscapes.each do |sleep| %>
-    <a href=<%= sleepscape_page_url(user_id: sleep.user_id, sleepscape_id: sleep.id) %>>
-        <div class="soundScapeContainer">
-          <div class="loadingBackground">
-          <h1><span class="sleep">[sleepScape]</span> is loading...</h1>
-          </div>
-          <%= image_tag(sleep.sleepscape_still_picture, class: 'soundScapeImg') %>
-          <div class="infoContainer">
-      <div class="top">
-        <div class="left">
-          <p class="timeText"><%= time_ago_in_words(sleep.created_at) %> ago.</p>
-        </div>
-        <div class="right">
-          <div class="comments">
-            <p class="commentText"><%= Comment.where(:sleepscape_id => sleep.id).length %></p>
-            <%= image_tag("comments", class: "soundscapeIcon comments") %>
-          </div>
-          <div class="likes">
-            <p class="likeText"><%= Like.where(:liked_id => sleep.id).length %></p>
-            <%= image_tag("heart", class: "soundscapeIcon heart") %>
-          </div>
-        </div>
-      </div>
-      <div class="bottom">
-        <div class="left">
-          <p class="soundScapeTitle"><%= sleep.title %></p>
-          <div class="locationContainer">
-            <%= image_tag("locationIcon", class: "locationIcon") %>
-            <p class="soundScapeLocation"><%= sleep.recorded_at %></p>
-          </div>
-        </div>
-        <div class="right"></div>
-      </div>
-    </div>
-  </div>
-</a>
-<% end %>
+    <%= render 'layouts/soundscape_tile', sleep_values: sleep %>
+  <% end %>
 <% end %>
 </div>
