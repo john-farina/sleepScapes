@@ -1,16 +1,6 @@
 <% content_for :title do %>
   <%= @sleepscape.title %>
 <% end %>
-
-
-<% if @sleepscape.description %>
-  <% content_for :meta_description, @sleepscape.description %>
-<% end %>
-
-<% if @sleepscape.sleepscape_still_picture.attached? %>
-  <% content_for :meta_image, url_for(@sleepscape.sleepscape_still_picture)  %>
-<% end %>
-
 <% if @sleepscape.sleepscape_video.attached? %>
   <%= video_tag(url_for(@sleepscape.sleepscape_video), id: "soundscapeVideo" , class: "backgroundImage sleepscapeBackground",autoplay: :autoplay,
 loop: :loop, muted: true, playsinline: true, controls: false) %>
